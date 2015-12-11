@@ -18,11 +18,13 @@
 @property (nonatomic, strong) UIImage* leftImage;
 @property (nonatomic, strong) UIImage* middleImage;
 @property (nonatomic, strong) UIImage* rightImage;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (nonatomic, assign) CGImageRef inputCGImage;
 
 @property (nonatomic, assign) NSUInteger width;
 @property (nonatomic, assign) NSUInteger height;
+@property (nonatomic, strong) NSData *imageData;
+
+// Check the commits
 
 @end
 
@@ -32,22 +34,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.panelsBackgroundView.backgroundColor = [UIColor colorWithRed:242./255. green:243./255. blue:244./255. alpha:0.8];
+    self.imageView.userInteractionEnabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark -
 - (IBAction)defaultButtontapped:(id)sender {
@@ -79,29 +72,25 @@
     CGRect middleImgFrame = CGRectMake(imgWidth, 0, imgWidth, imgheight);
     CGRect rightImgFrame = CGRectMake(2*imgWidth, 0, imgWidth, imgheight);
     
-    UIView *leftView = [[UIView alloc] initWithFrame:leftImgFrame];
-    //[self.imageView addSubview:leftView];
-    leftView.backgroundColor = [UIColor colorWithRed:242./255. green:243./255. blue:244./255. alpha:0.8];
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:leftView.frame];
-    [leftView addSubview:leftButton];
+
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.imageView.center.y - self.imageView.image.size.height, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
+    leftButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+    [self.imageView addSubview:leftButton];
     [leftButton setTitle:@"1" forState:UIControlStateNormal];
     [leftButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(leftButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIView *middleView = [[UIView alloc] initWithFrame:middleImgFrame];
-    //[self.imageView addSubview:middleView];
-    middleView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    UIButton *middleButton = [[UIButton alloc] initWithFrame:middleView.frame];
-    [middleView addSubview:middleButton];
+    UIButton *middleButton = [[UIButton alloc] initWithFrame:CGRectMake(self.imageView.frame.size.width/3, self.imageView.center.y - self.imageView.image.size.height/2, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
+    middleButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];;
+    [self.imageView addSubview:middleButton];
     [middleButton setTitle:@"2" forState:UIControlStateNormal];
     [middleButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [middleButton addTarget:self action:@selector(middleButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIView *rightView = [[UIView alloc] initWithFrame:rightImgFrame];
-    //[self.imageView addSubview:rightView];
-    rightView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    UIButton *rightButton = [[UIButton alloc] initWithFrame:rightView.frame];
-    [rightView addSubview:rightButton];
+
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(2*self.imageView.frame.size.width/3, self.imageView.center.y - self.imageView.image.size.height/2, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
+    rightButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];;
+    [self.imageView addSubview:rightButton];
     [rightButton setTitle:@"3" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(rightButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -117,24 +106,15 @@
     //self.imageView.image = middleImage;
     //NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
     //if([[UIApplication sharedApplication] canOpenURL:instagramURL])
-    //{
     
-    leftView.userInteractionEnabled = YES;
-    middleView.userInteractionEnabled = YES;
-    rightView.userInteractionEnabled = YES;
-    leftButton.userInteractionEnabled = YES;
-    
-    [self.imageView bringSubviewToFront:self.shareButton];
+    [self getRGBAsFromImage:0 andY:self.width];
+    //
     
     CGImageRelease(left);
     CGImageRelease(middle);
     CGImageRelease(right);
     CGImageRelease(self.inputCGImage);
     
-}
-
-- (IBAction)share:(id)sender {
-    [self shareOnInstagram:self.leftImage];
 }
 
 - (void)leftButtonTapped:(UIButton*)sender {
@@ -182,7 +162,50 @@
     [picker dismissViewControllerAnimated:YES completion:^{
         self.imageView.image = image;
         self.inputCGImage = [image CGImage];
+        self.imageData = UIImagePNGRepresentation(image);
     }];
+}
+
+- (NSArray*)getRGBAsFromImage:(NSUInteger)x andY:(NSUInteger)y
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    // First get the image into your data buffer
+   
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char *rawData = (unsigned char*) calloc(self.height * self.width * 4, sizeof(unsigned char));
+    NSUInteger bytesPerPixel = 4;
+    NSUInteger bytesPerRow = bytesPerPixel * self.width;
+    NSUInteger bitsPerComponent = 8;
+    CGContextRef context = CGBitmapContextCreate(rawData, self.width, self.height,
+                                                 bitsPerComponent, bytesPerRow, colorSpace,
+                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(colorSpace);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, self.width, self.height), self.inputCGImage);
+    CGContextRelease(context);
+    
+    // Now your rawData contains the image data in the RGBA8888 pixel format.
+    NSUInteger byteIndex = (bytesPerRow * y) + x * bytesPerPixel;
+    for (int i = 0 ; i < self.width/3 ; i++)
+    {
+        
+        for (int j = 0; j < self.height; j++) {
+             NSUInteger byteIndex = (bytesPerRow * i) + j * bytesPerPixel;
+        CGFloat alpha = ((CGFloat) rawData[byteIndex + 3] ) / 255.0f;
+        CGFloat red   = ((CGFloat) rawData[byteIndex]     ) / alpha;
+        CGFloat green = ((CGFloat) rawData[byteIndex + 1] ) / alpha;
+        CGFloat blue  = ((CGFloat) rawData[byteIndex + 2] ) / alpha;
+        byteIndex += bytesPerPixel;
+        
+        UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        [result addObject:acolor];
+        }
+    }
+    
+    free(rawData);
+    
+    return result;
 }
 
 @end
