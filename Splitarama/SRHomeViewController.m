@@ -59,24 +59,32 @@
 
 -(void)splitImage
 {
-    UIImage *image = self.imageView.image;
-    CGSize newsize = self.imageView.image.size;
 
-    //CGImageRef inputCGImage = [image CGImage];
+    if (self.leftImage)
+        self.leftImage = nil;
+    
+    if (self.middleImage)
+        self.middleImage = nil;
+    
+    if (self.rightImage)
+        self.rightImage = nil;
+    
+    if (!self.inputCGImage)
+        return;
+    
+    
     self.width = CGImageGetWidth(self.inputCGImage);
     self.height = CGImageGetHeight(self.inputCGImage);
     
-    CGFloat imgWidth = newsize.width/3;
-    CGFloat imgheight = newsize.height;
-    CGRect leftImgFrame = CGRectMake(0, 0, imgWidth, imgheight);
-    CGRect middleImgFrame = CGRectMake(imgWidth, 0, imgWidth, imgheight);
-    CGRect rightImgFrame = CGRectMake(2*imgWidth, 0, imgWidth, imgheight);
+    CGRect leftImgFrame = CGRectMake(0, 0, self.width/3, self.height);
+    CGRect middleImgFrame = CGRectMake(self.width/3, 0, self.width/3, self.height);
+    CGRect rightImgFrame = CGRectMake(2*self.width/3, 0, self.width/3, self.height);
     
 
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.imageView.center.y - self.imageView.image.size.height, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
-    leftButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+    leftButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     [self.imageView addSubview:leftButton];
-    [leftButton setTitle:@"1" forState:UIControlStateNormal];
+    [leftButton setTitle:@"3" forState:UIControlStateNormal];
     [leftButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(leftButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -89,26 +97,21 @@
     
 
     UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(2*self.imageView.frame.size.width/3, self.imageView.center.y - self.imageView.image.size.height/2, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
-    rightButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];;
+    rightButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];;
     [self.imageView addSubview:rightButton];
-    [rightButton setTitle:@"3" forState:UIControlStateNormal];
+    [rightButton setTitle:@"1" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(rightButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    CGImageRef left = CGImageCreateWithImageInRect(image.CGImage, leftImgFrame);
-    CGImageRef middle = CGImageCreateWithImageInRect(image.CGImage, middleImgFrame);
-    CGImageRef right = CGImageCreateWithImageInRect(image.CGImage, rightImgFrame);
+    
+    CGImageRef left = CGImageCreateWithImageInRect(self.inputCGImage, leftImgFrame);
+    CGImageRef middle = CGImageCreateWithImageInRect(self.inputCGImage, middleImgFrame);
+    CGImageRef right = CGImageCreateWithImageInRect(self.inputCGImage, rightImgFrame);
     
     self.leftImage = [UIImage imageWithCGImage:left];
     self.middleImage = [UIImage imageWithCGImage:middle];
     self.rightImage = [UIImage imageWithCGImage:right];
     
-    //self.imageView.image = middleImage;
-    //NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
-    //if([[UIApplication sharedApplication] canOpenURL:instagramURL])
-    
-    [self getRGBAsFromImage:0 andY:self.width];
-    //
     
     CGImageRelease(left);
     CGImageRelease(middle);
@@ -156,56 +159,13 @@
 {
     //You can retrieve the actual UIImage
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //Or you can get the image url from AssetsLibrary
-    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
     
     [picker dismissViewControllerAnimated:YES completion:^{
         self.imageView.image = image;
         self.inputCGImage = [image CGImage];
-        self.imageData = UIImagePNGRepresentation(image);
     }];
 }
 
-- (NSArray*)getRGBAsFromImage:(NSUInteger)x andY:(NSUInteger)y
-{
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    
-    // First get the image into your data buffer
-   
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    unsigned char *rawData = (unsigned char*) calloc(self.height * self.width * 4, sizeof(unsigned char));
-    NSUInteger bytesPerPixel = 4;
-    NSUInteger bytesPerRow = bytesPerPixel * self.width;
-    NSUInteger bitsPerComponent = 8;
-    CGContextRef context = CGBitmapContextCreate(rawData, self.width, self.height,
-                                                 bitsPerComponent, bytesPerRow, colorSpace,
-                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-    CGColorSpaceRelease(colorSpace);
-    
-    CGContextDrawImage(context, CGRectMake(0, 0, self.width, self.height), self.inputCGImage);
-    CGContextRelease(context);
-    
-    // Now your rawData contains the image data in the RGBA8888 pixel format.
-    NSUInteger byteIndex = (bytesPerRow * y) + x * bytesPerPixel;
-    for (int i = 0 ; i < self.width/3 ; i++)
-    {
-        
-        for (int j = 0; j < self.height; j++) {
-             NSUInteger byteIndex = (bytesPerRow * i) + j * bytesPerPixel;
-        CGFloat alpha = ((CGFloat) rawData[byteIndex + 3] ) / 255.0f;
-        CGFloat red   = ((CGFloat) rawData[byteIndex]     ) / alpha;
-        CGFloat green = ((CGFloat) rawData[byteIndex + 1] ) / alpha;
-        CGFloat blue  = ((CGFloat) rawData[byteIndex + 2] ) / alpha;
-        byteIndex += bytesPerPixel;
-        
-        UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        [result addObject:acolor];
-        }
-    }
-    
-    free(rawData);
-    
-    return result;
-}
+
 
 @end
