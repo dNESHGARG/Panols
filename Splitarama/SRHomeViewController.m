@@ -10,7 +10,6 @@
 
 @interface SRHomeViewController () <UIDocumentInteractionControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *defaultButton;
 @property (weak, nonatomic) IBOutlet UIButton *customButton;
 @property (weak, nonatomic) IBOutlet UIButton *galleryButton;
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
@@ -22,7 +21,7 @@
 
 @property (nonatomic, assign) NSUInteger width;
 @property (nonatomic, assign) NSUInteger height;
-@property (nonatomic, strong) NSData *imageData;
+@property (weak, nonatomic) IBOutlet UILabel *addImageLabel;
 
 // Check the commits
 
@@ -35,6 +34,7 @@
     // Do any additional setup after loading the view from its nib.
     self.panelsBackgroundView.backgroundColor = [UIColor colorWithRed:242./255. green:243./255. blue:244./255. alpha:0.8];
     self.imageView.userInteractionEnabled = YES;
+    self.customButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,10 +43,6 @@
 }
 
 #pragma mark -
-- (IBAction)defaultButtontapped:(id)sender {
-    [self splitImage];
-}
-
 - (IBAction)customButtonTapped:(id)sender {
     [self splitImage];
 }
@@ -81,7 +77,7 @@
     CGRect rightImgFrame = CGRectMake(2*self.width/3, 0, self.width/3, self.height);
     
 
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.imageView.center.y - self.imageView.image.size.height, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.imageView.center.y - self.imageView.image.size.height/2, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
     leftButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     [self.imageView addSubview:leftButton];
     [leftButton setTitle:@"3" forState:UIControlStateNormal];
@@ -163,6 +159,8 @@
     [picker dismissViewControllerAnimated:YES completion:^{
         self.imageView.image = image;
         self.inputCGImage = [image CGImage];
+        self.addImageLabel.hidden = YES;
+        self.customButton.enabled = YES;
     }];
 }
 

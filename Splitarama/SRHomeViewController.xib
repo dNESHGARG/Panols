@@ -6,8 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRHomeViewController">
             <connections>
+                <outlet property="addImageLabel" destination="ktl-GS-nxc" id="9Gn-jE-tbr"/>
                 <outlet property="customButton" destination="gqm-VK-FVk" id="u5g-ml-1G0"/>
-                <outlet property="defaultButton" destination="fRZ-gJ-stP" id="ZKd-g9-g6q"/>
                 <outlet property="galleryButton" destination="R1r-cI-9V5" id="6mu-qB-0s5"/>
                 <outlet property="imageView" destination="WK2-bS-Cg6" id="eiZ-vo-urO"/>
                 <outlet property="panelsBackgroundView" destination="YkP-nw-e2R" id="w7C-CI-dnx"/>
@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="WK2-bS-Cg6">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WK2-bS-Cg6">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -28,17 +28,8 @@
                     <rect key="frame" x="0.0" y="676" width="414" height="60"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fRZ-gJ-stP">
-                            <rect key="frame" x="15" y="15" width="75" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Default"/>
-                            <connections>
-                                <action selector="defaultButtontapped:" destination="-1" eventType="touchUpInside" id="e3q-P2-F1L"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gqm-VK-FVk">
-                            <rect key="frame" x="324" y="15" width="75" height="30"/>
+                            <rect key="frame" x="283" y="0.0" width="120" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="Split"/>
@@ -47,8 +38,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R1r-cI-9V5">
-                            <rect key="frame" x="170" y="15" width="75" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <rect key="frame" x="15" y="0.0" width="120" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="Gallery"/>
                             <connections>
@@ -58,13 +49,17 @@
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click on Gallery to add image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ktl-GS-nxc">
+                    <rect key="frame" x="8" y="268" width="398" height="112"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <point key="canvasLocation" x="552" y="465"/>
         </view>
     </objects>
-    <resources>
-        <image name="background" width="484" height="104"/>
-    </resources>
 </document>
