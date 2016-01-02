@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *customButton;
 @property (weak, nonatomic) IBOutlet UIButton *galleryButton;
+
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
 @property (weak, nonatomic) IBOutlet UIView *panelsBackgroundView;
 @property (nonatomic, strong) UIImage* leftImage;
@@ -35,6 +36,8 @@
     self.panelsBackgroundView.backgroundColor = [UIColor colorWithRed:242./255. green:243./255. blue:244./255. alpha:0.8];
     self.imageView.userInteractionEnabled = YES;
     self.customButton.enabled = NO;
+    
+    self.navigationController.navigationBar.hidden = true;
 }
 
 - (void)didReceiveMemoryWarning {
