@@ -46,8 +46,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *navigationLogo;
 
 @property (nonatomic, strong) NSMutableArray *galleryImages;
+@property (nonatomic, strong) NSMutableArray *panolImages;
 
+@property (strong, nonatomic) IBOutlet UIView *imagebackgrounView;
 // Check the commits
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
@@ -64,9 +67,11 @@
     self.navigationHeaderView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
     
     self.navigationHeaderImageView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
-    [self.customButton setTitleColor:[UIColor colorWithRed:216./255. green:216./255. blue:216./255. alpha:1.0] forState:UIControlStateNormal];
+    //[self.customButton setTitleColor:[UIColor colorWithRed:216./255. green:216./255. blue:216./255. alpha:1.0] forState:UIControlStateNormal];
     self.imageView.userInteractionEnabled = YES;
-    self.customButton.enabled = NO;
+    self.customButton.enabled = YES;
+    //self.customButton.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+    
     [self.navigationHeaderView bringSubviewToFront:self.galleryButton];
     self.navigationController.navigationBar.hidden = true;
     self.imageView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1.0];
@@ -100,6 +105,12 @@
     [self getGallery];
     
 }
+
+- (IBAction)cancelButtonTapped:(id)sender {
+    
+    [self.imagebackgrounView removeFromSuperview];
+}
+
 
 - (void)getGallery{
     PHFetchOptions *options = [[PHFetchOptions alloc] init];
@@ -170,14 +181,14 @@
     CGRect rightImgFrame = CGRectMake(2*self.width/3, 0, self.width/3, self.height);
     
 
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.imageView.center.y - self.imageView.image.size.height/2, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(self.imagebackgrounView.frame.origin.x, self.imageView.center.y , self.imageView.frame.size.width/3, 200.0)];
     leftButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     [self.imageView addSubview:leftButton];
     [leftButton setTitle:@"3" forState:UIControlStateNormal];
     [leftButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(leftButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *middleButton = [[UIButton alloc] initWithFrame:CGRectMake(self.imageView.frame.size.width/3, self.imageView.center.y - self.imageView.image.size.height/2, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
+    UIButton *middleButton = [[UIButton alloc] initWithFrame:CGRectMake(self.imagebackgrounView.frame.size.width/3, self.imageView.center.y, self.imageView.frame.size.width/3, 200.0)];
     middleButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];;
     [self.imageView addSubview:middleButton];
     [middleButton setTitle:@"2" forState:UIControlStateNormal];
@@ -185,7 +196,7 @@
     [middleButton addTarget:self action:@selector(middleButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
 
-    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(2*self.imageView.frame.size.width/3, self.imageView.center.y - self.imageView.image.size.height/2, self.imageView.frame.size.width/3, self.imageView.image.size.height)];
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(2*self.imagebackgrounView.frame.size.width/3, self.imageView.center.y, self.imageView.frame.size.width/3, 200.0)];
     rightButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];;
     [self.imageView addSubview:rightButton];
     [rightButton setTitle:@"1" forState:UIControlStateNormal];
@@ -249,8 +260,8 @@
 {
     //You can retrieve the actual UIImage
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    NSURL *url =  [info objectForKey:UIImagePickerControllerReferenceURL];
-    [self phpAssetMetadata:url];
+    //NSURL *url =  [info objectForKey:UIImagePickerControllerReferenceURL];
+    //[self phpAssetMetadata:url];
     
     [picker dismissViewControllerAnimated:YES completion:^{
         self.imageView.image = image;
@@ -262,10 +273,10 @@
 }
 
 #pragma mark --
-- (void)phpAssetMetadata:(NSURL*)photoURL {
+- (void)phpAssetMetadata:(PHAsset*)asset {
     
-    PHFetchResult *fetchResult=[PHAsset fetchAssetsWithALAssetURLs:@[photoURL] options:nil];
-    PHAsset *asset= [fetchResult firstObject];
+    //PHFetchResult *fetchResult=[PHAsset fetchAssetsWithALAssetURLs:@[photoURL] options:nil];
+    //PHAsset *asset= asset;
     
     //    PHImageRequestOptions *imageRequestOptions = [[PHImageRequestOptions alloc] init];
     //
@@ -372,6 +383,26 @@
         return UIEdgeInsetsMake(0.0, 50.0, 0.0, 0.0);
     
     return UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (collectionView == self.panormasCollectionView){
+        PHAsset *asset = self.galleryImages[indexPath.row];
+        //PHImageManager *imageManager;
+        [self phpAssetMetadata:asset];
+        CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
+        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *image, NSDictionary *info) {
+            [self.view  addSubview:self.imagebackgrounView];
+            self.imagebackgrounView.frame = self.view.frame;
+            self.imagebackgrounView.center = self.view.center;
+            self.imageView.image = image;
+            self.inputCGImage = [image CGImage];
+            self.data = UIImagePNGRepresentation(image);
+        }];
+        
+    }
+    
+    NSLog(@"image");
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
