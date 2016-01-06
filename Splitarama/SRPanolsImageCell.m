@@ -16,7 +16,7 @@
     
     if (self) {
         // Initialization code
-        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"SRPanormaImageCell" owner:self options:nil];
+        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"SRPanolsImageCell" owner:self options:nil];
         
         if ([arrayOfViews count] < 1) {
             return nil;

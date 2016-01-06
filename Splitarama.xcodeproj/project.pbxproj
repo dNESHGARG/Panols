@@ -7,6 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A7496521C3D96B300D5F5EE /* SRPanolsImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A74964D1C3D96B300D5F5EE /* SRPanolsImageCell.m */; };
+		8A7496531C3D96B300D5F5EE /* SRPanolsImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A74964E1C3D96B300D5F5EE /* SRPanolsImageCell.xib */; };
+		8A7496541C3D96B300D5F5EE /* SRPanormaImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7496501C3D96B300D5F5EE /* SRPanormaImageCell.m */; };
+		8A7496551C3D96B300D5F5EE /* SRPanormaImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496511C3D96B300D5F5EE /* SRPanormaImageCell.xib */; };
+		8A7496821C3DAEAD00D5F5EE /* SF-Compact-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496581C3DA89900D5F5EE /* SF-Compact-Display-Black.otf */; };
+		8A7496831C3DAEAD00D5F5EE /* SF-Compact-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496591C3DA89900D5F5EE /* SF-Compact-Display-Bold.otf */; };
+		8A7496841C3DAEAD00D5F5EE /* SF-Compact-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74965A1C3DA89900D5F5EE /* SF-Compact-Display-Heavy.otf */; };
+		8A7496851C3DAEAD00D5F5EE /* SF-Compact-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74965B1C3DA89900D5F5EE /* SF-Compact-Display-Light.otf */; };
+		8A7496861C3DAEAD00D5F5EE /* SF-Compact-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74965C1C3DA89900D5F5EE /* SF-Compact-Display-Medium.otf */; };
+		8A7496871C3DAEAD00D5F5EE /* SF-Compact-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74965D1C3DA89900D5F5EE /* SF-Compact-Display-Regular.otf */; };
+		8A7496881C3DAEAD00D5F5EE /* SF-Compact-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74965E1C3DA89900D5F5EE /* SF-Compact-Display-Semibold.otf */; };
+		8A7496891C3DAEAD00D5F5EE /* SF-Compact-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74965F1C3DA89900D5F5EE /* SF-Compact-Display-Thin.otf */; };
+		8A74968A1C3DAEAD00D5F5EE /* SF-Compact-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496601C3DA89900D5F5EE /* SF-Compact-Display-Ultralight.otf */; };
+		8A74968B1C3DAEAD00D5F5EE /* SF-Compact-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496611C3DA89900D5F5EE /* SF-Compact-Text-Bold.otf */; };
+		8A74968C1C3DAEAD00D5F5EE /* SF-Compact-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496621C3DA89900D5F5EE /* SF-Compact-Text-BoldItalic.otf */; };
+		8A74968D1C3DAEAD00D5F5EE /* SF-Compact-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496631C3DA89900D5F5EE /* SF-Compact-Text-Heavy.otf */; };
+		8A74968E1C3DAEAD00D5F5EE /* SF-Compact-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496641C3DA89900D5F5EE /* SF-Compact-Text-HeavyItalic.otf */; };
+		8A74968F1C3DAEAD00D5F5EE /* SF-Compact-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496651C3DA89900D5F5EE /* SF-Compact-Text-Light.otf */; };
+		8A7496901C3DAEAD00D5F5EE /* SF-Compact-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496661C3DA89900D5F5EE /* SF-Compact-Text-LightItalic.otf */; };
+		8A7496911C3DAEAD00D5F5EE /* SF-Compact-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496671C3DA89900D5F5EE /* SF-Compact-Text-Medium.otf */; };
+		8A7496921C3DAEAD00D5F5EE /* SF-Compact-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496681C3DA89900D5F5EE /* SF-Compact-Text-MediumItalic.otf */; };
+		8A7496931C3DAEAD00D5F5EE /* SF-Compact-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A7496691C3DA89900D5F5EE /* SF-Compact-Text-Regular.otf */; };
+		8A7496941C3DAEAD00D5F5EE /* SF-Compact-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74966A1C3DA89900D5F5EE /* SF-Compact-Text-RegularItalic.otf */; };
+		8A7496951C3DAEAD00D5F5EE /* SF-Compact-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74966B1C3DA89900D5F5EE /* SF-Compact-Text-Semibold.otf */; };
+		8A7496961C3DAEAD00D5F5EE /* SF-Compact-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74966C1C3DA89900D5F5EE /* SF-Compact-Text-SemiboldItalic.otf */; };
 		CB5CCB9C1BBD67E300ED76EA /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */; };
 		CB5CCB9D1BBD67E300ED76EA /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */; };
 		CB5CCB9E1BBD67E300ED76EA /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */; };
@@ -39,6 +64,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A74964C1C3D96B300D5F5EE /* SRPanolsImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPanolsImageCell.h; sourceTree = "<group>"; };
+		8A74964D1C3D96B300D5F5EE /* SRPanolsImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPanolsImageCell.m; sourceTree = "<group>"; };
+		8A74964E1C3D96B300D5F5EE /* SRPanolsImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRPanolsImageCell.xib; sourceTree = "<group>"; };
+		8A74964F1C3D96B300D5F5EE /* SRPanormaImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPanormaImageCell.h; sourceTree = "<group>"; };
+		8A7496501C3D96B300D5F5EE /* SRPanormaImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPanormaImageCell.m; sourceTree = "<group>"; };
+		8A7496511C3D96B300D5F5EE /* SRPanormaImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRPanormaImageCell.xib; sourceTree = "<group>"; };
+		8A7496581C3DA89900D5F5EE /* SF-Compact-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Black.otf"; sourceTree = "<group>"; };
+		8A7496591C3DA89900D5F5EE /* SF-Compact-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Bold.otf"; sourceTree = "<group>"; };
+		8A74965A1C3DA89900D5F5EE /* SF-Compact-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Heavy.otf"; sourceTree = "<group>"; };
+		8A74965B1C3DA89900D5F5EE /* SF-Compact-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Light.otf"; sourceTree = "<group>"; };
+		8A74965C1C3DA89900D5F5EE /* SF-Compact-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Medium.otf"; sourceTree = "<group>"; };
+		8A74965D1C3DA89900D5F5EE /* SF-Compact-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Regular.otf"; sourceTree = "<group>"; };
+		8A74965E1C3DA89900D5F5EE /* SF-Compact-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Semibold.otf"; sourceTree = "<group>"; };
+		8A74965F1C3DA89900D5F5EE /* SF-Compact-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Thin.otf"; sourceTree = "<group>"; };
+		8A7496601C3DA89900D5F5EE /* SF-Compact-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		8A7496611C3DA89900D5F5EE /* SF-Compact-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Bold.otf"; sourceTree = "<group>"; };
+		8A7496621C3DA89900D5F5EE /* SF-Compact-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-BoldItalic.otf"; sourceTree = "<group>"; };
+		8A7496631C3DA89900D5F5EE /* SF-Compact-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Heavy.otf"; sourceTree = "<group>"; };
+		8A7496641C3DA89900D5F5EE /* SF-Compact-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		8A7496651C3DA89900D5F5EE /* SF-Compact-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Light.otf"; sourceTree = "<group>"; };
+		8A7496661C3DA89900D5F5EE /* SF-Compact-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		8A7496671C3DA89900D5F5EE /* SF-Compact-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Medium.otf"; sourceTree = "<group>"; };
+		8A7496681C3DA89900D5F5EE /* SF-Compact-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-MediumItalic.otf"; sourceTree = "<group>"; };
+		8A7496691C3DA89900D5F5EE /* SF-Compact-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Regular.otf"; sourceTree = "<group>"; };
+		8A74966A1C3DA89900D5F5EE /* SF-Compact-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		8A74966B1C3DA89900D5F5EE /* SF-Compact-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Semibold.otf"; sourceTree = "<group>"; };
+		8A74966C1C3DA89900D5F5EE /* SF-Compact-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		CB5CCB991BBD67E300ED76EA /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHomeViewController.h; sourceTree = "<group>"; };
 		CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHomeViewController.m; sourceTree = "<group>"; };
 		CB5CCB9B1BBD67E300ED76EA /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRHomeViewController.xib; sourceTree = "<group>"; };
@@ -82,6 +134,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A7496561C3DA87D00D5F5EE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8A7496571C3DA88600D5F5EE /* San Francisco */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		8A7496571C3DA88600D5F5EE /* San Francisco */ = {
+			isa = PBXGroup;
+			children = (
+				8A7496581C3DA89900D5F5EE /* SF-Compact-Display-Black.otf */,
+				8A7496591C3DA89900D5F5EE /* SF-Compact-Display-Bold.otf */,
+				8A74965A1C3DA89900D5F5EE /* SF-Compact-Display-Heavy.otf */,
+				8A74965B1C3DA89900D5F5EE /* SF-Compact-Display-Light.otf */,
+				8A74965C1C3DA89900D5F5EE /* SF-Compact-Display-Medium.otf */,
+				8A74965D1C3DA89900D5F5EE /* SF-Compact-Display-Regular.otf */,
+				8A74965E1C3DA89900D5F5EE /* SF-Compact-Display-Semibold.otf */,
+				8A74965F1C3DA89900D5F5EE /* SF-Compact-Display-Thin.otf */,
+				8A7496601C3DA89900D5F5EE /* SF-Compact-Display-Ultralight.otf */,
+				8A7496611C3DA89900D5F5EE /* SF-Compact-Text-Bold.otf */,
+				8A7496621C3DA89900D5F5EE /* SF-Compact-Text-BoldItalic.otf */,
+				8A7496631C3DA89900D5F5EE /* SF-Compact-Text-Heavy.otf */,
+				8A7496641C3DA89900D5F5EE /* SF-Compact-Text-HeavyItalic.otf */,
+				8A7496651C3DA89900D5F5EE /* SF-Compact-Text-Light.otf */,
+				8A7496661C3DA89900D5F5EE /* SF-Compact-Text-LightItalic.otf */,
+				8A7496671C3DA89900D5F5EE /* SF-Compact-Text-Medium.otf */,
+				8A7496681C3DA89900D5F5EE /* SF-Compact-Text-MediumItalic.otf */,
+				8A7496691C3DA89900D5F5EE /* SF-Compact-Text-Regular.otf */,
+				8A74966A1C3DA89900D5F5EE /* SF-Compact-Text-RegularItalic.otf */,
+				8A74966B1C3DA89900D5F5EE /* SF-Compact-Text-Semibold.otf */,
+				8A74966C1C3DA89900D5F5EE /* SF-Compact-Text-SemiboldItalic.otf */,
+			);
+			name = "San Francisco";
+			sourceTree = "<group>";
+		};
 		CB9F19B21BBBC0ED0000B8E7 = {
 			isa = PBXGroup;
 			children = (
@@ -111,9 +199,15 @@
 				CB9F19D21BBBC0ED0000B8E7 /* Info.plist */,
 				CB9F19CA1BBBC0ED0000B8E7 /* Splitarama.xcdatamodeld */,
 				CB9F19BE1BBBC0ED0000B8E7 /* Supporting Files */,
+				CB5CCB9B1BBD67E300ED76EA /* SRHomeViewController.xib */,
+				8A7496511C3D96B300D5F5EE /* SRPanormaImageCell.xib */,
+				8A74964E1C3D96B300D5F5EE /* SRPanolsImageCell.xib */,
 				CB5CCB991BBD67E300ED76EA /* SRHomeViewController.h */,
 				CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */,
-				CB5CCB9B1BBD67E300ED76EA /* SRHomeViewController.xib */,
+				8A74964C1C3D96B300D5F5EE /* SRPanolsImageCell.h */,
+				8A74964D1C3D96B300D5F5EE /* SRPanolsImageCell.m */,
+				8A74964F1C3D96B300D5F5EE /* SRPanormaImageCell.h */,
+				8A7496501C3D96B300D5F5EE /* SRPanormaImageCell.m */,
 			);
 			path = Splitarama;
 			sourceTree = "<group>";
@@ -121,6 +215,7 @@
 		CB9F19BE1BBBC0ED0000B8E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A7496561C3DA87D00D5F5EE /* Fonts */,
 				CB9F19BF1BBBC0ED0000B8E7 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -248,7 +343,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7496821C3DAEAD00D5F5EE /* SF-Compact-Display-Black.otf in Resources */,
+				8A7496831C3DAEAD00D5F5EE /* SF-Compact-Display-Bold.otf in Resources */,
+				8A7496841C3DAEAD00D5F5EE /* SF-Compact-Display-Heavy.otf in Resources */,
+				8A7496851C3DAEAD00D5F5EE /* SF-Compact-Display-Light.otf in Resources */,
+				8A7496861C3DAEAD00D5F5EE /* SF-Compact-Display-Medium.otf in Resources */,
+				8A7496871C3DAEAD00D5F5EE /* SF-Compact-Display-Regular.otf in Resources */,
+				8A7496881C3DAEAD00D5F5EE /* SF-Compact-Display-Semibold.otf in Resources */,
+				8A7496891C3DAEAD00D5F5EE /* SF-Compact-Display-Thin.otf in Resources */,
+				8A74968A1C3DAEAD00D5F5EE /* SF-Compact-Display-Ultralight.otf in Resources */,
+				8A74968B1C3DAEAD00D5F5EE /* SF-Compact-Text-Bold.otf in Resources */,
+				8A74968C1C3DAEAD00D5F5EE /* SF-Compact-Text-BoldItalic.otf in Resources */,
+				8A74968D1C3DAEAD00D5F5EE /* SF-Compact-Text-Heavy.otf in Resources */,
+				8A74968E1C3DAEAD00D5F5EE /* SF-Compact-Text-HeavyItalic.otf in Resources */,
+				8A74968F1C3DAEAD00D5F5EE /* SF-Compact-Text-Light.otf in Resources */,
+				8A7496901C3DAEAD00D5F5EE /* SF-Compact-Text-LightItalic.otf in Resources */,
+				8A7496911C3DAEAD00D5F5EE /* SF-Compact-Text-Medium.otf in Resources */,
+				8A7496921C3DAEAD00D5F5EE /* SF-Compact-Text-MediumItalic.otf in Resources */,
+				8A7496931C3DAEAD00D5F5EE /* SF-Compact-Text-Regular.otf in Resources */,
+				8A7496941C3DAEAD00D5F5EE /* SF-Compact-Text-RegularItalic.otf in Resources */,
+				8A7496951C3DAEAD00D5F5EE /* SF-Compact-Text-Semibold.otf in Resources */,
+				8A7496961C3DAEAD00D5F5EE /* SF-Compact-Text-SemiboldItalic.otf in Resources */,
 				CB5CCB9F1BBD67E300ED76EA /* SRHomeViewController.xib in Resources */,
+				8A7496551C3D96B300D5F5EE /* SRPanormaImageCell.xib in Resources */,
+				8A7496531C3D96B300D5F5EE /* SRPanolsImageCell.xib in Resources */,
 				CB9F19CE1BBBC0ED0000B8E7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +395,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5CCB9C1BBD67E300ED76EA /* SRHomeViewController.m in Sources */,
+				8A7496541C3D96B300D5F5EE /* SRPanormaImageCell.m in Sources */,
 				CB9F19CC1BBBC0ED0000B8E7 /* Splitarama.xcdatamodeld in Sources */,
+				8A7496521C3D96B300D5F5EE /* SRPanolsImageCell.m in Sources */,
 				CB9F19C31BBBC0ED0000B8E7 /* AppDelegate.m in Sources */,
 				CB9F19C01BBBC0ED0000B8E7 /* main.m in Sources */,
 			);
@@ -403,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Splitarama/Info.plist;
@@ -419,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Splitarama/Info.plist;

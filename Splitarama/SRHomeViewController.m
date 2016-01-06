@@ -46,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *navigationLogo;
 
 @property (nonatomic, strong) NSMutableArray *galleryImages;
+@property (nonatomic, strong) NSMutableArray *galleryFavoriteImages;
 @property (nonatomic, strong) NSMutableArray *panolImages;
 
 @property (strong, nonatomic) IBOutlet UIView *imagebackgrounView;
@@ -60,11 +61,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.panelsBackgroundView.backgroundColor = [UIColor colorWithRed:34./255. green:34./255. blue:34./255. alpha:1.0];
-    self.navigationHeaderView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
-    self.navigationHeaderView.layer.shadowOpacity = 1.00f;
-    self.navigationHeaderView.layer.shadowOffset = CGSizeMake(10,10);
-    self.navigationHeaderView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationHeaderView.bounds].CGPath;
-    self.navigationHeaderView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+//    self.navigationHeaderView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
+//    self.navigationHeaderView.layer.shadowOpacity = 1.00f;
+//    self.navigationHeaderView.layer.shadowOffset = CGSizeMake(10,10);
+//    self.navigationHeaderView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationHeaderView.bounds].CGPath;
+//    self.navigationHeaderView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
     
     self.navigationHeaderImageView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
     //[self.customButton setTitleColor:[UIColor colorWithRed:216./255. green:216./255. blue:216./255. alpha:1.0] forState:UIControlStateNormal];
@@ -93,7 +94,7 @@
     
     [self.panolsCollectionView registerClass:[SRPanormaImageCell class] forCellWithReuseIdentifier:@"SRPanolsImageCell"];    
     self.panolFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [self.panolFlowLayout setItemSize:CGSizeMake(140.0, 140.0)];
+    [self.panolFlowLayout setItemSize:CGSizeMake(140.0, 90.0)];
     [self.panolFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.panolFlowLayout.minimumInteritemSpacing = 0.0f;
     [self.panolsCollectionView setCollectionViewLayout:self.panolFlowLayout];
@@ -115,7 +116,8 @@
 - (void)getGallery{
     PHFetchOptions *options = [[PHFetchOptions alloc] init];
     options.wantsIncrementalChangeDetails = YES;
-    options.predicate = [NSPredicate predicateWithFormat:@"mediaType == %d",PHAssetMediaTypeImage];
+    options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+    options.predicate = [NSPredicate predicateWithFormat:@"mediaType == %d", PHAssetMediaTypeImage];
     
     PHFetchResult *albums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumPanoramas options:nil];
     PHFetchResult *fetchResult;
@@ -409,8 +411,9 @@
  
     if (collectionView == self.panolsCollectionView)
     {
-    float width = self.panolsCollectionView.frame.size.width/2 -10.0;
-    float height = width;
+    //float width = self.panolsCollectionView.frame.size.width/2 -18.0;
+    float width = 140;
+    float height = 90;
     return CGSizeMake(width, height);
     }
     else if (collectionView == self.panormasCollectionView)
