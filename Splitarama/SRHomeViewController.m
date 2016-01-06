@@ -9,13 +9,15 @@
 #import "SRHomeViewController.h"
 #import <ImageIO/ImageIO.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "SRPanormaImageCell.h"
+#import "SRPanolsImageCell.h"
 
 #define ALBUM_NAME @"Panols"
 
 @import Photos;
 @import ImageIO;
 
-@interface SRHomeViewController () <UIDocumentInteractionControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface SRHomeViewController () <UIDocumentInteractionControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *customButton;
 @property (weak, nonatomic) IBOutlet UIButton *galleryButton;
@@ -33,6 +35,15 @@
 
 @property (nonatomic, strong) NSDictionary *metadata;
 @property (nonatomic, strong) NSData *data;
+@property (weak, nonatomic) IBOutlet UIView *navigationHeaderView;
+@property (weak, nonatomic) IBOutlet UIImageView *navigationHeaderImageView;
+@property (weak, nonatomic) IBOutlet UICollectionView *panormasCollectionView;
+@property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *panolFlowLayout;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *panolsCollectionView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *navigationLogo;
 
 // Check the commits
 
@@ -44,11 +55,40 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.panelsBackgroundView.backgroundColor = [UIColor colorWithRed:34./255. green:34./255. blue:34./255. alpha:1.0];
+    self.navigationHeaderView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
+    self.navigationHeaderImageView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
     [self.customButton setTitleColor:[UIColor colorWithRed:216./255. green:216./255. blue:216./255. alpha:1.0] forState:UIControlStateNormal];
     self.imageView.userInteractionEnabled = YES;
     self.customButton.enabled = NO;
-    
+    [self.navigationHeaderView bringSubviewToFront:self.galleryButton];
     self.navigationController.navigationBar.hidden = true;
+    self.imageView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1.0];
+    
+    [self.panormasCollectionView registerClass:[SRPanormaImageCell class] forCellWithReuseIdentifier:@"SRPanormaImageCell"];
+    
+    float cellWidth = self.view.frame.size.width - 60.0;
+    float cellHeight = 128.0f;
+    
+    self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [self.flowLayout setItemSize:CGSizeMake(cellWidth, cellHeight)];
+    [self.flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    self.flowLayout.minimumInteritemSpacing = 30.0f;
+    [self.panormasCollectionView setCollectionViewLayout:self.flowLayout];
+    self.panormasCollectionView.bounces = YES;
+    [self.panormasCollectionView setShowsHorizontalScrollIndicator:NO];
+    [self.panormasCollectionView setShowsVerticalScrollIndicator:NO];
+    
+    
+    [self.panolsCollectionView registerClass:[SRPanormaImageCell class] forCellWithReuseIdentifier:@"SRPanolsImageCell"];    
+    self.panolFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [self.panolFlowLayout setItemSize:CGSizeMake(140.0, 140.0)];
+    [self.panolFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    self.panolFlowLayout.minimumInteritemSpacing = 0.0f;
+    [self.panolsCollectionView setCollectionViewLayout:self.panolFlowLayout];
+    self.panolsCollectionView.bounces = YES;
+    [self.panolsCollectionView setShowsHorizontalScrollIndicator:NO];
+    [self.panolsCollectionView setShowsVerticalScrollIndicator:NO];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -211,6 +251,88 @@
         
         NSLog(@"metadata: %@", image.properties.description);
     }];
+}
+
+#pragma mark -- 
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    if (collectionView == self.panolsCollectionView)
+        return 1;
+    
+    if (collectionView == self.panormasCollectionView)
+        return 1;
+    
+    return 0;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    if (collectionView == self.panolsCollectionView)
+        return 20;
+    
+    if (collectionView == self.panormasCollectionView)
+        return 5;
+    
+    return 0;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (collectionView == self.panolsCollectionView){
+        static NSString *cellIdentifier = @"SRPanolsImageCell";
+        
+        SRPanolsImageCell *cell = (SRPanolsImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        cell.layer.masksToBounds = YES;
+        cell.layer.cornerRadius = 5.0;
+        
+        return cell;
+    }
+        
+    
+    if (collectionView == self.panormasCollectionView){
+        static NSString *cellIdentifier = @"SRPanormaImageCell";
+        
+        SRPanormaImageCell *cell = (SRPanormaImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        cell.layer.masksToBounds = YES;
+        cell.layer.cornerRadius = 7.0;
+        
+        return cell;
+    }
+    
+    //cell.imageView.image = [UIImage imageNamed:@"panormaImage"];
+    
+    return [[UICollectionViewCell alloc] init];
+    
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    
+    if (collectionView == self.panolsCollectionView)
+        return UIEdgeInsetsMake(0.0, 0.0, 0.0, 10.0);
+    
+    if (collectionView == self.panormasCollectionView)
+        return UIEdgeInsetsMake(0.0, 50.0, 0.0, 0.0);
+    
+    return UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    if (collectionView == self.panolsCollectionView)
+    {
+    float width = self.panolsCollectionView.frame.size.width/2 -10.0;
+    float height = width;
+    return CGSizeMake(width, height);
+    }
+    else if (collectionView == self.panormasCollectionView)
+    {
+    float cellWidth = self.panormasCollectionView.frame.size.width - 90.0;
+    float cellHeight = 128.0f;
+    return CGSizeMake(cellWidth, cellHeight);
+    }
+    
+    return CGSizeZero;
 }
 
 #pragma mark -
