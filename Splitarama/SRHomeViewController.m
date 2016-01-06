@@ -45,6 +45,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *navigationLogo;
 
+@property (nonatomic, strong) NSMutableArray *galleryImages;
+
 // Check the commits
 
 @end
@@ -56,6 +58,11 @@
     // Do any additional setup after loading the view from its nib.
     self.panelsBackgroundView.backgroundColor = [UIColor colorWithRed:34./255. green:34./255. blue:34./255. alpha:1.0];
     self.navigationHeaderView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
+    self.navigationHeaderView.layer.shadowOpacity = 1.00f;
+    self.navigationHeaderView.layer.shadowOffset = CGSizeMake(10,10);
+    self.navigationHeaderView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationHeaderView.bounds].CGPath;
+    self.navigationHeaderView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+    
     self.navigationHeaderImageView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
     [self.customButton setTitleColor:[UIColor colorWithRed:216./255. green:216./255. blue:216./255. alpha:1.0] forState:UIControlStateNormal];
     self.imageView.userInteractionEnabled = YES;
@@ -89,6 +96,37 @@
     [self.panolsCollectionView setShowsHorizontalScrollIndicator:NO];
     [self.panolsCollectionView setShowsVerticalScrollIndicator:NO];
     
+    self.galleryImages = [[NSMutableArray alloc] init];
+    [self getGallery];
+    
+}
+
+- (void)getGallery{
+    PHFetchOptions *options = [[PHFetchOptions alloc] init];
+    options.wantsIncrementalChangeDetails = YES;
+    options.predicate = [NSPredicate predicateWithFormat:@"mediaType == %d",PHAssetMediaTypeImage];
+    
+    PHFetchResult *albums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumPanoramas options:nil];
+    PHFetchResult *fetchResult;
+    for (PHAssetCollection *sub in albums)
+    {
+        fetchResult = [PHAsset fetchAssetsInAssetCollection:sub options:options];
+        
+//        [fetchResult enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
+//            NSLog(@"MyAsset %@", asset);
+//        
+//            [self.galleryImages addObject:asset];
+//        }];
+    }
+    
+    for (PHAsset *asset in fetchResult) {
+        NSLog(@"MyAsset %@", asset);
+        
+        [self.galleryImages addObject:asset];
+    }
+    
+    [self.panormasCollectionView reloadData];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -271,7 +309,7 @@
         return 20;
     
     if (collectionView == self.panormasCollectionView)
-        return 5;
+        return self.galleryImages.count;
     
     return 0;
 }
@@ -285,6 +323,12 @@
         cell.layer.masksToBounds = YES;
         cell.layer.cornerRadius = 5.0;
         
+        cell.layer.shadowOpacity = 1.00f;
+        cell.layer.shadowOffset = CGSizeZero;
+        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+        //cell.layer.shouldRasterize = YES;
+        
         return cell;
     }
         
@@ -295,6 +339,19 @@
         SRPanormaImageCell *cell = (SRPanormaImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         cell.layer.masksToBounds = YES;
         cell.layer.cornerRadius = 7.0;
+        
+        cell.layer.shadowOpacity = 1.00f;
+        cell.layer.shadowOffset = CGSizeMake(10,10);
+        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+        //cell.layer.shouldRasterize = YES;
+        
+        PHAsset *asset = self.galleryImages[indexPath.row];
+        //PHImageManager *imageManager;
+        CGSize size = CGSizeMake(140.0, 128.0);
+        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+            cell.imageView.image = result;
+        }];
         
         return cell;
     }
