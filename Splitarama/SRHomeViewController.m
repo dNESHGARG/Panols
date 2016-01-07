@@ -92,7 +92,7 @@
     [self.panormasCollectionView setShowsVerticalScrollIndicator:NO];
     
     
-    [self.panolsCollectionView registerClass:[SRPanormaImageCell class] forCellWithReuseIdentifier:@"SRPanolsImageCell"];    
+    [self.panolsCollectionView registerClass:[SRPanolsImageCell class] forCellWithReuseIdentifier:@"SRPanolsImageCell"];
     self.panolFlowLayout = [[UICollectionViewFlowLayout alloc] init];
     [self.panolFlowLayout setItemSize:CGSizeMake(140.0, 90.0)];
     [self.panolFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
@@ -411,8 +411,8 @@
  
     if (collectionView == self.panolsCollectionView)
     {
-    //float width = self.panolsCollectionView.frame.size.width/2 -18.0;
-    float width = 140;
+    float width = self.panolsCollectionView.frame.size.width/2 -18.0;
+    //float width = 140;
     float height = 90;
     return CGSizeMake(width, height);
     }

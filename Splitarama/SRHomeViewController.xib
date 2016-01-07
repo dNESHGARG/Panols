@@ -35,7 +35,7 @@
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click on Gallery to add image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktl-GS-nxc">
                     <rect key="frame" x="8" y="419" width="359" height="20"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lG-LD-r8Z">
@@ -91,19 +91,19 @@
                     </connections>
                 </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LATEST PANORAMAS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hN-Tz-RwV">
-                    <rect key="frame" x="0.0" y="107" width="375" height="22"/>
+                    <rect key="frame" x="0.0" y="107" width="375" height="21.5"/>
                     <fontDescription key="fontDescription" name="SFCompactText-Light" family="SF Compact Text" pointSize="18"/>
                     <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREVIOUS PANOLS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9K-nq-dXm">
-                    <rect key="frame" x="0.0" y="319" width="375" height="22"/>
+                    <rect key="frame" x="0.0" y="319.5" width="375" height="21.5"/>
                     <fontDescription key="fontDescription" name="SFCompactText-Light" family="SF Compact Text" pointSize="18"/>
                     <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7uU-YI-TGZ">
-                    <rect key="frame" x="32" y="360" width="311" height="307"/>
+                    <rect key="frame" x="0.0" y="360" width="375" height="307"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="307" id="TVZ-ry-LGM"/>
@@ -123,15 +123,13 @@
             <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="J9K-nq-dXm" firstAttribute="top" secondItem="X7d-36-AOP" secondAttribute="bottom" constant="38" id="0Ge-Tl-gPR"/>
-                <constraint firstItem="7uU-YI-TGZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="5PN-6Y-vHg"/>
                 <constraint firstItem="0hN-Tz-RwV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CT7-0O-mH3"/>
                 <constraint firstItem="7uU-YI-TGZ" firstAttribute="top" secondItem="J9K-nq-dXm" secondAttribute="bottom" constant="19" id="Cvl-YJ-z5k"/>
-                <constraint firstAttribute="trailing" secondItem="7uU-YI-TGZ" secondAttribute="trailing" constant="32" id="D87-Wy-ewY"/>
+                <constraint firstAttribute="trailing" secondItem="7uU-YI-TGZ" secondAttribute="trailing" id="D87-Wy-ewY"/>
                 <constraint firstItem="ktl-GS-nxc" firstAttribute="top" secondItem="J9K-nq-dXm" secondAttribute="bottom" constant="78" id="Dtf-7a-giZ"/>
                 <constraint firstItem="ktl-GS-nxc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="Fex-gf-gof"/>
                 <constraint firstAttribute="trailing" secondItem="0hN-Tz-RwV" secondAttribute="trailing" id="KmQ-za-klu"/>
-                <constraint firstItem="7uU-YI-TGZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="Ow6-yf-BfO"/>
-                <constraint firstAttribute="trailing" secondItem="7uU-YI-TGZ" secondAttribute="trailing" constant="32" id="PNv-Hm-rfY"/>
+                <constraint firstItem="7uU-YI-TGZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ow6-yf-BfO"/>
                 <constraint firstAttribute="trailing" secondItem="J9K-nq-dXm" secondAttribute="trailing" id="Vel-7K-Ci6"/>
                 <constraint firstItem="0hN-Tz-RwV" firstAttribute="top" secondItem="3lG-LD-r8Z" secondAttribute="bottom" id="Xvd-WP-45w"/>
                 <constraint firstItem="X7d-36-AOP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZpV-El-s5k"/>

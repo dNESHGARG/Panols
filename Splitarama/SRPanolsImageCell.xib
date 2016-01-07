@@ -17,7 +17,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nqV-m3-nx0">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="panormaImage" translatesAutoresizingMaskIntoConstraints="NO" id="nqV-m3-nx0">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="90"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKs-xC-Rpd">
@@ -26,6 +26,12 @@
                         <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="panormaImage" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-RV-ZPo">
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="9Lx-4a-0gs"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -33,11 +39,20 @@
                 <constraint firstAttribute="trailing" secondItem="nqV-m3-nx0" secondAttribute="trailing" id="2iO-Mz-eDG"/>
                 <constraint firstItem="IKs-xC-Rpd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="5m7-pE-ZsP"/>
                 <constraint firstItem="IKs-xC-Rpd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7rj-UL-zYj"/>
+                <constraint firstItem="nqV-m3-nx0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="H5E-Pb-Qa1"/>
+                <constraint firstItem="dVZ-RV-ZPo" firstAttribute="top" secondItem="nqV-m3-nx0" secondAttribute="top" id="J9Z-Ga-L9t"/>
                 <constraint firstItem="nqV-m3-nx0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LDw-5h-McD"/>
+                <constraint firstAttribute="trailing" secondItem="IKs-xC-Rpd" secondAttribute="trailing" id="Tqy-mk-kzM"/>
+                <constraint firstItem="dVZ-RV-ZPo" firstAttribute="trailing" secondItem="nqV-m3-nx0" secondAttribute="trailing" id="WAc-V5-O10"/>
+                <constraint firstItem="dVZ-RV-ZPo" firstAttribute="leading" secondItem="nqV-m3-nx0" secondAttribute="leading" id="Y8p-HG-dtF"/>
                 <constraint firstItem="IKs-xC-Rpd" firstAttribute="top" secondItem="nqV-m3-nx0" secondAttribute="bottom" constant="16" id="Ze8-h9-tET"/>
+                <constraint firstAttribute="trailing" secondItem="nqV-m3-nx0" secondAttribute="trailing" id="gFm-f4-L5S"/>
+                <constraint firstAttribute="bottom" secondItem="IKs-xC-Rpd" secondAttribute="bottom" constant="16" id="hZ4-mn-VOj"/>
                 <constraint firstAttribute="trailing" secondItem="IKs-xC-Rpd" secondAttribute="trailing" id="iQ0-qV-RCo"/>
+                <constraint firstItem="IKs-xC-Rpd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nEP-rP-6u4"/>
                 <constraint firstAttribute="bottom" secondItem="nqV-m3-nx0" secondAttribute="bottom" constant="50" id="nQ7-ld-fCr"/>
                 <constraint firstItem="nqV-m3-nx0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="oNh-ZV-LcB"/>
+                <constraint firstItem="nqV-m3-nx0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="s1u-VP-5ov"/>
             </constraints>
             <size key="customSize" width="168" height="152"/>
             <connections>
@@ -46,4 +61,7 @@
             <point key="canvasLocation" x="203" y="407"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="panormaImage" width="2144" height="533"/>
+    </resources>
 </document>
