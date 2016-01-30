@@ -32,6 +32,33 @@
 		8A7496941C3DAEAD00D5F5EE /* SF-Compact-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74966A1C3DA89900D5F5EE /* SF-Compact-Text-RegularItalic.otf */; };
 		8A7496951C3DAEAD00D5F5EE /* SF-Compact-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74966B1C3DA89900D5F5EE /* SF-Compact-Text-Semibold.otf */; };
 		8A7496961C3DAEAD00D5F5EE /* SF-Compact-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A74966C1C3DA89900D5F5EE /* SF-Compact-Text-SemiboldItalic.otf */; };
+		CB029C831C58C85D001B621A /* SRImageMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = CB029C821C58C85D001B621A /* SRImageMetadata.m */; };
+		CB029C871C5C8FD3001B621A /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB029C861C5C8FD3001B621A /* PHAsset+Utility.m */; };
+		CB029C891C5CA6B6001B621A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB029C881C5CA6B6001B621A /* MapKit.framework */; };
+		CB0EF4F21C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */; };
+		CB0EF4F31C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */; };
+		CB0EF4F41C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */; };
+		CB0EF4F51C5623D600135724 /* SRPanoramaImageDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF4F11C5623D600135724 /* SRPanoramaImageDetailsViewController.xib */; };
+		CB0EF4F61C5623D600135724 /* SRPanoramaImageDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF4F11C5623D600135724 /* SRPanoramaImageDetailsViewController.xib */; };
+		CB0EF4F71C5623D600135724 /* SRPanoramaImageDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF4F11C5623D600135724 /* SRPanoramaImageDetailsViewController.xib */; };
+		CB0EF4FC1C574EDF00135724 /* SRImageDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4FA1C574EDF00135724 /* SRImageDetailsCell.m */; };
+		CB0EF4FD1C574EDF00135724 /* SRImageDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4FA1C574EDF00135724 /* SRImageDetailsCell.m */; };
+		CB0EF4FE1C574EDF00135724 /* SRImageDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4FA1C574EDF00135724 /* SRImageDetailsCell.m */; };
+		CB0EF4FF1C574EDF00135724 /* SRImageDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF4FB1C574EDF00135724 /* SRImageDetailsCell.xib */; };
+		CB0EF5001C574EDF00135724 /* SRImageDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF4FB1C574EDF00135724 /* SRImageDetailsCell.xib */; };
+		CB0EF5011C574EDF00135724 /* SRImageDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF4FB1C574EDF00135724 /* SRImageDetailsCell.xib */; };
+		CB0EF5051C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF5031C574F0C00135724 /* SRCameraSpecificationsCell.m */; };
+		CB0EF5061C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF5031C574F0C00135724 /* SRCameraSpecificationsCell.m */; };
+		CB0EF5071C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF5031C574F0C00135724 /* SRCameraSpecificationsCell.m */; };
+		CB0EF5081C574F0C00135724 /* SRCameraSpecificationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF5041C574F0C00135724 /* SRCameraSpecificationsCell.xib */; };
+		CB0EF5091C574F0C00135724 /* SRCameraSpecificationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF5041C574F0C00135724 /* SRCameraSpecificationsCell.xib */; };
+		CB0EF50A1C574F0C00135724 /* SRCameraSpecificationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF5041C574F0C00135724 /* SRCameraSpecificationsCell.xib */; };
+		CB0EF50E1C574F3700135724 /* SRImageLocationInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF50C1C574F3700135724 /* SRImageLocationInfoCell.m */; };
+		CB0EF50F1C574F3700135724 /* SRImageLocationInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF50C1C574F3700135724 /* SRImageLocationInfoCell.m */; };
+		CB0EF5101C574F3700135724 /* SRImageLocationInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF50C1C574F3700135724 /* SRImageLocationInfoCell.m */; };
+		CB0EF5111C574F3700135724 /* SRImageLocationInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF50D1C574F3700135724 /* SRImageLocationInfoCell.xib */; };
+		CB0EF5121C574F3700135724 /* SRImageLocationInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF50D1C574F3700135724 /* SRImageLocationInfoCell.xib */; };
+		CB0EF5131C574F3700135724 /* SRImageLocationInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0EF50D1C574F3700135724 /* SRImageLocationInfoCell.xib */; };
 		CB5CCB9C1BBD67E300ED76EA /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */; };
 		CB5CCB9D1BBD67E300ED76EA /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */; };
 		CB5CCB9E1BBD67E300ED76EA /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */; };
@@ -44,6 +71,8 @@
 		CB9F19CE1BBBC0ED0000B8E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB9F19CD1BBBC0ED0000B8E7 /* Assets.xcassets */; };
 		CB9F19DC1BBBC0ED0000B8E7 /* SplitaramaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9F19DB1BBBC0ED0000B8E7 /* SplitaramaTests.m */; };
 		CB9F19E71BBBC0ED0000B8E7 /* SplitaramaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9F19E61BBBC0ED0000B8E7 /* SplitaramaUITests.m */; };
+		CBEEDAA61C4CD1C30083F0A5 /* SRPanoramaHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEEDAA41C4CD1C30083F0A5 /* SRPanoramaHeaderView.m */; };
+		CBEEDAA71C4CD1C30083F0A5 /* SRPanoramaHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEEDAA51C4CD1C30083F0A5 /* SRPanoramaHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +120,23 @@
 		8A74966A1C3DA89900D5F5EE /* SF-Compact-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-RegularItalic.otf"; sourceTree = "<group>"; };
 		8A74966B1C3DA89900D5F5EE /* SF-Compact-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Semibold.otf"; sourceTree = "<group>"; };
 		8A74966C1C3DA89900D5F5EE /* SF-Compact-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		CB029C811C58C85D001B621A /* SRImageMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImageMetadata.h; sourceTree = "<group>"; };
+		CB029C821C58C85D001B621A /* SRImageMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImageMetadata.m; sourceTree = "<group>"; };
+		CB029C851C5C8FD3001B621A /* PHAsset+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PHAsset+Utility.h"; path = "../../../Downloads/PHAsset-Utility-master/PHAsset+Utility.h"; sourceTree = "<group>"; };
+		CB029C861C5C8FD3001B621A /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PHAsset+Utility.m"; path = "../../../Downloads/PHAsset-Utility-master/PHAsset+Utility.m"; sourceTree = "<group>"; };
+		CB029C881C5CA6B6001B621A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CB0EF4EF1C5623D600135724 /* SRPanoramaImageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPanoramaImageDetailsViewController.h; sourceTree = "<group>"; };
+		CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPanoramaImageDetailsViewController.m; sourceTree = "<group>"; };
+		CB0EF4F11C5623D600135724 /* SRPanoramaImageDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRPanoramaImageDetailsViewController.xib; sourceTree = "<group>"; };
+		CB0EF4F91C574EDF00135724 /* SRImageDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImageDetailsCell.h; sourceTree = "<group>"; };
+		CB0EF4FA1C574EDF00135724 /* SRImageDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImageDetailsCell.m; sourceTree = "<group>"; };
+		CB0EF4FB1C574EDF00135724 /* SRImageDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRImageDetailsCell.xib; sourceTree = "<group>"; };
+		CB0EF5021C574F0C00135724 /* SRCameraSpecificationsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCameraSpecificationsCell.h; sourceTree = "<group>"; };
+		CB0EF5031C574F0C00135724 /* SRCameraSpecificationsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCameraSpecificationsCell.m; sourceTree = "<group>"; };
+		CB0EF5041C574F0C00135724 /* SRCameraSpecificationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRCameraSpecificationsCell.xib; sourceTree = "<group>"; };
+		CB0EF50B1C574F3700135724 /* SRImageLocationInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImageLocationInfoCell.h; sourceTree = "<group>"; };
+		CB0EF50C1C574F3700135724 /* SRImageLocationInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImageLocationInfoCell.m; sourceTree = "<group>"; };
+		CB0EF50D1C574F3700135724 /* SRImageLocationInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRImageLocationInfoCell.xib; sourceTree = "<group>"; };
 		CB5CCB991BBD67E300ED76EA /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHomeViewController.h; sourceTree = "<group>"; };
 		CB5CCB9A1BBD67E300ED76EA /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHomeViewController.m; sourceTree = "<group>"; };
 		CB5CCB9B1BBD67E300ED76EA /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRHomeViewController.xib; sourceTree = "<group>"; };
@@ -107,6 +153,9 @@
 		CB9F19E21BBBC0ED0000B8E7 /* SplitaramaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplitaramaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9F19E61BBBC0ED0000B8E7 /* SplitaramaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplitaramaUITests.m; sourceTree = "<group>"; };
 		CB9F19E81BBBC0ED0000B8E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBEEDAA31C4CD1C30083F0A5 /* SRPanoramaHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPanoramaHeaderView.h; sourceTree = "<group>"; };
+		CBEEDAA41C4CD1C30083F0A5 /* SRPanoramaHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPanoramaHeaderView.m; sourceTree = "<group>"; };
+		CBEEDAA51C4CD1C30083F0A5 /* SRPanoramaHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRPanoramaHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB029C891C5CA6B6001B621A /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,9 +220,45 @@
 			name = "San Francisco";
 			sourceTree = "<group>";
 		};
+		CB029C841C5C8FB1001B621A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CB029C851C5C8FD3001B621A /* PHAsset+Utility.h */,
+				CB029C861C5C8FD3001B621A /* PHAsset+Utility.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		CB0EF4F81C574EB100135724 /* Metadata Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CB0EF4F91C574EDF00135724 /* SRImageDetailsCell.h */,
+				CB0EF4FA1C574EDF00135724 /* SRImageDetailsCell.m */,
+				CB0EF4FB1C574EDF00135724 /* SRImageDetailsCell.xib */,
+				CB0EF5021C574F0C00135724 /* SRCameraSpecificationsCell.h */,
+				CB0EF5031C574F0C00135724 /* SRCameraSpecificationsCell.m */,
+				CB0EF5041C574F0C00135724 /* SRCameraSpecificationsCell.xib */,
+				CB0EF50B1C574F3700135724 /* SRImageLocationInfoCell.h */,
+				CB0EF50C1C574F3700135724 /* SRImageLocationInfoCell.m */,
+				CB0EF50D1C574F3700135724 /* SRImageLocationInfoCell.xib */,
+				CB029C811C58C85D001B621A /* SRImageMetadata.h */,
+				CB029C821C58C85D001B621A /* SRImageMetadata.m */,
+			);
+			name = "Metadata Table Cells";
+			sourceTree = "<group>";
+		};
 		CB9F19B21BBBC0ED0000B8E7 = {
 			isa = PBXGroup;
 			children = (
+				CB029C881C5CA6B6001B621A /* MapKit.framework */,
+				CB029C841C5C8FB1001B621A /* Utilities */,
+				CB0EF4F81C574EB100135724 /* Metadata Table Cells */,
+				CB0EF4EF1C5623D600135724 /* SRPanoramaImageDetailsViewController.h */,
+				CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */,
+				CB0EF4F11C5623D600135724 /* SRPanoramaImageDetailsViewController.xib */,
+				CBEEDAA31C4CD1C30083F0A5 /* SRPanoramaHeaderView.h */,
+				CBEEDAA41C4CD1C30083F0A5 /* SRPanoramaHeaderView.m */,
+				CBEEDAA51C4CD1C30083F0A5 /* SRPanoramaHeaderView.xib */,
 				CB9F19BD1BBBC0ED0000B8E7 /* Splitarama */,
 				CB9F19DA1BBBC0ED0000B8E7 /* SplitaramaTests */,
 				CB9F19E51BBBC0ED0000B8E7 /* SplitaramaUITests */,
@@ -306,7 +392,7 @@
 				TargetAttributes = {
 					CB9F19BA1BBBC0ED0000B8E7 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 2QJS2U2554;
+						DevelopmentTeam = XBM8YP9MBL;
 					};
 					CB9F19D61BBBC0ED0000B8E7 = {
 						CreatedOnToolsVersion = 7.1;
@@ -359,13 +445,18 @@
 				8A74968F1C3DAEAD00D5F5EE /* SF-Compact-Text-Light.otf in Resources */,
 				8A7496901C3DAEAD00D5F5EE /* SF-Compact-Text-LightItalic.otf in Resources */,
 				8A7496911C3DAEAD00D5F5EE /* SF-Compact-Text-Medium.otf in Resources */,
+				CB0EF5081C574F0C00135724 /* SRCameraSpecificationsCell.xib in Resources */,
 				8A7496921C3DAEAD00D5F5EE /* SF-Compact-Text-MediumItalic.otf in Resources */,
+				CB0EF4F51C5623D600135724 /* SRPanoramaImageDetailsViewController.xib in Resources */,
+				CB0EF5111C574F3700135724 /* SRImageLocationInfoCell.xib in Resources */,
 				8A7496931C3DAEAD00D5F5EE /* SF-Compact-Text-Regular.otf in Resources */,
 				8A7496941C3DAEAD00D5F5EE /* SF-Compact-Text-RegularItalic.otf in Resources */,
 				8A7496951C3DAEAD00D5F5EE /* SF-Compact-Text-Semibold.otf in Resources */,
 				8A7496961C3DAEAD00D5F5EE /* SF-Compact-Text-SemiboldItalic.otf in Resources */,
 				CB5CCB9F1BBD67E300ED76EA /* SRHomeViewController.xib in Resources */,
 				8A7496551C3D96B300D5F5EE /* SRPanormaImageCell.xib in Resources */,
+				CBEEDAA71C4CD1C30083F0A5 /* SRPanoramaHeaderView.xib in Resources */,
+				CB0EF4FF1C574EDF00135724 /* SRImageDetailsCell.xib in Resources */,
 				8A7496531C3D96B300D5F5EE /* SRPanolsImageCell.xib in Resources */,
 				CB9F19CE1BBBC0ED0000B8E7 /* Assets.xcassets in Resources */,
 			);
@@ -376,6 +467,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5CCBA01BBD67E300ED76EA /* SRHomeViewController.xib in Resources */,
+				CB0EF5091C574F0C00135724 /* SRCameraSpecificationsCell.xib in Resources */,
+				CB0EF4F61C5623D600135724 /* SRPanoramaImageDetailsViewController.xib in Resources */,
+				CB0EF5001C574EDF00135724 /* SRImageDetailsCell.xib in Resources */,
+				CB0EF5121C574F3700135724 /* SRImageLocationInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +479,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5CCBA11BBD67E300ED76EA /* SRHomeViewController.xib in Resources */,
+				CB0EF50A1C574F0C00135724 /* SRCameraSpecificationsCell.xib in Resources */,
+				CB0EF4F71C5623D600135724 /* SRPanoramaImageDetailsViewController.xib in Resources */,
+				CB0EF5011C574EDF00135724 /* SRImageDetailsCell.xib in Resources */,
+				CB0EF5131C574F3700135724 /* SRImageLocationInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +494,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5CCB9C1BBD67E300ED76EA /* SRHomeViewController.m in Sources */,
+				CB029C831C58C85D001B621A /* SRImageMetadata.m in Sources */,
 				8A7496541C3D96B300D5F5EE /* SRPanormaImageCell.m in Sources */,
+				CBEEDAA61C4CD1C30083F0A5 /* SRPanoramaHeaderView.m in Sources */,
+				CB0EF4F21C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */,
+				CB0EF4FC1C574EDF00135724 /* SRImageDetailsCell.m in Sources */,
+				CB0EF50E1C574F3700135724 /* SRImageLocationInfoCell.m in Sources */,
+				CB0EF5051C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */,
+				CB029C871C5C8FD3001B621A /* PHAsset+Utility.m in Sources */,
 				CB9F19CC1BBBC0ED0000B8E7 /* Splitarama.xcdatamodeld in Sources */,
 				8A7496521C3D96B300D5F5EE /* SRPanolsImageCell.m in Sources */,
 				CB9F19C31BBBC0ED0000B8E7 /* AppDelegate.m in Sources */,
@@ -407,8 +513,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0EF5061C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */,
 				CB5CCB9D1BBD67E300ED76EA /* SRHomeViewController.m in Sources */,
+				CB0EF4FD1C574EDF00135724 /* SRImageDetailsCell.m in Sources */,
+				CB0EF4F31C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */,
 				CB9F19DC1BBBC0ED0000B8E7 /* SplitaramaTests.m in Sources */,
+				CB0EF50F1C574F3700135724 /* SRImageLocationInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,8 +526,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0EF5071C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */,
 				CB5CCB9E1BBD67E300ED76EA /* SRHomeViewController.m in Sources */,
+				CB0EF4FE1C574EDF00135724 /* SRImageDetailsCell.m in Sources */,
+				CB0EF4F41C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */,
 				CB9F19E71BBBC0ED0000B8E7 /* SplitaramaUITests.m in Sources */,
+				CB0EF5101C574F3700135724 /* SRImageLocationInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,8 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "SRPanormaImageCell.h"
 #import "SRPanolsImageCell.h"
+#import "SRPanoramaHeaderView.h"
+#import "SRPanoramaImageDetailsViewController.h"
 
 #define ALBUM_NAME @"Panols"
 
@@ -53,6 +55,8 @@
 // Check the commits
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
+@property (nonatomic) float panoramaImageWidth;
+
 @end
 
 @implementation SRHomeViewController
@@ -91,8 +95,10 @@
     [self.panormasCollectionView setShowsHorizontalScrollIndicator:NO];
     [self.panormasCollectionView setShowsVerticalScrollIndicator:NO];
     
-    
     [self.panolsCollectionView registerClass:[SRPanolsImageCell class] forCellWithReuseIdentifier:@"SRPanolsImageCell"];
+    [self.panolsCollectionView registerClass:[SRPanoramaHeaderView class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:@"SRPanoramaHeaderView"];
     self.panolFlowLayout = [[UICollectionViewFlowLayout alloc] init];
     [self.panolFlowLayout setItemSize:CGSizeMake(140.0, 90.0)];
     [self.panolFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
@@ -104,6 +110,8 @@
     
     self.galleryImages = [[NSMutableArray alloc] init];
     [self getGallery];
+    
+    self.panoramaImageWidth = self.panolsCollectionView.frame.size.width - 50.0 - 30.0;
     
 }
 
@@ -391,16 +399,20 @@
     if (collectionView == self.panormasCollectionView){
         PHAsset *asset = self.galleryImages[indexPath.row];
         //PHImageManager *imageManager;
-        [self phpAssetMetadata:asset];
-        CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
-        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *image, NSDictionary *info) {
-            [self.view  addSubview:self.imagebackgrounView];
-            self.imagebackgrounView.frame = self.view.frame;
-            self.imagebackgrounView.center = self.view.center;
-            self.imageView.image = image;
-            self.inputCGImage = [image CGImage];
-            self.data = UIImagePNGRepresentation(image);
-        }];
+        //[self phpAssetMetadata:asset];
+        SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[indexPath.row]];
+        [self.navigationController pushViewController:detailsController animated:YES];
+//        CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
+//        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *image, NSDictionary *info) {
+//            SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset];
+//            [self.navigationController pushViewController:detailsController animated:YES];
+//            [self.view  addSubview:self.imagebackgrounView];
+//            self.imagebackgrounView.frame = self.view.frame;
+//            self.imagebackgrounView.center = self.view.center;
+//            self.imageView.image = image;
+//            self.inputCGImage = [image CGImage];
+//            self.data = UIImagePNGRepresentation(image);
+//        }];
         
     }
     
@@ -425,6 +437,30 @@
     
     return CGSizeZero;
 }
+
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionReusableView *reusableview = nil;
+//    
+//    if (kind == UICollectionElementKindSectionHeader) {
+//        for (int i = 0; i < 10; i++) {
+//        SRPanoramaHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SRPanoramaHeaderView" forIndexPath:indexPath];
+//        
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50.0 + self.panoramaImageWidth + 10.0, 0.0, self.panoramaImageWidth, 128.0)];
+//        [headerView addSubview:imageView];
+//        imageView.image = [UIImage imageNamed:@"panormaImage"];
+//        reusableview = headerView;
+//        }
+//    }
+//    
+//    return reusableview;
+//}
+//
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+//    return CGSizeMake(60.0f, 30.0f);
+//}
+
+
 
 #pragma mark -
 - (NSString *)pathForPanolsDirectory {
