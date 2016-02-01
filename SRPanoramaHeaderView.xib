@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,14 +17,24 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BM1-hx-1hZ">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BM1-hx-1hZ">
                     <rect key="frame" x="0.0" y="37" width="481" height="145"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2R-2i-1dM">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2R-2i-1dM">
                             <rect key="frame" x="0.0" y="8" width="56" height="129"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="56" id="7o1-h9-tNV"/>
+                            </constraints>
                         </view>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="W2R-2i-1dM" firstAttribute="leading" secondItem="BM1-hx-1hZ" secondAttribute="leading" id="45a-E5-Axj"/>
+                        <constraint firstItem="W2R-2i-1dM" firstAttribute="bottom" secondItem="BM1-hx-1hZ" secondAttribute="bottomMargin" id="DFx-yU-gje"/>
+                        <constraint firstAttribute="trailing" secondItem="W2R-2i-1dM" secondAttribute="trailing" constant="425" id="J0A-Xp-p9t"/>
+                        <constraint firstItem="W2R-2i-1dM" firstAttribute="centerY" secondItem="BM1-hx-1hZ" secondAttribute="centerY" id="M0Z-so-ICf"/>
+                        <constraint firstItem="W2R-2i-1dM" firstAttribute="top" secondItem="BM1-hx-1hZ" secondAttribute="topMargin" id="zI9-fA-VLF"/>
+                    </constraints>
                 </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREVIOUS PANOLS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJF-OK-qoH">
                     <rect key="frame" x="0.0" y="224" width="481" height="20"/>
@@ -32,16 +43,15 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="CJF-OK-qoH" firstAttribute="top" secondItem="BM1-hx-1hZ" secondAttribute="bottom" constant="39" id="1pJ-Th-TTx"/>
-                <constraint firstItem="BM1-hx-1hZ" firstAttribute="top" secondItem="NVe-1a-LQ0" secondAttribute="bottom" constant="6" id="B0H-jn-kAf"/>
-                <constraint firstItem="BM1-hx-1hZ" firstAttribute="top" secondItem="NVe-1a-LQ0" secondAttribute="bottom" constant="6" id="Bvl-Fx-9HU"/>
-                <constraint firstItem="BM1-hx-1hZ" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="TWN-eb-ySe"/>
+                <constraint firstItem="CJF-OK-qoH" firstAttribute="top" secondItem="BM1-hx-1hZ" secondAttribute="bottom" constant="42" id="GPR-tK-wN9"/>
+                <constraint firstItem="BM1-hx-1hZ" firstAttribute="top" secondItem="NVe-1a-LQ0" secondAttribute="bottom" constant="9" id="RLB-yo-wTd"/>
+                <constraint firstItem="BM1-hx-1hZ" firstAttribute="trailing" secondItem="NVe-1a-LQ0" secondAttribute="trailing" id="ULz-nm-kHH"/>
                 <constraint firstAttribute="trailing" secondItem="CJF-OK-qoH" secondAttribute="trailing" id="VGw-OH-Xzh"/>
                 <constraint firstAttribute="trailing" secondItem="NVe-1a-LQ0" secondAttribute="trailing" id="VN5-vw-5X2"/>
+                <constraint firstItem="BM1-hx-1hZ" firstAttribute="leading" secondItem="NVe-1a-LQ0" secondAttribute="leading" id="WYk-ZR-MGK"/>
                 <constraint firstAttribute="bottom" secondItem="CJF-OK-qoH" secondAttribute="bottom" constant="8" id="mqg-8o-aUH"/>
-                <constraint firstAttribute="trailing" secondItem="BM1-hx-1hZ" secondAttribute="trailing" id="pcw-JC-pUz"/>
                 <constraint firstItem="NVe-1a-LQ0" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="8" id="tI4-nU-Gcf"/>
                 <constraint firstItem="NVe-1a-LQ0" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="w6T-ro-1O9"/>
                 <constraint firstItem="CJF-OK-qoH" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="xeB-2U-hQD"/>

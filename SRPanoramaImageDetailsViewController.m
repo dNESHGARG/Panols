@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIView *customTabBarView;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *splitButton;
-@property (weak, nonatomic) IBOutlet UIButton *metadataInfoButton;
 @property (assign) BOOL isMetaDataOn;
 @property (nonatomic, strong) SRImageMetadata *metaData;
 @property (nonatomic, strong) NSData *data;
@@ -112,20 +111,22 @@
         CIImage *image = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
         self.metaData = [[SRImageMetadata alloc] initImageMetadata:image.properties withImage:self.image];
         [self.tableView reloadData];
-        NSLog(@"metadata: %@", image.properties.description);
+        NSLog(@"metadata: %@", image.properties);
     }];
 }
 
 #pragma mark --
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.tableView.separatorColor = [UIColor clearColor];
+    
     if (indexPath.row == 0)
-        return 274.0;
+        return 270.0;
     
     if (indexPath.row == 1)
-        return 370.0;
+        return 230.0;
     
     if (indexPath.row == 2)
-        return 420.0;
+        return 275.0;
         
     return 0.0;
 }

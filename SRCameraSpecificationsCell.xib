@@ -1,99 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SF-Compact-Text-Regular.otf">
+            <string>SFCompactText-Regular</string>
+            <string>SFCompactText-Regular</string>
+            <string>SFCompactText-Regular</string>
+            <string>SFCompactText-Regular</string>
+            <string>SFCompactText-Regular</string>
+            <string>SFCompactText-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SRCameraSpecificationsCell" rowHeight="237" id="KGk-i7-Jjw" customClass="SRCameraSpecificationsCell">
-            <rect key="frame" x="0.0" y="0.0" width="473" height="435"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SRCameraSpecificationsCell" rowHeight="77" id="KGk-i7-Jjw" customClass="SRCameraSpecificationsCell">
+            <rect key="frame" x="0.0" y="0.0" width="473" height="275"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="473" height="434"/>
+                <rect key="frame" x="0.0" y="0.0" width="473" height="274"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="JNQ-W8-46E">
-                        <rect key="frame" x="8" y="35" width="37" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-lens" id="JNQ-W8-46E">
+                        <rect key="frame" x="15" y="15" width="22" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cPa-9x-4m1">
-                        <rect key="frame" x="8" y="83" width="37" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-exposure" id="cPa-9x-4m1">
+                        <rect key="frame" x="15" y="39" width="22" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="58v-J9-M4r">
-                        <rect key="frame" x="8" y="131" width="37" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-focalLength" id="58v-J9-M4r">
+                        <rect key="frame" x="15" y="65" width="22" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="SHk-zb-acT">
-                        <rect key="frame" x="8" y="179" width="37" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-iso" id="SHk-zb-acT">
+                        <rect key="frame" x="15" y="89" width="22" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iphone 6s back camera 4.15mm f/22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zuo-tf-jPP">
-                        <rect key="frame" x="53" y="44" width="379" height="21"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-pixels" id="Xkd-6o-H5O">
+                        <rect key="frame" x="15" y="112" width="22" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-filesize" id="Z4E-zW-eMY">
+                        <rect key="frame" x="15" y="134" width="22" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="83M-ZU-uDe">
+                        <rect key="frame" x="46" y="39" width="379" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/161 sec at f/2.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="83M-ZU-uDe">
-                        <rect key="frame" x="53" y="92" width="330" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SeO-Gc-3K3">
+                        <rect key="frame" x="45" y="63" width="379" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.15mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SeO-Gc-3K3">
-                        <rect key="frame" x="53" y="140" width="379" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qly-a5-rIH">
+                        <rect key="frame" x="45" y="88" width="379" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISO 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qly-a5-rIH">
-                        <rect key="frame" x="53" y="188" width="379" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zNd-9e-fJk">
+                        <rect key="frame" x="46" y="111" width="379" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jSG-LN-eJj">
-                        <rect key="frame" x="423" y="15" width="30" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                        <state key="normal" title="X">
-                            <color key="titleColor" red="1" green="0.032444778696937071" blue="0.10635949203156092" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Xkd-6o-H5O">
-                        <rect key="frame" x="8" y="227" width="37" height="40"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Z4E-zW-eMY">
-                        <rect key="frame" x="8" y="275" width="37" height="40"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4096 X 1322" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zNd-9e-fJk">
-                        <rect key="frame" x="53" y="236" width="379" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uDV-Nr-qxu">
+                        <rect key="frame" x="46" y="134" width="379" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.4 MB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uDV-Nr-qxu">
-                        <rect key="frame" x="53" y="284" width="379" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zuo-tf-jPP">
+                        <rect key="frame" x="46" y="15" width="379" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cameraInfo" destination="zuo-tf-jPP" id="Q7q-Av-BSL"/>
@@ -103,7 +106,15 @@
                 <outlet property="shutterInfo" destination="83M-ZU-uDe" id="f1F-B4-TkV"/>
                 <outlet property="sizeLabel" destination="uDV-Nr-qxu" id="igd-4X-4YE"/>
             </connections>
-            <point key="canvasLocation" x="312.5" y="295.5"/>
+            <point key="canvasLocation" x="312.5" y="215.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon-exposure" width="14" height="14"/>
+        <image name="icon-filesize" width="10" height="13"/>
+        <image name="icon-focalLength" width="16" height="15"/>
+        <image name="icon-iso" width="18" height="11"/>
+        <image name="icon-lens" width="13" height="17"/>
+        <image name="icon-pixels" width="15" height="11"/>
+    </resources>
 </document>
