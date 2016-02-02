@@ -28,18 +28,24 @@
 }
 
 - (void)setCellWithData:(SRImageMetadata*)metaData {
+    // Camera Make
     if (metaData.camera.length > 0)
         self.cameraInfo.text = metaData.camera;
     
+    //Exposure
+    if (metaData.shutterInfo.length > 0)
+        self.shutterInfo.text = metaData.shutterInfo;
+    
+    // Focal Length
     if (metaData.focalLength.length > 0)
-        self.focalLength.text = metaData.isoInfo;
-    
+        self.focalLength.text = metaData.focalLength;
+    // ISO
     if (metaData.isoInfo.length > 0)
-        self.isoInfo.text = metaData.extension;
-    
+        self.isoInfo.text = metaData.isoInfo;
+    // Resolution
     if (metaData.resolution.length > 0)
         self.resolutionLabel.text = metaData.resolution;
-    
+    // File Size
     if (metaData.size.length > 0)
         self.sizeLabel.text = metaData.size;
 }

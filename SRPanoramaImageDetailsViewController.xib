@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SF-Compact-Display-Regular.otf">
+            <string>SFCompactDisplay-Regular</string>
+        </mutableArray>
+        <mutableArray key="SF-Compact-Text-Semibold.otf">
+            <string>SFCompactText-Semibold</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRPanoramaImageDetailsViewController">
             <connections>
                 <outlet property="customTabBarView" destination="RbU-oI-WBb" id="7kV-jy-NWI"/>
                 <outlet property="editButton" destination="UwM-SW-51Y" id="gLG-oH-Ur7"/>
-                <outlet property="metadataInfoButton" destination="g8H-gW-Mm7" id="eE6-8b-ytQ"/>
                 <outlet property="navSubtitle" destination="tCM-KP-dnC" id="xpo-zh-7eH"/>
                 <outlet property="navTitle" destination="czE-xZ-5Xc" id="U9l-uc-eRt"/>
                 <outlet property="splitButton" destination="JQs-uK-VH0" id="BDN-tn-cmr"/>
@@ -21,71 +28,95 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" image="navigation-header" id="LYq-Qd-ETQ">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAMMOTH LAKES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="czE-xZ-5Xc">
-                    <rect key="frame" x="66" y="21" width="265" height="29"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 6, 2015  4:56PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tCM-KP-dnC">
-                    <rect key="frame" x="66" y="53" width="265" height="21"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="gjN-Ck-3j6">
-                    <rect key="frame" x="0.0" y="107" width="375" height="560"/>
+                    <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Q0r-BJ-PwL"/>
                         <outlet property="delegate" destination="-1" id="zP7-S7-ncF"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" id="RbU-oI-WBb">
-                    <rect key="frame" x="0.0" y="591" width="375" height="76"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                <view contentMode="scaleToFill" id="XHj-2t-ZL9">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UwM-SW-51Y">
-                            <rect key="frame" x="8" y="8" width="91" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                            <state key="normal" title="Edit"/>
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" image="navigation-header" id="owk-Ut-pGk">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eIf-We-zzX" userLabel="Back Button">
+                            <rect key="frame" x="0.0" y="34" width="46" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="navigation-button-back"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="5p2-ZR-WBp"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g8H-gW-Mm7">
-                            <rect key="frame" x="258" y="8" width="91" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                            <state key="normal" title="i"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JQs-uK-VH0">
-                            <rect key="frame" x="142" y="8" width="91" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                            <state key="normal" title="Split"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAMMOTH LAKES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="czE-xZ-5Xc">
+                            <rect key="frame" x="55" y="42" width="265" height="29"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="SFCompactText-Semibold" family="SF Compact Text" pointSize="18"/>
+                            <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 6, 2015  4:56PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="tCM-KP-dnC">
+                            <rect key="frame" x="55" y="64" width="265" height="21"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="12"/>
+                            <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7eT-FO-kOW">
+                            <rect key="frame" x="325" y="34" width="46" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="navigation-icon-not-favorite"/>
+                            <state key="selected" image="navigation-icon-favorite"/>
+                            <state key="highlighted" image="navigation-icon-favorite"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eIf-We-zzX">
-                    <rect key="frame" x="8" y="25" width="46" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                    <state key="normal" title="&lt;"/>
-                    <connections>
-                        <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="5p2-ZR-WBp"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" id="RbU-oI-WBb">
+                    <rect key="frame" x="0.0" y="554" width="375" height="113"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" image="navigation-editsplit" id="a1F-b3-rna">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JQs-uK-VH0">
+                            <rect key="frame" x="217" y="32" width="129" height="73"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <state key="normal" image="icon-split"/>
+                        </button>
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="navigation-divider" id="j2J-vZ-Kgk">
+                            <rect key="frame" x="187" y="34" width="2" height="60"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UwM-SW-51Y">
+                            <rect key="frame" x="23" y="31" width="144" height="73"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                            <state key="normal" image="icon-editin"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="444.5" y="475.5"/>
         </view>
     </objects>
     <resources>
+        <image name="icon-editin" width="65" height="54"/>
+        <image name="icon-split" width="72" height="52"/>
+        <image name="navigation-button-back" width="10" height="17"/>
+        <image name="navigation-divider" width="2" height="60"/>
+        <image name="navigation-editsplit" width="375" height="113"/>
         <image name="navigation-header" width="375" height="107"/>
+        <image name="navigation-icon-favorite" width="18" height="16"/>
+        <image name="navigation-icon-not-favorite" width="18" height="16"/>
     </resources>
 </document>

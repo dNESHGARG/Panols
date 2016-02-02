@@ -71,7 +71,7 @@
 //    self.navigationHeaderView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationHeaderView.bounds].CGPath;
 //    self.navigationHeaderView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
     
-    self.navigationHeaderImageView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
+    //self.navigationHeaderImageView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
     //[self.customButton setTitleColor:[UIColor colorWithRed:216./255. green:216./255. blue:216./255. alpha:1.0] forState:UIControlStateNormal];
     self.imageView.userInteractionEnabled = YES;
     self.customButton.enabled = YES;
@@ -79,7 +79,7 @@
     
     [self.navigationHeaderView bringSubviewToFront:self.galleryButton];
     self.navigationController.navigationBar.hidden = true;
-    self.imageView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1.0];
+    //self.imageView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1.0];
     
     [self.panormasCollectionView registerClass:[SRPanormaImageCell class] forCellWithReuseIdentifier:@"SRPanormaImageCell"];
     
@@ -141,7 +141,7 @@
     }
     
     for (PHAsset *asset in fetchResult) {
-        NSLog(@"MyAsset %@", asset);
+        //NSLog(@"MyAsset %@", asset);
         
         [self.galleryImages addObject:asset];
     }
@@ -416,7 +416,7 @@
         
     }
     
-    NSLog(@"image");
+    //NSLog(@"image");
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

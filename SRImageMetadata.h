@@ -24,7 +24,9 @@
 @property (nonatomic, strong) NSString *camera;
 @property (nonatomic, strong) NSString *shutter;
 @property (nonatomic, strong) NSString *focalLength;
+@property (nonatomic, strong) NSString *exposureNumber;
 @property (nonatomic, strong) NSString *isoInfo;
+@property (nonatomic, strong) NSString *shutterInfo;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *coordinates;
 @property (nonatomic, strong) NSString *latitude;

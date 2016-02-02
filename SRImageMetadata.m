@@ -27,8 +27,11 @@
             self.isoInfo = [NSString stringWithFormat:@"ISO %@",[isoinformation objectAtIndex:0]];
         }
         
+        if ([[data objectForKey:@"{Exif}"] objectForKey:@"FNumber"] && [[data objectForKey:@"{Exif}"] objectForKey:@"ExposureTime"])
+            self.shutterInfo = [NSString stringWithFormat:@"%@ sec at f/%@",[[data objectForKey:@"{Exif}"] objectForKey:@"ExposureTime"],[[data objectForKey:@"{Exif}"] objectForKey:@"FNumber"]];
+        
         if ([data objectForKey:@"PixelWidth"] && [data objectForKey:@"PixelHeight"])
-            self.resolution = [NSString stringWithFormat:@"%@ X %@",[data objectForKey:@"PixelWidth"],[data objectForKey:@"PixelHeight"]];
+            self.resolution = [NSString stringWithFormat:@"%@ x %@",[data objectForKey:@"PixelWidth"],[data objectForKey:@"PixelHeight"]];
         
         if ([data objectForKey:@""])
         {
