@@ -15,6 +15,10 @@
     self = [super init];
     
     if (self != nil){
+        
+        if (image)
+            self.image = image;
+        
         if ([[data objectForKey:@"{Exif}"] objectForKey:@"LensModel"])
             self.camera = [[data objectForKey:@"{Exif}"] objectForKey:@"LensModel"];
         

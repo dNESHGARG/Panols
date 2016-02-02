@@ -115,6 +115,10 @@
     
 }
 
+- (void)dealloc{
+    //CGImageRelease(self.inputCGImage);
+}
+
 - (IBAction)cancelButtonTapped:(id)sender {
     
     [self.imagebackgrounView removeFromSuperview];

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SF-Compact-Display-Regular.otf">
@@ -74,6 +74,9 @@
                             <state key="normal" image="navigation-icon-not-favorite"/>
                             <state key="selected" image="navigation-icon-favorite"/>
                             <state key="highlighted" image="navigation-icon-favorite"/>
+                            <connections>
+                                <action selector="favoriteButtonTapped:" destination="-1" eventType="touchUpInside" id="8li-oo-3jH"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -90,6 +93,9 @@
                             <rect key="frame" x="217" y="32" width="129" height="73"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                             <state key="normal" image="icon-split"/>
+                            <connections>
+                                <action selector="splitButtonTapped:" destination="-1" eventType="touchUpInside" id="gz4-iz-qYf"/>
+                            </connections>
                         </button>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="navigation-divider" id="j2J-vZ-Kgk">
                             <rect key="frame" x="187" y="34" width="2" height="60"/>
@@ -99,12 +105,15 @@
                             <rect key="frame" x="23" y="31" width="144" height="73"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                             <state key="normal" image="icon-editin"/>
+                            <connections>
+                                <action selector="editButtonTapped:" destination="-1" eventType="touchUpInside" id="wkx-aR-oMZ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="444.5" y="475.5"/>
         </view>

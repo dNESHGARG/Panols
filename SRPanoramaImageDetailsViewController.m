@@ -11,6 +11,7 @@
 #import "SRImageDetailsCell.h"
 #import "SRCameraSpecificationsCell.h"
 #import "SRImageLocationInfoCell.h"
+#import "SRSplitViewController.h"
 
 @interface SRPanoramaImageDetailsViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *navTitle;
@@ -33,6 +34,7 @@
 
 //@property (nonatomic, strong) NSDictionary *metadata;
 @property (nonatomic, strong) UIImage *image;
+
 
 @end
 
@@ -170,6 +172,19 @@
     
     return [[UITableViewCell alloc] initWithFrame:CGRectZero];
 }
+
+#pragma mark --
+- (IBAction)editButtonTapped:(id)sender {
+}
+
+- (IBAction)splitButtonTapped:(id)sender {
+    SRSplitViewController *splitView = [[SRSplitViewController alloc] initWithWithData:self.metaData andCGImage:self.inputCGImage];
+    [self.navigationController pushViewController:splitView animated:YES];
+}
+
+- (IBAction)favoriteButtonTapped:(id)sender {
+}
+
 
 /*
 #pragma mark - Navigation
