@@ -11,10 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRSplitViewController">
             <connections>
+                <outlet property="contentView" destination="tUf-DU-5Mq" id="g7J-lE-OoK"/>
                 <outlet property="imageView" destination="avs-4E-0qy" id="dEX-E6-hov"/>
+                <outlet property="navHeader" destination="QhL-qm-nh5" id="PVJ-SK-zzU"/>
                 <outlet property="navTitle" destination="nGy-Ms-LAH" id="jck-33-dEj"/>
                 <outlet property="scrollView" destination="D2U-iZ-8Cs" id="oIJ-PH-cOA"/>
+                <outlet property="scrollViewBottomView" destination="GNf-xO-J7I" id="3b6-tY-VG6"/>
+                <outlet property="scrollViewTopView" destination="67Q-Te-q5b" id="uIb-Qb-7c7"/>
+                <outlet property="splitCropView" destination="O1B-qw-EdJ" id="BLS-iW-9ec"/>
                 <outlet property="tabBarView" destination="8As-Pb-bbX" id="iFO-VK-Tu7"/>
+                <outlet property="translucentView" destination="NZh-jv-vjy" id="zis-VN-gmg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,6 +56,11 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" id="tUf-DU-5Mq">
+                    <rect key="frame" x="0.0" y="107" width="375" height="411"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" id="8As-Pb-bbX">
                     <rect key="frame" x="0.0" y="518" width="375" height="149"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -82,44 +93,53 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="D2U-iZ-8Cs">
-                    <rect key="frame" x="0.0" y="155" width="375" height="291"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="avs-4E-0qy">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="291"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        </imageView>
-                        <view contentMode="scaleToFill" id="NZh-jv-vjy">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="291"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" id="67Q-Te-q5b">
-                                    <rect key="frame" x="0.0" y="-6" width="375" height="91"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="0.40468749999999998" colorSpace="calibratedWhite"/>
-                                </view>
-                                <view contentMode="scaleToFill" id="GNf-xO-J7I">
-                                    <rect key="frame" x="0.0" y="207" width="375" height="91"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="0.40468749999999998" colorSpace="calibratedWhite"/>
-                                </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splitUI-crop" id="O1B-qw-EdJ">
-                                    <rect key="frame" x="0.0" y="82" width="375" height="128"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
-                    </subviews>
-                </scrollView>
             </subviews>
-            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="477.5" y="479.5"/>
         </view>
+        <view contentMode="scaleToFill" id="NZh-jv-vjy">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="67Q-Te-q5b">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59946120689655169" colorSpace="calibratedRGB"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splitUI-crop" id="O1B-qw-EdJ">
+                    <rect key="frame" x="0.0" y="168" width="375" height="125"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" id="GNf-xO-J7I">
+                    <rect key="frame" x="0.0" y="292" width="375" height="165"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="892.5" y="171"/>
+        </view>
+        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="D2U-iZ-8Cs">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="avs-4E-0qy">
+                    <rect key="frame" x="0.0" y="84" width="375" height="291"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="delegate" destination="-1" id="v1z-QQ-Mea"/>
+            </connections>
+            <point key="canvasLocation" x="904.5" y="607.5"/>
+        </scrollView>
     </objects>
     <resources>
         <image name="button-export" width="134" height="113"/>
