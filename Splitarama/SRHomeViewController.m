@@ -555,44 +555,17 @@
     CFRelease(dict);
 }
 
-//- (void)saveAssetToPanolsDirectory {
-//    PHFetchResult *savedAssets = [PHAsset fetchAssetsWithLocalIdentifiers:[NSArray arrayWithObjects:myAssetURL, nil] options:nil];
-//    [savedAssets enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
-//        PHImageRequestOptions *cropToSquare = [[PHImageRequestOptions alloc] init];
-//        cropToSquare.synchronous = YES;
-//        [[PHImageManager defaultManager] requestImageDataForAsset:asset
-//                                                          options:cropToSquare
-//                                                    resultHandler:
-//         ^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
-//             CIImage* ciImage = [CIImage imageWithData:imageData];
-//             NSMutableDictionary *metadataAsMutable = [ciImage.properties mutableCopy];
-//             CGImageSourceRef source = Nil;
-//             NSDictionary* sourceOptionsDict = [NSDictionary dictionaryWithObjectsAndKeys:dataUTI ,kCGImageSourceTypeIdentifierHint,nil];
-//             source = CGImageSourceCreateWithData((__bridge CFDataRef) imageData,  (__bridge CFDictionaryRef) sourceOptionsDict);
-//             CFStringRef UTI = CGImageSourceGetType(source);
-//             NSMutableData *dest_data = [NSMutableData data];
-//             CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)dest_data,UTI,1,NULL);
-//             CGImageDestinationAddImageFromSource(destination,source,0, (__bridge CFDictionaryRef) metadataAsMutable);
-//             BOOL success = NO;
-//             success = CGImageDestinationFinalize(destination);
 //
-//             if(!success) {
-//             }
-//             [dest_data writeToFile:myTrumbImageFileName atomically:YES];
-//             CFRelease(destination);
-//             CFRelease(source);
-//         }];
-//    }];
-//}
-
-//- (void)saveToLocation:(NSData*)imageData {
+//- (void)saveImageToPanolsGallery:(UIImage*)image {
 //    __block PHFetchResult *photosAsset;
 //    __block PHAssetCollection *collection;
 //    __block PHObjectPlaceholder *placeholder;
 //
+//     NSData *imageDate = UIImagePNGRepresentation(image);
+//
 //    // Find the album
 //    PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
-//    fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", @"Panols"];
+//    fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", @"Panols Gallery"];
 //    collection = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum
 //                                                          subtype:PHAssetCollectionSubtypeAny
 //                                                          options:fetchOptions].firstObject;
@@ -600,7 +573,7 @@
 //    if (!collection)
 //    {
 //        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-//            PHAssetCollectionChangeRequest *createAlbum = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:@"Panols"];
+//            PHAssetCollectionChangeRequest *createAlbum = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:@"Panols Gallery"];
 //            placeholder = [createAlbum placeholderForCreatedAssetCollection];
 //        } completionHandler:^(BOOL success, NSError *error) {
 //            if (success)
@@ -614,8 +587,8 @@
 //
 //    // Save to the album
 //    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-//        //PHAssetChangeRequest *assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:[UIImage imageWithData:imageData]];
-//        //placeholder = [assetRequest placeholderForCreatedAsset];
+//        PHAssetChangeRequest *assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:[UIImage imageWithData:imageDate]];
+//        placeholder = [assetRequest placeholderForCreatedAsset];
 //        photosAsset = [PHAsset fetchAssetsInAssetCollection:collection options:nil];
 //        PHAssetCollectionChangeRequest *albumChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:collection
 //                                                                                                                      assets:photosAsset];

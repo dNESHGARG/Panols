@@ -11,7 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRSplitViewController">
             <connections>
+                <outlet property="clearButton" destination="CdT-NK-kof" id="MUR-f6-pYS"/>
                 <outlet property="contentView" destination="tUf-DU-5Mq" id="g7J-lE-OoK"/>
+                <outlet property="exportButton" destination="OnM-tq-Hy6" id="PNl-nv-z5y"/>
+                <outlet property="fillButton" destination="5Bn-yG-K85" id="DSe-RE-6hd"/>
                 <outlet property="imageView" destination="avs-4E-0qy" id="dEX-E6-hov"/>
                 <outlet property="navHeader" destination="QhL-qm-nh5" id="PVJ-SK-zzU"/>
                 <outlet property="navTitle" destination="nGy-Ms-LAH" id="jck-33-dEj"/>
@@ -19,6 +22,7 @@
                 <outlet property="scrollViewBottomView" destination="GNf-xO-J7I" id="3b6-tY-VG6"/>
                 <outlet property="scrollViewTopView" destination="67Q-Te-q5b" id="uIb-Qb-7c7"/>
                 <outlet property="splitCropView" destination="O1B-qw-EdJ" id="BLS-iW-9ec"/>
+                <outlet property="straightenButton" destination="L1L-2M-SnW" id="f3H-yG-0Sj"/>
                 <outlet property="tabBarView" destination="8As-Pb-bbX" id="iFO-VK-Tu7"/>
                 <outlet property="translucentView" destination="NZh-jv-vjy" id="zis-VN-gmg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -53,6 +57,14 @@
                             <nil key="highlightedColor"/>
                             <size key="shadowOffset" width="0.0" height="0.0"/>
                         </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CdT-NK-kof">
+                            <rect key="frame" x="296" y="39" width="71" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                            <state key="normal" title="Clear"/>
+                            <connections>
+                                <action selector="clearButtonTapped:" destination="-1" eventType="touchUpInside" id="DtK-Bx-KSp"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -96,7 +108,7 @@
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="477.5" y="479.5"/>
         </view>
@@ -138,7 +150,7 @@
             <connections>
                 <outlet property="delegate" destination="-1" id="v1z-QQ-Mea"/>
             </connections>
-            <point key="canvasLocation" x="904.5" y="607.5"/>
+            <point key="canvasLocation" x="899.5" y="674"/>
         </scrollView>
     </objects>
     <resources>
