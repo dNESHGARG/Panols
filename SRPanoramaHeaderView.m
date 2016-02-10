@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    
+    //self.panImageView.frame = CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.frame.size.width - 30.0, 128.0);
 }
 
 @end

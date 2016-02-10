@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SRPanoramaHeaderView : UICollectionReusableView
-@property (weak, nonatomic) IBOutlet UIScrollView *panoramaImagesScrollView;
+@interface SRPanoramaHeaderView : UITableViewHeaderFooterView
+@property (weak, nonatomic) IBOutlet UICollectionView *panoramasCollectionView;
+
 @end

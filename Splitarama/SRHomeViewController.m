@@ -13,16 +13,21 @@
 #import "SRPanolsImageCell.h"
 #import "SRPanoramaHeaderView.h"
 #import "SRPanoramaImageDetailsViewController.h"
+#import "SRHomeTableCell.h"
 
 #define ALBUM_NAME @"Panols"
 
 @import Photos;
 @import ImageIO;
 
-@interface SRHomeViewController () <UIDocumentInteractionControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SRHomeViewController () <UIDocumentInteractionControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate>
+{
+    NSArray *_fakeNames;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *customButton;
 @property (weak, nonatomic) IBOutlet UIButton *galleryButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
 @property (weak, nonatomic) IBOutlet UIView *panelsBackgroundView;
@@ -39,11 +44,6 @@
 @property (nonatomic, strong) NSData *data;
 @property (weak, nonatomic) IBOutlet UIView *navigationHeaderView;
 @property (weak, nonatomic) IBOutlet UIImageView *navigationHeaderImageView;
-@property (weak, nonatomic) IBOutlet UICollectionView *panormasCollectionView;
-@property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *flowLayout;
-@property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *panolFlowLayout;
-
-@property (weak, nonatomic) IBOutlet UICollectionView *panolsCollectionView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *navigationLogo;
 
@@ -56,6 +56,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (nonatomic) float panoramaImageWidth;
+
+@property (nonatomic, strong) SRPanoramaHeaderView *tableHeaderView;
+@property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
 @end
 
@@ -81,7 +84,26 @@
     self.navigationController.navigationBar.hidden = true;
     //self.imageView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1.0];
     
-    [self.panormasCollectionView registerClass:[SRPanormaImageCell class] forCellWithReuseIdentifier:@"SRPanormaImageCell"];
+    self.galleryImages = [[NSMutableArray alloc] init];
+    [self getGallery];
+    
+    [self.tableView setBackgroundView:nil];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    //[self.tableView registerClass:[SRPanoramaHeaderView class] forHeaderFooterViewReuseIdentifier:@"SRPanoramaHeaderView"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SRPanoramaHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"SRPanoramaHeaderView"];
+    
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"SRPanoramaHeaderView"
+                                                      owner:self
+                                                    options:nil];
+    
+    self.tableHeaderView = [ nibViews objectAtIndex:0];
+    
+    //UIView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"SRPanoramaHeaderView"];
+    self.tableView.tableHeaderView = self.tableHeaderView;
+    
+    _fakeNames = @[@"Sunset", @"Sunrise", @"Moutains", @"Blue Sky", @"Panorama Lake", @"Sierra Nevada"];
+    
+    [self.tableHeaderView.panoramasCollectionView registerClass:[SRPanormaImageCell class] forCellWithReuseIdentifier:@"SRPanormaImageCell"];
     
     float cellWidth = self.view.frame.size.width - 60.0;
     float cellHeight = 128.0f;
@@ -90,28 +112,14 @@
     [self.flowLayout setItemSize:CGSizeMake(cellWidth, cellHeight)];
     [self.flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     self.flowLayout.minimumInteritemSpacing = 30.0f;
-    [self.panormasCollectionView setCollectionViewLayout:self.flowLayout];
-    self.panormasCollectionView.bounces = YES;
-    [self.panormasCollectionView setShowsHorizontalScrollIndicator:NO];
-    [self.panormasCollectionView setShowsVerticalScrollIndicator:NO];
+    [self.tableHeaderView.panoramasCollectionView setCollectionViewLayout:self.flowLayout];
+    self.tableHeaderView.panoramasCollectionView.bounces = YES;
+    [self.tableHeaderView.panoramasCollectionView setShowsHorizontalScrollIndicator:NO];
+    [self.tableHeaderView.panoramasCollectionView setShowsVerticalScrollIndicator:NO];
     
-    [self.panolsCollectionView registerClass:[SRPanolsImageCell class] forCellWithReuseIdentifier:@"SRPanolsImageCell"];
-    [self.panolsCollectionView registerClass:[SRPanoramaHeaderView class]
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                   withReuseIdentifier:@"SRPanoramaHeaderView"];
-    self.panolFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [self.panolFlowLayout setItemSize:CGSizeMake(140.0, 90.0)];
-    [self.panolFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    self.panolFlowLayout.minimumInteritemSpacing = 0.0f;
-    [self.panolsCollectionView setCollectionViewLayout:self.panolFlowLayout];
-    self.panolsCollectionView.bounces = YES;
-    [self.panolsCollectionView setShowsHorizontalScrollIndicator:NO];
-    [self.panolsCollectionView setShowsVerticalScrollIndicator:NO];
+    self.tableHeaderView.panoramasCollectionView.delegate =  self;
+    self.tableHeaderView.panoramasCollectionView.dataSource = self;
     
-    self.galleryImages = [[NSMutableArray alloc] init];
-    [self getGallery];
-    
-    self.panoramaImageWidth = self.panolsCollectionView.frame.size.width - 50.0 - 30.0;
     
 }
 
@@ -150,7 +158,7 @@
         [self.galleryImages addObject:asset];
     }
     
-    [self.panormasCollectionView reloadData];
+    [self.tableHeaderView.panoramasCollectionView reloadData];
 
 }
 
@@ -260,6 +268,68 @@
     [self.documentController presentOpenInMenuFromRect: self.view.frame inView:self.view animated:YES ];
 }
 
+#pragma mark -
+#pragma mark --
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+        return 1;
+
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+        return self.galleryImages.count;
+    
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+        static NSString *cellIdentifier = @"SRPanormaImageCell";
+        
+        SRPanormaImageCell *cell = (SRPanormaImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        cell.layer.masksToBounds = YES;
+        cell.layer.cornerRadius = 7.0;
+        
+        cell.layer.shadowOpacity = 1.00f;
+        cell.layer.shadowOffset = CGSizeMake(10,10);
+        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+        //cell.layer.shouldRasterize = YES;
+        
+        PHAsset *asset = self.galleryImages[indexPath.row];
+        //PHImageManager *imageManager;
+        CGSize size = CGSizeMake(140.0, 128.0);
+        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+            cell.imageView.image = result;
+        }];
+        
+        return cell;
+    
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    return UIEdgeInsetsMake(0.0, 50.0, 0.0, 0.0);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+        PHAsset *asset = self.galleryImages[indexPath.row];
+        //PHImageManager *imageManager;
+        //[self phpAssetMetadata:asset];
+        SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[indexPath.row]];
+        [self.navigationController pushViewController:detailsController animated:YES];
+
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+        float cellWidth = self.tableHeaderView.panoramasCollectionView.frame.size.width - 90.0;
+        float cellHeight = 128.0f;
+        return CGSizeMake(cellWidth, cellHeight);
+}
+
+
 # pragma mark -
 
 - (void)selectImage {
@@ -318,129 +388,65 @@
 
 #pragma mark -- 
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    if (collectionView == self.panolsCollectionView)
-        return 1;
-    
-    if (collectionView == self.panormasCollectionView)
-        return 1;
-    
-    return 0;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    if (collectionView == self.panolsCollectionView)
-        return 20;
-    
-    if (collectionView == self.panormasCollectionView)
-        return self.galleryImages.count;
-    
-    return 0;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (collectionView == self.panolsCollectionView){
-        static NSString *cellIdentifier = @"SRPanolsImageCell";
-        
-        SRPanolsImageCell *cell = (SRPanolsImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-        cell.layer.masksToBounds = YES;
-        cell.layer.cornerRadius = 5.0;
-        
-        cell.layer.shadowOpacity = 1.00f;
-        cell.layer.shadowOffset = CGSizeZero;
-        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
-        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
-        //cell.layer.shouldRasterize = YES;
-        
-        return cell;
-    }
-        
-    
-    if (collectionView == self.panormasCollectionView){
-        static NSString *cellIdentifier = @"SRPanormaImageCell";
-        
-        SRPanormaImageCell *cell = (SRPanormaImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-        cell.layer.masksToBounds = YES;
-        cell.layer.cornerRadius = 7.0;
-        
-        cell.layer.shadowOpacity = 1.00f;
-        cell.layer.shadowOffset = CGSizeMake(10,10);
-        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
-        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
-        //cell.layer.shouldRasterize = YES;
-        
-        PHAsset *asset = self.galleryImages[indexPath.row];
-        //PHImageManager *imageManager;
-        CGSize size = CGSizeMake(140.0, 128.0);
-        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
-            cell.imageView.image = result;
-        }];
-        
-        return cell;
-    }
-    
-    //cell.imageView.image = [UIImage imageNamed:@"panormaImage"];
-    
-    return [[UICollectionViewCell alloc] init];
-    
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    
-    
-    if (collectionView == self.panolsCollectionView)
-        return UIEdgeInsetsMake(0.0, 0.0, 0.0, 10.0);
-    
-    if (collectionView == self.panormasCollectionView)
-        return UIEdgeInsetsMake(0.0, 50.0, 0.0, 0.0);
-    
-    return UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (collectionView == self.panormasCollectionView){
-        PHAsset *asset = self.galleryImages[indexPath.row];
-        //PHImageManager *imageManager;
-        //[self phpAssetMetadata:asset];
-        SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[indexPath.row]];
-        [self.navigationController pushViewController:detailsController animated:YES];
-//        CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
-//        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *image, NSDictionary *info) {
-//            SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset];
-//            [self.navigationController pushViewController:detailsController animated:YES];
-//            [self.view  addSubview:self.imagebackgrounView];
-//            self.imagebackgrounView.frame = self.view.frame;
-//            self.imagebackgrounView.center = self.view.center;
-//            self.imageView.image = image;
-//            self.inputCGImage = [image CGImage];
-//            self.data = UIImagePNGRepresentation(image);
+//
+//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    if (collectionView == self.panolsCollectionView){
+//        static NSString *cellIdentifier = @"SRPanolsImageCell";
+//        
+//        SRPanolsImageCell *cell = (SRPanolsImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+//        cell.layer.masksToBounds = YES;
+//        cell.layer.cornerRadius = 5.0;
+//        
+//        cell.layer.shadowOpacity = 1.00f;
+//        cell.layer.shadowOffset = CGSizeZero;
+//        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+//        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+//        //cell.layer.shouldRasterize = YES;
+//        
+//        return cell;
+//    }
+//        
+//    
+//    if (collectionView == self.panormasCollectionView){
+//        static NSString *cellIdentifier = @"SRPanormaImageCell";
+//        
+//        SRPanormaImageCell *cell = (SRPanormaImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+//        cell.layer.masksToBounds = YES;
+//        cell.layer.cornerRadius = 7.0;
+//        
+//        cell.layer.shadowOpacity = 1.00f;
+//        cell.layer.shadowOffset = CGSizeMake(10,10);
+//        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+//        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+//        //cell.layer.shouldRasterize = YES;
+//        
+//        PHAsset *asset = self.galleryImages[indexPath.row];
+//        //PHImageManager *imageManager;
+//        CGSize size = CGSizeMake(140.0, 128.0);
+//        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+//            cell.imageView.image = result;
 //        }];
-        
-    }
-    
-    //NSLog(@"image");
-}
+//        
+//        return cell;
+//    }
+//    
+//    //cell.imageView.image = [UIImage imageNamed:@"panormaImage"];
+//    
+//    return [[UICollectionViewCell alloc] init];
+//    
+//}
+//
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    if (collectionView == self.panormasCollectionView){
+//        PHAsset *asset = self.galleryImages[indexPath.row];
+//        SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[indexPath.row]];
+//        [self.navigationController pushViewController:detailsController animated:YES];
+//        
+//    }
+//    
+//}
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
- 
-    if (collectionView == self.panolsCollectionView)
-    {
-    float width = self.panolsCollectionView.frame.size.width/2 -18.0;
-    //float width = 140;
-    float height = 90;
-    return CGSizeMake(width, height);
-    }
-    else if (collectionView == self.panormasCollectionView)
-    {
-    float cellWidth = self.panormasCollectionView.frame.size.width - 90.0;
-    float cellHeight = 128.0f;
-    return CGSizeMake(cellWidth, cellHeight);
-    }
-    
-    return CGSizeZero;
-}
 
 //- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 //{
@@ -606,6 +612,78 @@
 //        }
 //    }];
 //}
+
+#pragma mark --
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 140.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 222.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.tableHeaderView;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 6.0;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SRHomeTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SRHomeTableCell"];
+    
+    if (!cell)
+    {
+        [tableView registerNib:[UINib nibWithNibName:@"SRHomeTableCell" bundle:nil] forCellReuseIdentifier:@"SRHomeTableCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SRHomeTableCell"];
+    }
+    
+   
+    
+//    cell.panolsImageView.layer.cornerRadius = 7.0;
+//    
+//    cell.panolsImageView.layer.shadowOpacity = 1.00f;
+//    cell.panolsImageView.layer.shadowOffset = CGSizeMake(10,10);
+//    cell.panolsImageView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+//    cell.panolsImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.panolsImageView.bounds].CGPath;
+    
+    
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(SRHomeTableCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    // To-DO Remove this shit
+    if (indexPath.row>0)
+        cell.panolsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"temp%ld",indexPath.row]];
+    else
+        cell.panolsImageView.image = [UIImage imageNamed:@"panormaImage"];
+    
+    cell.imageName.text = _fakeNames[indexPath.row];
+    
+    cell.contentBackgroundView.layer.masksToBounds = YES;
+    //cell.contentBackgroundView.layer.cornerRadius = 7.0;
+    
+    cell.panolsImageView.layer.cornerRadius = 7.0;
+    cell.panolsImageView.layer.masksToBounds = YES;
+    cell.contentBackgroundView.layer.masksToBounds = YES;
+    cell.contentView.layer.masksToBounds = YES;
+    cell.layer.masksToBounds = YES;
+    
+    cell.panolsImageView.layer.shadowOpacity = 1.00f;
+    cell.panolsImageView.layer.shadowOffset = CGSizeMake(1,0);
+    cell.panolsImageView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+    cell.panolsImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 - (BOOL)saveToAlbum:(NSData*)data{
     __block BOOL retStat = false;

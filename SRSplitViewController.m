@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *navTitle;
 @property (weak, nonatomic) IBOutlet UIView *tabBarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+
 @property (nonatomic, assign) CGImageRef inputCGImage;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) UIImage *image;

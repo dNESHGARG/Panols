@@ -41,6 +41,12 @@
 		CB0BE6031C60A18700E24DFC /* SRSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE5FF1C60A18700E24DFC /* SRSplitViewController.xib */; };
 		CB0BE6041C60A18700E24DFC /* SRSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE5FF1C60A18700E24DFC /* SRSplitViewController.xib */; };
 		CB0BE6051C60A18700E24DFC /* SRSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE5FF1C60A18700E24DFC /* SRSplitViewController.xib */; };
+		CB0BE60A1C6609FB00E24DFC /* SRHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0BE6081C6609FB00E24DFC /* SRHomeTableCell.m */; };
+		CB0BE60B1C6609FB00E24DFC /* SRHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0BE6081C6609FB00E24DFC /* SRHomeTableCell.m */; };
+		CB0BE60C1C6609FB00E24DFC /* SRHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0BE6081C6609FB00E24DFC /* SRHomeTableCell.m */; };
+		CB0BE60D1C6609FB00E24DFC /* SRHomeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE6091C6609FB00E24DFC /* SRHomeTableCell.xib */; };
+		CB0BE60E1C6609FB00E24DFC /* SRHomeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE6091C6609FB00E24DFC /* SRHomeTableCell.xib */; };
+		CB0BE60F1C6609FB00E24DFC /* SRHomeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0BE6091C6609FB00E24DFC /* SRHomeTableCell.xib */; };
 		CB0EF4F21C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */; };
 		CB0EF4F31C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */; };
 		CB0EF4F41C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */; };
@@ -134,6 +140,9 @@
 		CB0BE5FD1C60A18700E24DFC /* SRSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSplitViewController.h; sourceTree = "<group>"; };
 		CB0BE5FE1C60A18700E24DFC /* SRSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSplitViewController.m; sourceTree = "<group>"; };
 		CB0BE5FF1C60A18700E24DFC /* SRSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRSplitViewController.xib; sourceTree = "<group>"; };
+		CB0BE6071C6609FB00E24DFC /* SRHomeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHomeTableCell.h; sourceTree = "<group>"; };
+		CB0BE6081C6609FB00E24DFC /* SRHomeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHomeTableCell.m; sourceTree = "<group>"; };
+		CB0BE6091C6609FB00E24DFC /* SRHomeTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRHomeTableCell.xib; sourceTree = "<group>"; };
 		CB0EF4EF1C5623D600135724 /* SRPanoramaImageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRPanoramaImageDetailsViewController.h; path = ../SRPanoramaImageDetailsViewController.h; sourceTree = "<group>"; };
 		CB0EF4F01C5623D600135724 /* SRPanoramaImageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRPanoramaImageDetailsViewController.m; path = ../SRPanoramaImageDetailsViewController.m; sourceTree = "<group>"; };
 		CB0EF4F11C5623D600135724 /* SRPanoramaImageDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRPanoramaImageDetailsViewController.xib; path = ../SRPanoramaImageDetailsViewController.xib; sourceTree = "<group>"; };
@@ -248,6 +257,16 @@
 			name = "Split Controller";
 			sourceTree = "<group>";
 		};
+		CB0BE6061C6609DD00E24DFC /* Home Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CB0BE6071C6609FB00E24DFC /* SRHomeTableCell.h */,
+				CB0BE6081C6609FB00E24DFC /* SRHomeTableCell.m */,
+				CB0BE6091C6609FB00E24DFC /* SRHomeTableCell.xib */,
+			);
+			name = "Home Table Cell";
+			sourceTree = "<group>";
+		};
 		CB0EF4F81C574EB100135724 /* Metadata Table Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +288,7 @@
 		CB9F19B21BBBC0ED0000B8E7 = {
 			isa = PBXGroup;
 			children = (
+				CB0BE6061C6609DD00E24DFC /* Home Table Cell */,
 				CB0BE5FC1C60A16200E24DFC /* Split Controller */,
 				CB029C881C5CA6B6001B621A /* MapKit.framework */,
 				CB029C841C5C8FB1001B621A /* Utilities */,
@@ -475,6 +495,7 @@
 				8A7496951C3DAEAD00D5F5EE /* SF-Compact-Text-Semibold.otf in Resources */,
 				8A7496961C3DAEAD00D5F5EE /* SF-Compact-Text-SemiboldItalic.otf in Resources */,
 				CB5CCB9F1BBD67E300ED76EA /* SRHomeViewController.xib in Resources */,
+				CB0BE60D1C6609FB00E24DFC /* SRHomeTableCell.xib in Resources */,
 				8A7496551C3D96B300D5F5EE /* SRPanormaImageCell.xib in Resources */,
 				CBEEDAA71C4CD1C30083F0A5 /* SRPanoramaHeaderView.xib in Resources */,
 				CB0EF4FF1C574EDF00135724 /* SRImageDetailsCell.xib in Resources */,
@@ -492,6 +513,7 @@
 				CB0EF4F61C5623D600135724 /* SRPanoramaImageDetailsViewController.xib in Resources */,
 				CB0EF5001C574EDF00135724 /* SRImageDetailsCell.xib in Resources */,
 				CB0BE6041C60A18700E24DFC /* SRSplitViewController.xib in Resources */,
+				CB0BE60E1C6609FB00E24DFC /* SRHomeTableCell.xib in Resources */,
 				CB0EF5121C574F3700135724 /* SRImageLocationInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +527,7 @@
 				CB0EF4F71C5623D600135724 /* SRPanoramaImageDetailsViewController.xib in Resources */,
 				CB0EF5011C574EDF00135724 /* SRImageDetailsCell.xib in Resources */,
 				CB0BE6051C60A18700E24DFC /* SRSplitViewController.xib in Resources */,
+				CB0BE60F1C6609FB00E24DFC /* SRHomeTableCell.xib in Resources */,
 				CB0EF5131C574F3700135724 /* SRImageLocationInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +545,7 @@
 				CBEEDAA61C4CD1C30083F0A5 /* SRPanoramaHeaderView.m in Sources */,
 				CB0BE6001C60A18700E24DFC /* SRSplitViewController.m in Sources */,
 				CB0EF4F21C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */,
+				CB0BE60A1C6609FB00E24DFC /* SRHomeTableCell.m in Sources */,
 				CB0EF4FC1C574EDF00135724 /* SRImageDetailsCell.m in Sources */,
 				CB0EF50E1C574F3700135724 /* SRImageLocationInfoCell.m in Sources */,
 				CB0EF5051C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */,
@@ -539,6 +563,7 @@
 			files = (
 				CB0EF5061C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */,
 				CB5CCB9D1BBD67E300ED76EA /* SRHomeViewController.m in Sources */,
+				CB0BE60B1C6609FB00E24DFC /* SRHomeTableCell.m in Sources */,
 				CB0EF4FD1C574EDF00135724 /* SRImageDetailsCell.m in Sources */,
 				CB0EF4F31C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */,
 				CB0BE6011C60A18700E24DFC /* SRSplitViewController.m in Sources */,
@@ -553,6 +578,7 @@
 			files = (
 				CB0EF5071C574F0C00135724 /* SRCameraSpecificationsCell.m in Sources */,
 				CB5CCB9E1BBD67E300ED76EA /* SRHomeViewController.m in Sources */,
+				CB0BE60C1C6609FB00E24DFC /* SRHomeTableCell.m in Sources */,
 				CB0EF4FE1C574EDF00135724 /* SRImageDetailsCell.m in Sources */,
 				CB0EF4F41C5623D600135724 /* SRPanoramaImageDetailsViewController.m in Sources */,
 				CB0BE6021C60A18700E24DFC /* SRSplitViewController.m in Sources */,
