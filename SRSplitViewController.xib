@@ -21,7 +21,12 @@
                 <outlet property="scrollView" destination="D2U-iZ-8Cs" id="oIJ-PH-cOA"/>
                 <outlet property="scrollViewBottomView" destination="GNf-xO-J7I" id="3b6-tY-VG6"/>
                 <outlet property="scrollViewTopView" destination="67Q-Te-q5b" id="uIb-Qb-7c7"/>
+                <outlet property="smallImageView" destination="kVL-Wl-9nz" id="PHV-nu-RHx"/>
                 <outlet property="splitCropView" destination="O1B-qw-EdJ" id="BLS-iW-9ec"/>
+                <outlet property="straightCancel" destination="EEz-8r-I55" id="HhQ-AV-SDw"/>
+                <outlet property="straightDone" destination="65o-J2-4mk" id="9NZ-Oc-L3p"/>
+                <outlet property="straightScaleView" destination="uh2-p2-NOW" id="W4F-iC-Cas"/>
+                <outlet property="straightenBackgroundView" destination="Kfx-Vm-BjU" id="DgJ-gw-pfa"/>
                 <outlet property="straightenButton" destination="L1L-2M-SnW" id="f3H-yG-0Sj"/>
                 <outlet property="tabBarView" destination="8As-Pb-bbX" id="iFO-VK-Tu7"/>
                 <outlet property="translucentView" destination="NZh-jv-vjy" id="zis-VN-gmg"/>
@@ -69,7 +74,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="tUf-DU-5Mq">
-                    <rect key="frame" x="0.0" y="107" width="375" height="411"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -104,6 +109,50 @@
                                 <action selector="fillButtonTapped:" destination="-1" eventType="touchUpInside" id="ELX-7j-i9k"/>
                             </connections>
                         </button>
+                        <view hidden="YES" contentMode="scaleToFill" id="Kfx-Vm-BjU">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                            <subviews>
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="uh2-p2-NOW">
+                                    <rect key="frame" x="0.0" y="75" width="375" height="75"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scale" id="st3-J1-vlv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </scrollView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="65o-J2-4mk">
+                                    <rect key="frame" x="301" y="29" width="50" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                    <state key="normal" title="Yes">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EEz-8r-I55">
+                                    <rect key="frame" x="13" y="27" width="50" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                    <state key="normal" title="No">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="straightCancelButtonTapped:" destination="-1" eventType="touchUpInside" id="ASN-Tg-2uw"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w2d-Kx-J01">
+                                    <rect key="frame" x="166" y="46" width="42" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -139,7 +188,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="avs-4E-0qy">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="avs-4E-0qy" userLabel="Big Image">
+                    <rect key="frame" x="0.0" y="84" width="375" height="291"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kVL-Wl-9nz" userLabel="Small Image">
                     <rect key="frame" x="0.0" y="84" width="375" height="291"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -159,6 +213,7 @@
         <image name="button-straighten" width="135" height="113"/>
         <image name="navigation-button-back" width="10" height="17"/>
         <image name="navigation-header" width="375" height="107"/>
+        <image name="scale" width="2248" height="168"/>
         <image name="splitUI-crop" width="364" height="124"/>
     </resources>
 </document>

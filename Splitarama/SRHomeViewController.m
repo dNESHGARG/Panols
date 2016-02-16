@@ -120,7 +120,6 @@
     self.tableHeaderView.panoramasCollectionView.delegate =  self;
     self.tableHeaderView.panoramasCollectionView.dataSource = self;
     
-    
 }
 
 - (void)dealloc{
