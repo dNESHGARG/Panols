@@ -189,7 +189,7 @@
                 <view contentMode="scaleToFill" id="67Q-Te-q5b">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="0.9003490691489362" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="0.75105274822695034" colorSpace="calibratedRGB"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splitUI-crop" id="O1B-qw-EdJ">
                     <rect key="frame" x="0.0" y="271" width="375" height="125"/>
@@ -198,7 +198,7 @@
                 <view contentMode="scaleToFill" id="GNf-xO-J7I">
                     <rect key="frame" x="0.0" y="396" width="375" height="271"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="0.89543439716312057" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="0.75140181737588652" colorSpace="calibratedRGB"/>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="dAP-c6-EeV">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
