@@ -48,7 +48,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *navigationLogo;
 
 @property (nonatomic, strong) NSMutableArray *galleryImages;
-@property (nonatomic, strong) NSMutableArray *galleryFavoriteImages;
+@property (nonatomic, strong) NSMutableArray *panolsImages;
 @property (nonatomic, strong) NSMutableArray *panolImages;
 
 @property (strong, nonatomic) IBOutlet UIView *imagebackgrounView;
@@ -85,7 +85,9 @@
     //self.imageView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1.0];
     
     self.galleryImages = [[NSMutableArray alloc] init];
+    self.panolImages = [[NSMutableArray alloc] init];
     [self getGallery];
+    [self getPanolsImages];
     
     [self.tableView setBackgroundView:nil];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
@@ -96,7 +98,7 @@
                                                       owner:self
                                                     options:nil];
     
-    self.tableHeaderView = [ nibViews objectAtIndex:0];
+    self.tableHeaderView = [nibViews objectAtIndex:0];
     
     //UIView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"SRPanoramaHeaderView"];
     self.tableView.tableHeaderView = self.tableHeaderView;
@@ -159,6 +161,41 @@
     
     [self.tableHeaderView.panoramasCollectionView reloadData];
 
+}
+
+- (void)getPanolsImages{
+    PHFetchOptions *userAlbumsOptions = [PHFetchOptions new];
+    userAlbumsOptions.predicate = [NSPredicate predicateWithFormat:@"estimatedAssetCount > 0"];
+    
+    PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:userAlbumsOptions];
+    
+    [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+        NSLog(@"album title %@", collection.localizedTitle);
+        if([collection.localizedTitle isEqualToString:@"Panols Gallery"])
+        {
+            PHFetchResult *fetchResult;
+            PHFetchOptions *options = [[PHFetchOptions alloc] init];
+            options.wantsIncrementalChangeDetails = YES;
+            options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+            options.predicate = [NSPredicate predicateWithFormat:@"mediaType == %d", PHAssetMediaTypeImage];
+           
+            fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
+            
+                    //        [fetchResult enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
+                    //            NSLog(@"MyAsset %@", asset);
+                    //
+                    //            [self.galleryImages addObject:asset];
+                    //        }];
+            
+                for (PHAsset *asset in fetchResult) {
+                    [self.panolImages addObject:asset];
+                }
+            
+            [self.tableView reloadData];
+        }
+    }];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -627,7 +664,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6.0;
+    return self.panolImages.count;
 }
 
 
@@ -657,12 +694,19 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(SRHomeTableCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
 
     // To-DO Remove this shit
-    if (indexPath.row>0)
-        cell.panolsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"temp%ld",indexPath.row]];
-    else
-        cell.panolsImageView.image = [UIImage imageNamed:@"panormaImage"];
+//    if (indexPath.row>0)
+//        cell.panolsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"temp%ld",indexPath.row]];
+//    else
+//        cell.panolsImageView.image = [UIImage imageNamed:@"panormaImage"];
     
-    cell.imageName.text = _fakeNames[indexPath.row];
+    PHAsset *asset = self.panolImages[indexPath.row];
+    //PHImageManager *imageManager;
+    CGSize size = CGSizeMake(325.0, 101.0);
+    [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+        cell.panolsImageView.image = result;
+    }];
+    
+    cell.imageName.text = _fakeNames[indexPath.row%6];
     
     cell.contentBackgroundView.layer.masksToBounds = YES;
     //cell.contentBackgroundView.layer.cornerRadius = 7.0;

@@ -12,19 +12,13 @@
 @interface SRSplitViewController ()<UIScrollViewDelegate, UIDocumentInteractionControllerDelegate>
 {
     CGPoint _topScrollContentOffset;
-    CGFloat xAspect;
-    CGFloat yAspect;
-    
-    CGFloat xMove;
-    CGFloat yMove;
+
 }
 @property (weak, nonatomic) IBOutlet UIView *navHeader;
 @property (weak, nonatomic) IBOutlet UILabel *navTitle;
 @property (weak, nonatomic) IBOutlet UIView *tabBarView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-
-@property (nonatomic, assign) CGImageRef inputCGImage;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) CGFloat aspectRatio;
@@ -35,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *splitCropView;
 @property (strong, nonatomic) IBOutlet UIView *translucentView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (nonatomic, strong) UIScrollView *topScrollView;
+@property (nonatomic, strong) IBOutlet UIScrollView *topScrollView;
 @property (nonatomic, assign) CGRect straightenRect;
 @property (weak, nonatomic) IBOutlet UIImageView *smallImageView;
 
@@ -50,6 +44,7 @@
 @property (nonatomic, assign) BOOL  isFillOn;
 
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
+
 @property (strong, nonatomic) IBOutlet UIView *straightenBackgroundView;
 @property (weak, nonatomic) IBOutlet UIButton *straightDone;
 @property (weak, nonatomic) IBOutlet UIButton *straightCancel;
@@ -65,87 +60,25 @@
     
     if (self != nil)
     {
-        self.inputCGImage = cgImage;
         self.image = metaData.image;
-        
-        self.width = CGImageGetWidth(self.inputCGImage);
-        self.height = CGImageGetHeight(self.inputCGImage);
-        self.aspectRatio = self.width/self.height;
     }
     
     return self;
 }
 
-- (void)dealloc{
-    CFRelease(self.inputCGImage);
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
-    //self.imageView.image = self.image;
     
-    //self.contentView.frame = self.view.frame;//CGRectMake(0.0, 87.0, self.view.frame.size.width, self.view.frame.size.height-107-self.tabBarView.frame.size.height+20.0);
+    [self contentViewLayout];
+    [self translucentViewLayout];
     
-    self.scrollView.frame = self.contentView.frame;//CGRectMake(0.0, 0.0, self.contentView.frame.size.width, self.contentView.frame.size.height + 40.0);
-    //self.scrollView.frame = CGRectMake(0.0, -40.0, self.contentView.frame.size.width, self.contentView.frame.size.height + 80.0);
-    //self.scrollView.center =  self.view.center;
-    
-    [self.scrollView setContentSize:(CGSizeMake(291.0*self.aspectRatio, self.view.frame.size.height+200))];
-    
-    //self.height = self.imageView.frame.size.height;
-    //self.width = self.imageView.frame.size.width;
     self.straightenRect = CGRectMake(0.0, self.scrollView.center.y - 291/2 -20.0, self.imageView.frame.size.width, self.imageView.frame.size.height);
-    //self.imageView.frame = self.straightenRect;
-    self.imageView.frame = CGRectMake(0.0, self.scrollView.center.y - 40.0, self.scrollView.contentSize.width, 291.0);
-    self.imageView.image = self.image;
-    //self.smallImageView.frame = self.straightenRect;
+  
     self.smallImageView.image = self.image;
     
-    self.imageView.center = self.scrollView.center;
-    self.smallImageView.center = self.scrollView.center;
-    
-    xAspect = self.width/self.imageView.frame.size.width;
-    yAspect = self.height/self.imageView.frame.size.height;
-    //self.imageView.frame = CGRectMake(0.0, 0.0, self.scrollView.contentSize.width, 291.0);
-    
-//    self.scrollViewTopView.frame = CGRectMake(0.0, 0.0, self.scrollView.contentSize.width, self.scrollViewTopView.frame.size.height);
-//    self.scrollViewBottomView.frame = CGRectMake(0.0, self.scrollViewBottomView.frame.origin.y, self.scrollView.contentSize.width, self.scrollViewBottomView.frame.size.height);
-//    
-    
-    //self.scrollView.center = self.view.center;
     //self.imageView.center = self.scrollView.center;
-    
-    self.translucentView.frame = self.contentView.frame;//CGRectMake(0.0, 0.0, self.contentView.frame.size.width, self.contentView.frame.size.height+40.0);
-    self.translucentView.center = self.scrollView.center;
-    self.splitCropView.center = self.translucentView.center;
-    self.scrollViewTopView.frame = CGRectMake(0.0, 0.0, self.translucentView.frame.size.width, self.translucentView.frame.size.height/2 -self.splitCropView.frame.size.height/2);
-    self.scrollViewBottomView.frame = CGRectMake(0.0, self.translucentView.frame.size.height/2 +self.splitCropView.frame.size.height/2, self.translucentView.frame.size.width, self.translucentView.frame.size.height/2-self.splitCropView.frame.size.height/2);
-    
-    //self.imageView.center = CGPointMake(self.scrollView.center.x, self.scrollView.center.y);
-    //self.translucentView.center = self.view.center;
-    //[self addGestureRecognizersToPiece:self.scrollViewTopView];
-    self.topScrollView = [[UIScrollView alloc] init];
-    self.topScrollView.frame = self.translucentView.frame;
-    self.topScrollView.contentSize = self.scrollView.contentSize;
-    NSLog(@"Content size: %f", self.scrollView.contentSize.height);
-    [self.translucentView addSubview:self.topScrollView];
-    self.topScrollView.backgroundColor = [UIColor clearColor];
-    self.topScrollView.delegate = self;
-    self.topScrollView.center = self.scrollView.center;
-
-    [self.contentView addSubview:self.scrollView];
-    [self.contentView addSubview:self.translucentView];
-    
-    
-    self.topScrollView.showsHorizontalScrollIndicator = NO;
-    self.topScrollView.showsVerticalScrollIndicator = NO;
-    // Do any additional setup after loading the view from its nib.
-    
-    self.contentView.backgroundColor = [UIColor clearColor];
-    self.scrollView.backgroundColor = [UIColor clearColor];
-    self.translucentView.backgroundColor = [UIColor clearColor];
-    
+    self.smallImageView.center = self.scrollView.center;
     
     self.isFillOn = NO;
     
@@ -157,6 +90,83 @@
     
 }
 
+- (void)contentViewLayout {
+    self.imageView.image = self.image;
+    
+    self.scrollView.frame = self.imageView.frame;
+    self.scrollView.contentSize = self.imageView.bounds.size;
+    
+    self.scrollView.backgroundColor = [UIColor clearColor];
+    
+    
+    
+    [self.contentView addSubview:self.scrollView];
+    
+    
+    self.scrollView.center = CGPointMake(self.contentView.frame.size.width/2, self.contentView.frame.size.height/2);
+        // Do any additional setup after loading the view from its nib.
+
+}
+
+- (void)translucentViewLayout {
+    
+    
+    self.translucentView.frame = self.contentView.frame;//CGRectMake(0.0, 0.0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    
+    self.topScrollView.frame = self.scrollView.frame;//self.translucentView.frame;
+    self.topScrollView.contentSize = self.scrollView.contentSize;
+    NSLog(@"Content size: %f", self.scrollView.contentSize.height);
+    [self.translucentView addSubview:self.topScrollView];
+    self.topScrollView.delegate = self;
+    
+    self.topScrollView.center = self.scrollView.center;
+    
+//    CGSize rect = [self sizeOfImage:self.image inAspectFitImageView:self.imageView];
+//    
+//    
+//    CGFloat rectWidth = rect.width;
+//    CGFloat rectHeight =  rect.height;
+    
+    self.splitCropView.center =  CGPointMake(self.imageView.center.x, self.imageView.center.y);
+    
+    CGFloat height = self.topScrollView.frame.size.height/2 - self.splitCropView.frame.size.height/2;
+    self.scrollViewTopView.frame = CGRectMake(0.0, 0.0, self.topScrollView.contentSize.width, height);
+    self.scrollViewBottomView.frame = CGRectMake(0.0, self.topScrollView.frame.size.height/2 + self.splitCropView.frame.size.height/2, self.scrollView.contentSize.width, self.view.frame.size.height/2);
+    
+    self.topScrollView.showsHorizontalScrollIndicator = NO;
+    self.topScrollView.showsVerticalScrollIndicator = NO;
+    
+    [self.view addSubview:self.translucentView];
+}
+
+- (CGSize)sizeOfImage:(UIImage*)image inAspectFitImageView:(UIImageView*)imageView
+{
+    CGFloat imageViewWidth = imageView.bounds.size.width;
+    CGFloat imageViewHeight = imageView.bounds.size.height;
+    
+    CGFloat imageWidth = image.size.width;
+    CGFloat imageHeight = image.size.height;
+    
+    CGFloat scaleFactor = MIN(imageViewWidth / imageWidth, imageViewHeight / imageHeight);
+    
+    return CGSizeMake(image.size.width*scaleFactor, image.size.height*scaleFactor);
+}
+
+- (void)setZoomScales {
+    self.scrollView.minimumZoomScale = 1.0;//minScale;
+    self.scrollView.zoomScale = 1.0;
+    self.scrollView.maximumZoomScale = 4.0;
+    
+    self.topScrollView.minimumZoomScale = 1.0;//minScale;
+    self.topScrollView.zoomScale = 1.0;
+    self.topScrollView.maximumZoomScale = 4.0;
+}
+
+- (void)viewWillLayoutSubviews {
+    [self setZoomScales];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
@@ -166,6 +176,89 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// cropping
+
+-(UIImage*)cropImage:(CGRect)rect{
+    
+    // F = frame
+    // i = image
+    // iv = imageview
+    // sv = self.view
+    // of = offset
+    
+    //Frame Image in imageView coordinates
+    //UIButton *button = sender;
+    CGRect Fi_iv = [self frameForImage:self.image inImageViewAspectFit:self.imageView];
+    
+    //Frame ImageView in self.view coordinates
+    CGRect Fiv_sv = self.imageView.frame;
+    
+    //Frame Image in self.view coordinates
+    CGRect Fi_sv = CGRectMake(Fi_iv.origin.x + Fiv_sv.origin.x
+                              ,Fi_iv.origin.y + Fiv_sv.origin.y,
+                              Fi_iv.size.width, Fi_iv.size.height);
+    //ScrollView offset
+    CGPoint offset = self.scrollView.contentOffset;
+    
+    //Frame Image in offset coordinates
+    CGRect Fi_of = CGRectMake(Fi_sv.origin.x - offset.x,
+                              Fi_sv.origin.y - offset.y,
+                              Fi_sv.size.width,
+                              Fi_sv.size.height);
+    
+    CGFloat scale = self.imageView.image.size.width/Fi_of.size.width;
+    
+    //the crop frame in image offset coordinates
+    CGRect Fcrop_iof = CGRectMake((rect.origin.x - Fi_of.origin.x)*scale,
+                                  (rect.origin.y - Fi_of.origin.y)*scale,
+                                  rect.size.width*scale,
+                                  rect.size.height*scale);
+    
+    UIImage *image = [self image:self.imageView.image cropRect:Fcrop_iof];
+    
+    return image;
+}
+
+-(UIImage*)image:(UIImage *)image cropRect:(CGRect)frame
+{
+    // Create a new UIImage
+    CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    return croppedImage;
+}
+
+-(CGRect)frameForImage:(UIImage*)image inImageViewAspectFit:(UIImageView*)imageView
+{
+    float imageRatio = image.size.width / image.size.height;
+    
+    float viewRatio = imageView.frame.size.width / imageView.frame.size.height;
+    
+    if(imageRatio < viewRatio)
+    {
+        float scale = imageView.frame.size.height / image.size.height;
+        
+        float width = scale * image.size.width;
+        
+        float topLeftX = (imageView.frame.size.width - width) * 0.5;
+        
+        return CGRectMake(topLeftX, 0, width, imageView.frame.size.height);
+    }
+    else
+    {
+        float scale = imageView.frame.size.width / image.size.width;
+        
+        float height = scale * image.size.height;
+        
+        float topLeftY = (imageView.frame.size.height - height) * 0.5;
+        
+        return CGRectMake(0, topLeftY, imageView.frame.size.width, height);
+    }
+}
+
+// cropping
 
 
 #pragma mark --
@@ -193,40 +286,40 @@
 }
 
 - (IBAction)fillButtonTapped:(id)sender {
-    if(!self.isFillOn)
-    {
-//        NSLog(@"***************   3   ***********************************************************");
-//        NSLog(@"SCROLL VIEW Center y: %f",self.scrollView.center.y);
-//        NSLog(@"Image View VIEW Center y: %f",self.imageView.center.y);
-//        NSLog(@"too scroll View VIEW Center y: %f",self.topScrollView.center.y);
-//        NSLog(@"Content VIEW Center y: %f",self.contentView.center.y);
-//        NSLog(@"transclucent View VIEW Center y: %f",self.translucentView.center.y);
+//    if(!self.isFillOn)
+//    {
+////        NSLog(@"***************   3   ***********************************************************");
+////        NSLog(@"SCROLL VIEW Center y: %f",self.scrollView.center.y);
+////        NSLog(@"Image View VIEW Center y: %f",self.imageView.center.y);
+////        NSLog(@"too scroll View VIEW Center y: %f",self.topScrollView.center.y);
+////        NSLog(@"Content VIEW Center y: %f",self.contentView.center.y);
+////        NSLog(@"transclucent View VIEW Center y: %f",self.translucentView.center.y);
+////        
+////        self.imageView.frame = CGRectMake(0.0, self.scrollView.center.y - 40.0, self.scrollView.contentSize.width, 291.0);
+////        self.imageView.image = self.image;
+////        
+//        self.isFillOn = YES;
+//        self.imageView.hidden = NO;
+//        self.smallImageView.hidden = YES;
+//        self.topScrollView.contentOffset = _topScrollContentOffset;
+//    }
+//    else
+//    {
+////        NSLog(@"***************   2   ***********************************************************");
+////        NSLog(@"SCROLL VIEW Center y: %f",self.scrollView.center.y);
+////        NSLog(@"Image View VIEW Center y: %f",self.imageView.center.y);
+////        NSLog(@"too scroll View VIEW Center y: %f",self.topScrollView.center.y);
+////        NSLog(@"Content VIEW Center y: %f",self.contentView.center.y);
+////        NSLog(@"transclucent View VIEW Center y: %f",self.translucentView.center.y);
+////        self.imageView.frame = CGRectMake(0.0, self.scrollView.center.y - 40.0, self.view.frame.size.width, 291.);
 //        
-//        self.imageView.frame = CGRectMake(0.0, self.scrollView.center.y - 40.0, self.scrollView.contentSize.width, 291.0);
-//        self.imageView.image = self.image;
+//        self.imageView.hidden = YES;
+//        self.smallImageView.hidden = NO;
 //        
-        self.isFillOn = YES;
-        self.imageView.hidden = NO;
-        self.smallImageView.hidden = YES;
-        self.topScrollView.contentOffset = _topScrollContentOffset;
-    }
-    else
-    {
-//        NSLog(@"***************   2   ***********************************************************");
-//        NSLog(@"SCROLL VIEW Center y: %f",self.scrollView.center.y);
-//        NSLog(@"Image View VIEW Center y: %f",self.imageView.center.y);
-//        NSLog(@"too scroll View VIEW Center y: %f",self.topScrollView.center.y);
-//        NSLog(@"Content VIEW Center y: %f",self.contentView.center.y);
-//        NSLog(@"transclucent View VIEW Center y: %f",self.translucentView.center.y);
-//        self.imageView.frame = CGRectMake(0.0, self.scrollView.center.y - 40.0, self.view.frame.size.width, 291.);
-        
-        self.imageView.hidden = YES;
-        self.smallImageView.hidden = NO;
-        
-        self.isFillOn = NO;
-        self.topScrollView.contentOffset = _topScrollContentOffset;
-
-    }
+//        self.isFillOn = NO;
+//        self.topScrollView.contentOffset = _topScrollContentOffset;
+//
+//    }
 }
 
 - (IBAction)exportButtonTapped:(id)sender {
@@ -252,14 +345,15 @@
 - (IBAction)straightCancelButtonTapped:(id)sender {
 }
 
-#pragma mark --
+#pragma mark - UIScrollViewDelegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageView;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.topScrollView){
         self.scrollView.contentOffset = self.topScrollView.contentOffset;
-        xMove = scrollView.contentOffset.x;
-        yMove = scrollView.contentOffset.y;
-        NSLog(@"self scrollView contentOffset: X = %f, Y = %f, ",self.scrollView.contentOffset.x, self.scrollView.contentOffset.y);
-
     }
 
 }
@@ -276,36 +370,7 @@
     if (self.rightImage)
         self.rightImage = nil;
     
-    if (!self.inputCGImage)
-        return;
-    
-    
-    //self.width = CGImageGetWidth(self.inputCGImage);
-    //self.height = CGImageGetHeight(self.inputCGImage);
-    
-    //CGRect leftImgFrame = CGRectMake(0, 0, self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height);
-    //CGRect middleImgFrame = CGRectMake(self.splitCropView.frame.size.width/3, 0, self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height);
-    //CGRect rightImgFrame = CGRectMake(2*self.splitCropView.frame.size.width/3, 0, self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height);
-    
-    CGFloat width = xAspect * self.splitCropView.frame.size.width/3;//CGImageGetWidth(self.inputCGImage);
-    CGFloat height = yAspect * self.splitCropView.frame.size.height;//CGImageGetHeight(self.inputCGImage);
-    
-    CGFloat x = xAspect * xMove;
-    
     CGFloat y;
-    
-    if (yMove > 0)
-        y = (self.imageView.frame.size.height - yMove) * yAspect;
-    
-    else if (yMove < 0)
-        y = (0 - yMove) * yAspect;
-    
-    //CGFloat y = yAspect * yMove;
-    
-    CGRect leftImgFrame = CGRectMake(x, y, width, height);
-    CGRect middleImgFrame = CGRectMake(x + width, y, width, height);
-    CGRect rightImgFrame = CGRectMake(x + 2*width, y, width, height);
-    
     
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(self.splitCropView.frame.origin.x, 0.0 , self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height)];
     leftButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
@@ -329,21 +394,26 @@
     [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(rightButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
+    [self createImages];
+
+}
+
+- (void)createImages {
+    UIImage *panolsImage = [self cropImage:self.splitCropView.frame];
+    // Save panols Image to Panols Album
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self saveImageToPanolsGallery:panolsImage];
+    });
     
-    CGImageRef left = CGImageCreateWithImageInRect(self.inputCGImage, leftImgFrame);
-    CGImageRef middle = CGImageCreateWithImageInRect(self.inputCGImage, middleImgFrame);
-    CGImageRef right = CGImageCreateWithImageInRect(self.inputCGImage, rightImgFrame);
+    CGRect leftRect = CGRectMake(self.splitCropView.frame.origin.x, self.splitCropView.frame.origin.y , self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height);
     
-    self.leftImage = [UIImage imageWithCGImage:left];
-    self.middleImage = [UIImage imageWithCGImage:middle];
-    self.rightImage = [UIImage imageWithCGImage:right];
+    CGRect middleRect = CGRectMake(self.splitCropView.frame.size.width/3, self.splitCropView.frame.origin.y , self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height);
     
+    CGRect rightRect = CGRectMake(2*self.splitCropView.frame.size.width/3, self.splitCropView.frame.origin.y , self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height);
     
-    CGImageRelease(left);
-    CGImageRelease(middle);
-    CGImageRelease(right);
-    CGImageRelease(self.inputCGImage);
-    
+    self.leftImage = [self cropImage:leftRect];
+    self.middleImage =[self cropImage:middleRect];
+    self.rightImage = [self cropImage:rightRect];
 }
 
 - (IBAction)clearButtonTapped:(id)sender {
@@ -373,56 +443,32 @@
 - (void)leftButtonTapped:(UIButton*)sender {
     //[self writeMetadataToCreatedImage:self.leftImage];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //UIImageWriteToSavedPhotosAlbum(self.leftImage, nil, nil, nil);
-        //[UIImagePNGRepresentation(self.leftImage) writeToFile:[self pathForPanolsDirectory:[self dateString]] atomically:YES];
-        [self saveImageToPanolsGallery:self.leftImage];
-        UIButton* myButton = (UIButton*)sender;
-        [sender setTitle:@"Saved" forState:UIControlStateNormal];
+        [self saveCroppedImage:self.leftImage];
     });
-    //[self shareOnInstagram:self.leftImage];
+    
+    UIButton* myButton = (UIButton*)sender;
+    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
 }
 
 - (IBAction)middleButtonTapped:(id)sender {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //UIImageWriteToSavedPhotosAlbum(self.middleImage, nil, nil, nil);
-        //[UIImagePNGRepresentation(self.middleImage) writeToFile:[self pathForPanolsDirectory:[self dateString]] atomically:YES];
-        [self saveImageToPanolsGallery:self.middleImage];
-        UIButton* myButton = (UIButton*)sender;
-        [myButton setTitle:@"Saved" forState:UIControlStateNormal];
+        [self saveCroppedImage:self.middleImage];
     });
-    //[self shareOnInstagram:self.middleImage];
+    
+    UIButton* myButton = (UIButton*)sender;
+    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
 }
 
 - (IBAction)rightButtonTapped:(id)sender {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //UIImageWriteToSavedPhotosAlbum(self.rightImage, nil, nil, nil);
-        //[UIImagePNGRepresentation(self.rightImage) writeToFile:[self pathForPanolsDirectory:[self dateString]] atomically:YES];
-        [self saveImageToPanolsGallery:self.rightImage];
-        UIButton* myButton = (UIButton*)sender;
-        [myButton setTitle:@"Saved" forState:UIControlStateNormal];
+        [self saveCroppedImage:self.rightImage];
     });
-    //[self shareOnInstagram:self.rightImage];
+   
+    UIButton* myButton = (UIButton*)sender;
+    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
 }
 
 - (NSString *)pathForPanolsDirectory:(NSString *)fileName {
-    //    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-    //                                                                        NSUserDomainMask,
-    //                                                                        YES) lastObject];
-    //    NSString *panolsPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"/Panols"];
-    //
-    //    // Create the folder if necessary
-    //    BOOL isDir = NO;
-    //    NSFileManager *fileManager = [[NSFileManager alloc] init];
-    //    if (![fileManager fileExistsAtPath:panolsPhotoFolder
-    //                           isDirectory:&isDir] && isDir == NO) {
-    //        [fileManager createDirectoryAtPath:panolsPhotoFolder
-    //               withIntermediateDirectories:NO
-    //                                attributes:nil
-    //                                     error:nil];
-    //    }
-    //    return panolsPhotoFolder;
-    
-    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"/Panols"];
@@ -456,16 +502,6 @@
     
     return dateString;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark --
 
 -(void)saveImageToPanolsGallery:(UIImage*)image{
@@ -490,7 +526,6 @@
         }}];
 }
 
-
 -(PHAssetCollection*)findAlbumAssetCollection:(NSString*)albumName{
     PHAssetCollection *collection;
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
@@ -499,6 +534,22 @@
                                                           subtype:PHAssetCollectionSubtypeAny
                                                           options:fetchOptions].firstObject;
     return collection;
+}
+
+-(void)saveCroppedImage:(UIImage *)image{
+    __block BOOL retStat = false;
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        //PHObjectPlaceholder *placeholder;
+        //placeholder = [[PHAssetChangeRequest creationRequestForAssetFromImage:image] placeholderForCreatedAsset];
+        PHAssetChangeRequest *changeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        //[changeRequest addAssets:@[placeholder]];
+    } completionHandler:^(BOOL success, NSError *error) {
+        if (success){
+            retStat = true;
+        }
+        else{
+            NSLog(@"%@", error);
+        }}];
 }
 
 @end
