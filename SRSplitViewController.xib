@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10109" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SF-Compact-Text-Semibold.otf">
@@ -39,52 +39,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="QhL-qm-nh5">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" image="navigation-header" id="357-wZ-k4r">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Dy-Bf-aXP" userLabel="Back Button">
-                            <rect key="frame" x="0.0" y="34" width="46" height="45"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="navigation-button-back"/>
-                            <connections>
-                                <action selector="backButtontapped:" destination="-1" eventType="touchUpInside" id="E6z-mj-rsl"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAMMOTH LAKES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="nGy-Ms-LAH">
-                            <rect key="frame" x="55" y="42" width="265" height="29"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                            <fontDescription key="fontDescription" name="SFCompactText-Semibold" family="SF Compact Text" pointSize="18"/>
-                            <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <size key="shadowOffset" width="0.0" height="0.0"/>
-                        </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CdT-NK-kof">
-                            <rect key="frame" x="296" y="39" width="71" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                            <state key="normal" title="Clear"/>
-                            <connections>
-                                <action selector="clearButtonTapped:" destination="-1" eventType="touchUpInside" id="DtK-Bx-KSp"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </view>
                 <view contentMode="scaleToFill" id="tUf-DU-5Mq">
-                    <rect key="frame" x="0.0" y="87" width="375" height="474"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="8As-Pb-bbX">
-                    <rect key="frame" x="0.0" y="560" width="375" height="107"/>
+                    <rect key="frame" x="0.0" y="508" width="375" height="159"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L1L-2M-SnW">
-                            <rect key="frame" x="0.0" y="0.0" width="125" height="107"/>
+                            <rect key="frame" x="0.0" y="0.0" width="135" height="113"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal" image="button-straighten"/>
@@ -92,22 +57,22 @@
                                 <action selector="straightenButtonTapped:" destination="-1" eventType="touchUpInside" id="mz9-6d-Ums"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OnM-tq-Hy6">
-                            <rect key="frame" x="250" y="0.0" width="125" height="107"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <state key="normal" image="button-export"/>
-                            <connections>
-                                <action selector="exportButtonTapped:" destination="-1" eventType="touchUpInside" id="fuq-g9-HBA"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Bn-yG-K85">
-                            <rect key="frame" x="125" y="0.0" width="125" height="107"/>
+                            <rect key="frame" x="120" y="0.0" width="135" height="113"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal" image="button-fill"/>
                             <connections>
                                 <action selector="fillButtonTapped:" destination="-1" eventType="touchUpInside" id="ELX-7j-i9k"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OnM-tq-Hy6">
+                            <rect key="frame" x="240" y="0.0" width="135" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="button-export"/>
+                            <connections>
+                                <action selector="exportButtonTapped:" destination="-1" eventType="touchUpInside" id="fuq-g9-HBA"/>
                             </connections>
                         </button>
                         <view hidden="YES" contentMode="scaleToFill" id="Kfx-Vm-BjU">
@@ -155,62 +120,94 @@
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" id="QhL-qm-nh5">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" image="navigation-header" id="357-wZ-k4r">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Dy-Bf-aXP" userLabel="Back Button">
+                            <rect key="frame" x="0.0" y="34" width="46" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="navigation-button-back"/>
+                            <connections>
+                                <action selector="backButtontapped:" destination="-1" eventType="touchUpInside" id="E6z-mj-rsl"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAMMOTH LAKES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="nGy-Ms-LAH">
+                            <rect key="frame" x="55" y="42" width="265" height="29"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                            <fontDescription key="fontDescription" name="SFCompactText-Semibold" family="SF Compact Text" pointSize="18"/>
+                            <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                        </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CdT-NK-kof">
+                            <rect key="frame" x="296" y="39" width="71" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                            <state key="normal" title="Clear"/>
+                            <connections>
+                                <action selector="clearButtonTapped:" destination="-1" eventType="touchUpInside" id="DtK-Bx-KSp"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="477.5" y="479.5"/>
         </view>
-        <view contentMode="scaleToFill" id="NZh-jv-vjy">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" id="67Q-Te-q5b">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59946120689655169" colorSpace="calibratedRGB"/>
-                </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splitUI-crop" id="O1B-qw-EdJ">
-                    <rect key="frame" x="0.0" y="168" width="375" height="125"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                </imageView>
-                <view contentMode="scaleToFill" id="GNf-xO-J7I">
-                    <rect key="frame" x="0.0" y="292" width="375" height="168"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="dAP-c6-EeV">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </scrollView>
-            </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="922.5" y="113"/>
-        </view>
         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="D2U-iZ-8Cs">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="avs-4E-0qy" userLabel="Big Image">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kVL-Wl-9nz" userLabel="Small Image">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
                 <outlet property="delegate" destination="-1" id="v1z-QQ-Mea"/>
             </connections>
-            <point key="canvasLocation" x="899.5" y="674"/>
+            <point key="canvasLocation" x="922.5" y="824.5"/>
         </scrollView>
+        <view contentMode="scaleToFill" id="NZh-jv-vjy">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="67Q-Te-q5b">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="0.75105274822695034" colorSpace="calibratedRGB"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splitUI-crop" id="O1B-qw-EdJ">
+                    <rect key="frame" x="0.0" y="271" width="375" height="125"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" id="GNf-xO-J7I">
+                    <rect key="frame" x="0.0" y="396" width="375" height="271"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="0.75140181737588652" colorSpace="calibratedRGB"/>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="dAP-c6-EeV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </scrollView>
+            </subviews>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="922.5" y="112.5"/>
+        </view>
     </objects>
     <resources>
         <image name="button-export" width="134" height="113"/>
