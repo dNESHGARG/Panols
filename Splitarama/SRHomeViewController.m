@@ -198,10 +198,10 @@
         [self.galleryImages addObject:asset];
     }
     
-    if(self.galleryImages.count == 0)
-        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = NO;
-    else
-        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = YES;
+//    if(self.galleryImages.count == 0)
+//        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = NO;
+//    else
+//        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = YES;
     
     [self.tableHeaderView.panoramasCollectionView reloadData];
 
@@ -235,13 +235,12 @@
         }
     }];
     
-    if(self.panolImages.count == 0)
-    {
-        self.panolsGalleryEmptyLabel.hidden = NO;
-        [self.view bringSubviewToFront:self.panolsGalleryEmptyLabel];
-    }
-    else
-        self.panolsGalleryEmptyLabel.hidden = YES;
+//    if(self.panolImages.count == 0)
+//    {
+//        self.panolsGalleryEmptyLabel.hidden = NO;
+//    }
+//    else
+//        self.panolsGalleryEmptyLabel.hidden = YES;
     
 }
 
@@ -426,16 +425,21 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     //You can retrieve the actual UIImage
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     //NSURL *url =  [info objectForKey:UIImagePickerControllerReferenceURL];
     //[self phpAssetMetadata:url];
     
     [picker dismissViewControllerAnimated:YES completion:^{
-        self.imageView.image = image;
-        self.inputCGImage = [image CGImage];
-        self.data = UIImagePNGRepresentation(image);
-        self.addImageLabel.hidden = YES;
-        self.customButton.enabled = YES;
+        NSURL *photoURL = [info objectForKey:UIImagePickerControllerReferenceURL];
+        NSArray *array = [[NSArray alloc] initWithObjects:photoURL, nil];
+        PHFetchResult* assets =[PHAsset fetchAssetsWithALAssetURLs:array options:nil];
+        for(PHAsset *asset in assets)
+        {
+            //[self.galleryImages insertObject:asset atIndex:0];
+            [self.galleryImages insertObject:asset atIndex:0];
+            SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[0]];
+            [self.navigationController pushViewController:detailsController animated:YES];
+        }
     }];
 }
 
@@ -762,7 +766,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    PHAsset *asset = self.panolImages[indexPath.row];
+    //PHImageManager *imageManager;
+    //[self phpAssetMetadata:asset];
+    SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[indexPath.row]];
+    [self.navigationController pushViewController:detailsController animated:YES];
 }
 
 - (BOOL)saveToAlbum:(NSData*)data{

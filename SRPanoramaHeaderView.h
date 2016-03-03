@@ -10,6 +10,5 @@
 
 @interface SRPanoramaHeaderView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UICollectionView *panoramasCollectionView;
-@property (weak, nonatomic) IBOutlet UILabel *panoramaImagesEmptyLabel;
 
 @end
