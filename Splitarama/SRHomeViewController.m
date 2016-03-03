@@ -62,6 +62,8 @@
 
 @property (assign) BOOL refreshGalleries;
 
+@property (weak, nonatomic) IBOutlet UITableView *panolsGalleryEmptyLabel;
+
 @end
 
 @implementation SRHomeViewController
@@ -196,6 +198,11 @@
         [self.galleryImages addObject:asset];
     }
     
+    if(self.galleryImages.count == 0)
+        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = NO;
+    else
+        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = YES;
+    
     [self.tableHeaderView.panoramasCollectionView reloadData];
 
 }
@@ -224,11 +231,17 @@
                         [self.panolImages addObject:asset];
                     }
                 }
-            
             [self.tableView reloadData];
         }
     }];
-
+    
+    if(self.panolImages.count == 0)
+    {
+        self.panolsGalleryEmptyLabel.hidden = NO;
+        [self.view bringSubviewToFront:self.panolsGalleryEmptyLabel];
+    }
+    else
+        self.panolsGalleryEmptyLabel.hidden = YES;
     
 }
 
@@ -689,7 +702,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 222.0;
+    return 0.0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -710,16 +723,6 @@
         [tableView registerNib:[UINib nibWithNibName:@"SRHomeTableCell" bundle:nil] forCellReuseIdentifier:@"SRHomeTableCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"SRHomeTableCell"];
     }
-    
-   
-    
-//    cell.panolsImageView.layer.cornerRadius = 7.0;
-//    
-//    cell.panolsImageView.layer.shadowOpacity = 1.00f;
-//    cell.panolsImageView.layer.shadowOffset = CGSizeMake(10,10);
-//    cell.panolsImageView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
-//    cell.panolsImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.panolsImageView.bounds].CGPath;
-    
     
     return cell;
     

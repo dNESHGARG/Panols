@@ -35,9 +35,17 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a panorama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bbP-nn-Ql8">
+                    <rect key="frame" x="0.0" y="90" width="375" height="21"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="panoramaImagesEmptyLabel" destination="bbP-nn-Ql8" id="hyr-rC-h18"/>
                 <outlet property="panoramasCollectionView" destination="GLt-SL-hwB" id="LBZ-8h-5nO"/>
             </connections>
             <point key="canvasLocation" x="559.5" y="581"/>
