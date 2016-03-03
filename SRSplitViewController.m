@@ -33,10 +33,6 @@
 @property (nonatomic, assign) CGRect straightenRect;
 @property (weak, nonatomic) IBOutlet UIImageView *smallImageView;
 
-@property (nonatomic, strong) UIImage* leftImage;
-@property (nonatomic, strong) UIImage* middleImage;
-@property (nonatomic, strong) UIImage* rightImage;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
 @property (weak, nonatomic) IBOutlet UIButton *straightenButton;
 @property (weak, nonatomic) IBOutlet UIButton *fillButton;
 @property (weak, nonatomic) IBOutlet UIButton *exportButton;
@@ -50,6 +46,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *straightCancel;
 @property (weak, nonatomic) IBOutlet UIScrollView *straightScaleView;
 
+@property (strong, nonatomic) IBOutlet UIView *exportPanel;
+@property (weak, nonatomic) IBOutlet UIButton *clearExportPanel;
+@property (weak, nonatomic) IBOutlet UIView *imagesSavePanel;
 
 @end
 
@@ -86,7 +85,6 @@
     
     [self.view bringSubviewToFront:self.tabBarView];
     [self.view bringSubviewToFront:self.navHeader];
-    
     
 }
 
@@ -127,6 +125,7 @@
 //    CGFloat rectWidth = rect.width;
 //    CGFloat rectHeight =  rect.height;
     
+//    self.splitCropView.frame = CGRectMake(self.splitCropView.frame.origin.x, self.splitCropView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height/3);
     self.splitCropView.center =  CGPointMake(self.imageView.center.x, self.imageView.center.y);
     
     CGFloat height = self.topScrollView.frame.size.height/2 - self.splitCropView.frame.size.height/2;
@@ -264,15 +263,6 @@
 #pragma mark --
 
 - (IBAction)backButtontapped:(id)sender {
-    self.leftImage = nil;
-    self.middleImage = nil;
-    self.rightImage = nil;
-    
-    NSArray *viewsToRemove = [self.splitCropView subviews];
-    for (UIView *v in viewsToRemove) {
-        [v removeFromSuperview];
-    }
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -323,17 +313,20 @@
 }
 
 - (IBAction)exportButtonTapped:(id)sender {
-    self.clearButton.hidden = NO;
-    [self.view bringSubviewToFront:self.splitCropView];
-    [self splitImage];
-    
-    self.exportButton.enabled = NO;
-    self.fillButton.enabled = NO;
-    self.straightenButton.enabled = NO;
-    self.topScrollView.userInteractionEnabled = NO;
-    
-    self.splitCropView.userInteractionEnabled = YES;
-    
+    //[self.view bringSubviewToFront:self.exportPanel];
+    self.exportPanel.hidden = NO;
+    self.imagesSavePanel.hidden = NO;
+}
+
+//The event handling method
+//- (void)clearExportPanel:(UITapGestureRecognizer *)recognizer {
+//    //[self.exportPanel removeFromSuperview];
+//    self.exportPanel.hidden = YES;
+//}
+
+- (IBAction)clearExportButtonTapped:(id)sender {
+    self.exportPanel.hidden = YES;
+    self.imagesSavePanel.hidden = YES;
 }
 
 #pragma mark --
@@ -357,53 +350,25 @@
     }
 
 }
+- (IBAction)exportImagesToPanolsGallery:(id)sender {
+    [self splitImage];
+    
+    //[self.exportPanel removeFromSuperview];
+    self.exportPanel.hidden = YES;
+}
 
 -(void)splitImage
 {
-    
-    if (self.leftImage)
-        self.leftImage = nil;
-    
-    if (self.middleImage)
-        self.middleImage = nil;
-    
-    if (self.rightImage)
-        self.rightImage = nil;
-    
-    CGFloat y;
-    
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(self.splitCropView.frame.origin.x, 0.0 , self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height)];
-    leftButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    [self.splitCropView addSubview:leftButton];
-    [leftButton setTitle:@"3" forState:UIControlStateNormal];
-    [leftButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [leftButton addTarget:self action:@selector(leftButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *middleButton = [[UIButton alloc] initWithFrame:CGRectMake(self.splitCropView.frame.size.width/3, 0.0, self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height)];
-    middleButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];;
-    [self.splitCropView addSubview:middleButton];
-    [middleButton setTitle:@"2" forState:UIControlStateNormal];
-    [middleButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [middleButton addTarget:self action:@selector(middleButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(2*self.splitCropView.frame.size.width/3, 0.0, self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height)];
-    rightButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];;
-    [self.splitCropView addSubview:rightButton];
-    [rightButton setTitle:@"1" forState:UIControlStateNormal];
-    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(rightButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self createImages];
-
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"RefreshGallery"
+     object:self];
 }
 
 - (void)createImages {
+    
     UIImage *panolsImage = [self cropImage:self.splitCropView.frame];
-    // Save panols Image to Panols Album
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self saveImageToPanolsGallery:panolsImage];
-    });
     
     CGRect leftRect = CGRectMake(self.splitCropView.frame.origin.x, self.splitCropView.frame.origin.y , self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height);
     
@@ -411,62 +376,50 @@
     
     CGRect rightRect = CGRectMake(2*self.splitCropView.frame.size.width/3, self.splitCropView.frame.origin.y , self.splitCropView.frame.size.width/3, self.splitCropView.frame.size.height);
     
-    self.leftImage = [self cropImage:leftRect];
-    self.middleImage =[self cropImage:middleRect];
-    self.rightImage = [self cropImage:rightRect];
-}
-
-- (IBAction)clearButtonTapped:(id)sender {
-    [self.view bringSubviewToFront:self.topScrollView];
-    [self.view bringSubviewToFront:self.navHeader];
-    [self.view bringSubviewToFront:self.tabBarView];
-
-    self.splitCropView.userInteractionEnabled = NO;
+    UIImage *imageLeft = [self cropImage:leftRect];
+    UIImage *imageMiddle =[self cropImage:middleRect];
+    UIImage *imageRight = [self cropImage:rightRect];
     
-    self.exportButton.enabled = YES;
-    self.fillButton.enabled = YES;
-    self.straightenButton.enabled = YES;
-    self.topScrollView.userInteractionEnabled = YES;
+    NSArray *images = [[NSArray alloc] initWithObjects:panolsImage, imageLeft, imageMiddle, imageRight, nil];
     
-    self.clearButton.hidden = YES;
+    self.exportPanel.hidden = YES;
+    self.imagesSavePanel.hidden = YES;
     
-    self.leftImage = nil;
-    self.middleImage = nil;
-    self.rightImage = nil;
-    
-    NSArray *viewsToRemove = [self.splitCropView subviews];
-    for (UIView *v in viewsToRemove) {
-        [v removeFromSuperview];
-    }
-}
-
-- (void)leftButtonTapped:(UIButton*)sender {
-    //[self writeMetadataToCreatedImage:self.leftImage];
+    // Save panols Image to Panols Album
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self saveCroppedImage:self.leftImage];
+        [self saveImageToPanolsGallery:images];
     });
     
-    UIButton* myButton = (UIButton*)sender;
-    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
-}
-
-- (IBAction)middleButtonTapped:(id)sender {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self saveCroppedImage:self.middleImage];
-    });
     
-    UIButton* myButton = (UIButton*)sender;
-    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
 }
 
-- (IBAction)rightButtonTapped:(id)sender {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self saveCroppedImage:self.rightImage];
-    });
-   
-    UIButton* myButton = (UIButton*)sender;
-    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
-}
+//- (void)leftButtonTapped:(UIButton*)sender {
+//    //[self writeMetadataToCreatedImage:self.leftImage];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [self saveCroppedImage:self.leftImage];
+//    });
+//    
+//    UIButton* myButton = (UIButton*)sender;
+//    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
+//}
+//
+//- (IBAction)middleButtonTapped:(id)sender {
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [self saveCroppedImage:self.middleImage];
+//    });
+//    
+//    UIButton* myButton = (UIButton*)sender;
+//    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
+//}
+//
+//- (IBAction)rightButtonTapped:(id)sender {
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [self saveCroppedImage:self.rightImage];
+//    });
+//   
+//    UIButton* myButton = (UIButton*)sender;
+//    [myButton setTitle:@"Saved" forState:UIControlStateNormal];
+//}
 
 - (NSString *)pathForPanolsDirectory:(NSString *)fileName {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -504,26 +457,29 @@
 }
 #pragma mark --
 
--(void)saveImageToPanolsGallery:(UIImage*)image{
-    __block BOOL retStat = false;
-    NSString *albumName = @"Panols Gallery";
-    NSData *newImageSize = UIImageJPEGRepresentation(image, 1);
-    UIImage *imageNew = [UIImage imageWithData:newImageSize];
-    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-        PHFetchResult *photosAsset;
-        PHAssetCollection *collection = [self findAlbumAssetCollection:albumName];
-        PHObjectPlaceholder *placeholder;
-        placeholder = [[PHAssetChangeRequest creationRequestForAssetFromImage:imageNew] placeholderForCreatedAsset];
-        photosAsset = [PHAsset fetchAssetsInAssetCollection:collection options:nil];
-        PHAssetCollectionChangeRequest *albumChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:collection assets:photosAsset];
-        [albumChangeRequest addAssets:@[placeholder]];
-    } completionHandler:^(BOOL success, NSError *error) {
-        if (success){
-            retStat = true;
-        }
-        else{
-            NSLog(@"%@", error);
-        }}];
+-(void)saveImageToPanolsGallery:(NSArray *)images{
+    
+    for (UIImage *image in images) {
+        __block BOOL retStat = false;
+        NSString *albumName = @"Panols Gallery";
+        NSData *newImageSize = UIImageJPEGRepresentation(image, 1);
+        UIImage *imageNew = [UIImage imageWithData:newImageSize];
+        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+            PHFetchResult *photosAsset;
+            PHAssetCollection *collection = [self findAlbumAssetCollection:albumName];
+            PHObjectPlaceholder *placeholder;
+            placeholder = [[PHAssetChangeRequest creationRequestForAssetFromImage:imageNew] placeholderForCreatedAsset];
+            photosAsset = [PHAsset fetchAssetsInAssetCollection:collection options:nil];
+            PHAssetCollectionChangeRequest *albumChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:collection assets:photosAsset];
+            [albumChangeRequest addAssets:@[placeholder]];
+        } completionHandler:^(BOOL success, NSError *error) {
+            if (success){
+                retStat = true;
+            }
+            else{
+                NSLog(@"%@", error);
+            }}];
+    }
 }
 
 -(PHAssetCollection*)findAlbumAssetCollection:(NSString*)albumName{

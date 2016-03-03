@@ -60,6 +60,8 @@
 @property (nonatomic, strong) SRPanoramaHeaderView *tableHeaderView;
 @property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
+@property (assign) BOOL refreshGalleries;
+
 @end
 
 @implementation SRHomeViewController
@@ -86,6 +88,7 @@
     
     self.galleryImages = [[NSMutableArray alloc] init];
     self.panolImages = [[NSMutableArray alloc] init];
+    
     [self getGallery];
     [self getPanolsImages];
     
@@ -122,6 +125,49 @@
     self.tableHeaderView.panoramasCollectionView.delegate =  self;
     self.tableHeaderView.panoramasCollectionView.dataSource = self;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshGallery:)
+                                                 name:@"RefreshGallery"
+                                               object:nil];
+    
+    self.refreshGalleries = NO;
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    if (self.refreshGalleries)
+        [self refreshImages];
+}
+
+- (void)refreshImages {
+    [self.galleryImages removeAllObjects];
+    self.galleryImages = nil;
+    
+    [self.panolImages removeAllObjects];
+    self.panolImages = nil;
+    
+    if(!self.galleryImages)
+        self.galleryImages = [[NSMutableArray alloc] init];
+    
+    if(!self.panolImages)
+        self.panolImages = [[NSMutableArray alloc] init];
+    
+    [self getGallery];
+    [self getPanolsImages];
+    
+    self.refreshGalleries = NO;
+}
+
+- (void) refreshGallery:(NSNotification *) notification
+{
+    // [notification name] should always be @"TestNotification"
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    self.refreshGalleries = YES;
+ 
 }
 
 - (void)dealloc{
@@ -129,7 +175,6 @@
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
-    
     [self.imagebackgrounView removeFromSuperview];
 }
 
@@ -145,17 +190,9 @@
     for (PHAssetCollection *sub in albums)
     {
         fetchResult = [PHAsset fetchAssetsInAssetCollection:sub options:options];
-        
-//        [fetchResult enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
-//            NSLog(@"MyAsset %@", asset);
-//        
-//            [self.galleryImages addObject:asset];
-//        }];
     }
     
     for (PHAsset *asset in fetchResult) {
-        //NSLog(@"MyAsset %@", asset);
-        
         [self.galleryImages addObject:asset];
     }
     
@@ -170,7 +207,6 @@
     PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:userAlbumsOptions];
     
     [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
-        NSLog(@"album title %@", collection.localizedTitle);
         if([collection.localizedTitle isEqualToString:@"Panols Gallery"])
         {
             PHFetchResult *fetchResult;
@@ -181,14 +217,12 @@
            
             fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
             
-                    //        [fetchResult enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
-                    //            NSLog(@"MyAsset %@", asset);
-                    //
-                    //            [self.galleryImages addObject:asset];
-                    //        }];
-            
                 for (PHAsset *asset in fetchResult) {
-                    [self.panolImages addObject:asset];
+                    NSInteger num = asset.mediaSubtypes;
+                    if(num == 1)
+                    {
+                        [self.panolImages addObject:asset];
+                    }
                 }
             
             [self.tableView reloadData];
