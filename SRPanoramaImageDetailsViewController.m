@@ -15,7 +15,7 @@
 
 @interface SRPanoramaImageDetailsViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *navTitle;
-@property (weak, nonatomic) IBOutlet UILabel *navSubtitle;
+@property (weak, nonatomic) IBOutlet UILabel *navSubtitleDate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *customTabBarView;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
@@ -51,6 +51,8 @@
             self.inputCGImage = [image CGImage];
             self.data = UIImagePNGRepresentation(image);
             [self phpAssetMetadata:asset];
+            
+            
         }];
  
     }
@@ -62,6 +64,8 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
     self.metaData = [[SRImageMetadata alloc] init];
+    
+    
     
     static NSString *CellIdentifier1 = @"SRImageDetailsCell";
     static NSString *CellIdentifier2 = @"SRImageLocationInfoCell";
@@ -115,6 +119,14 @@
         [self.tableView reloadData];
         NSLog(@"metadata: %@", image.properties);
     }];
+    
+    _navSubtitleDate.text = _metaData.dateStamp;
+    
+    
+    [_image setAccessibilityIdentifier:@"file name"] ;
+    
+    NSString *file_name = [_image accessibilityIdentifier] ;
+    NSLog(@"Filename: %@", file_name);
 }
 
 #pragma mark --

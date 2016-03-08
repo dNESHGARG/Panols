@@ -317,6 +317,10 @@
     self.exportPanel.hidden = NO;
     self.imagesSavePanel.hidden = NO;
 }
+- (IBAction)dismissExportTapped:(id)sender {
+    self.exportPanel.hidden = YES;
+    self.imagesSavePanel.hidden = YES;
+}
 
 //The event handling method
 //- (void)clearExportPanel:(UITapGestureRecognizer *)recognizer {

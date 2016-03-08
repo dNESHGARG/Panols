@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSData *data;
+@property (nonatomic, strong) NSString *dateStamp;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *subtitle;
 @property (nonatomic, strong) NSArray *keyWords;

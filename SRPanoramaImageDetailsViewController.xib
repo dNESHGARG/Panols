@@ -16,7 +16,7 @@
             <connections>
                 <outlet property="customTabBarView" destination="RbU-oI-WBb" id="7kV-jy-NWI"/>
                 <outlet property="editButton" destination="UwM-SW-51Y" id="gLG-oH-Ur7"/>
-                <outlet property="navSubtitle" destination="tCM-KP-dnC" id="xpo-zh-7eH"/>
+                <outlet property="navSubtitleDate" destination="tCM-KP-dnC" id="n6u-0a-bHg"/>
                 <outlet property="navTitle" destination="czE-xZ-5Xc" id="U9l-uc-eRt"/>
                 <outlet property="splitButton" destination="JQs-uK-VH0" id="BDN-tn-cmr"/>
                 <outlet property="tableView" destination="gjN-Ck-3j6" id="asF-PC-LQ6"/>
@@ -53,7 +53,7 @@
                                 <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="5p2-ZR-WBp"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAMMOTH LAKES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="czE-xZ-5Xc">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOSEMITE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="czE-xZ-5Xc">
                             <rect key="frame" x="55" y="42" width="265" height="29"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="SFCompactText-Semibold" family="SF Compact Text" pointSize="18"/>
@@ -61,7 +61,7 @@
                             <nil key="highlightedColor"/>
                             <size key="shadowOffset" width="0.0" height="0.0"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 6, 2015  4:56PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="tCM-KP-dnC">
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="tCM-KP-dnC">
                             <rect key="frame" x="55" y="64" width="265" height="21"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="12"/>

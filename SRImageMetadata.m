@@ -46,12 +46,13 @@
         
         if ([[data objectForKey:@"{GPS}"] objectForKey:@"Latitude"] && [[data objectForKey:@"{GPS}"] objectForKey:@"LatitudeRef"] && [[data objectForKey:@"{GPS}"] objectForKey:@"Longitude"] && [[data objectForKey:@"{GPS}"] objectForKey:@"LongitudeRef"])
         {
+            self.dateStamp = [[data objectForKey:@"{TIFF}"] objectForKey:@"DateTime"] ;
             self.latitude = [[data objectForKey:@"{GPS}"] objectForKey:@"Latitude"] ;
             self.latitudeRef = [[data objectForKey:@"{GPS}"] objectForKey:@"LatitudeRef"];
             self.longitude = [[data objectForKey:@"{GPS}"] objectForKey:@"Longitude"];
             self.longituderef = [[data objectForKey:@"{GPS}"] objectForKey:@"LongitudeRef"];
             
-            self.coordinates = [NSString stringWithFormat:@"%@ %@  %@ %@",self.latitude,self.latitudeRef,self.longitude,self.longituderef];
+            self.coordinates = [NSString stringWithFormat:@"%@ %@  %@ %@", self.latitude, self.latitudeRef, [NSString stringWithFormat:@"-%@/", self.longitude], self.longituderef];
         }
         
     }
