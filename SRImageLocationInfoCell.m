@@ -34,7 +34,7 @@
     MKCoordinateSpan span;
     
     location.latitude  = [metaData.latitude doubleValue];//37.250556;
-    location.longitude = [metaData.longitude doubleValue];//-96.358333;
+ 
     
     span.latitudeDelta = 0.05;
     span.longitudeDelta = 0.05;
@@ -47,8 +47,8 @@
     
     MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
     annotationPoint.coordinate = location;
-    annotationPoint.title = @"Microsoft";
-    annotationPoint.subtitle = @"Microsoft's headquarters";
+    annotationPoint.title = @"Yosemite";
+    annotationPoint.subtitle = @"Yosemite National Park";
     [self.mapView addAnnotation:annotationPoint];
 }
 

@@ -72,11 +72,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.panelsBackgroundView.backgroundColor = [UIColor colorWithRed:34./255. green:34./255. blue:34./255. alpha:1.0];
-//    self.navigationHeaderView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
-//    self.navigationHeaderView.layer.shadowOpacity = 1.00f;
-//    self.navigationHeaderView.layer.shadowOffset = CGSizeMake(10,10);
-//    self.navigationHeaderView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationHeaderView.bounds].CGPath;
-//    self.navigationHeaderView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+    //    self.navigationHeaderView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
+    //    self.navigationHeaderView.layer.shadowOpacity = 1.00f;
+    //    self.navigationHeaderView.layer.shadowOffset = CGSizeMake(0,0);
+    //    self.navigationHeaderView.layer.shadowRadius = 20;
+    //    self.navigationHeaderView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationHeaderView.bounds].CGPath;
+    //    self.navigationHeaderView.layer.shadowColor = [UIColor colorWithRed:0./255. green:0./255. blue:0./255. alpha:0.3].CGColor;
     
     //self.navigationHeaderImageView.backgroundColor = [UIColor colorWithRed:243./255. green:243./255. blue:245./255. alpha:1.0];
     //[self.customButton setTitleColor:[UIColor colorWithRed:216./255. green:216./255. blue:216./255. alpha:1.0] forState:UIControlStateNormal];
@@ -108,7 +109,7 @@
     //UIView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"SRPanoramaHeaderView"];
     self.tableView.tableHeaderView = self.tableHeaderView;
     
-    _fakeNames = @[@"Sunset", @"Sunrise", @"Moutains", @"Blue Sky", @"Panorama Lake", @"Sierra Nevada"];
+    _fakeNames = @[@"YOSEMITE", @"YOSEMITE", @"YOSEMITE FALLS", @"Blue Sky", @"Panorama Lake", @"Sierra Nevada"];
     
     [self.tableHeaderView.panoramasCollectionView registerClass:[SRPanormaImageCell class] forCellWithReuseIdentifier:@"SRPanormaImageCell"];
     
@@ -169,7 +170,7 @@
     // as well.
     
     self.refreshGalleries = YES;
- 
+    
 }
 
 - (void)dealloc{
@@ -198,13 +199,13 @@
         [self.galleryImages addObject:asset];
     }
     
-//    if(self.galleryImages.count == 0)
-//        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = NO;
-//    else
-//        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = YES;
+    //    if(self.galleryImages.count == 0)
+    //        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = NO;
+    //    else
+    //        self.tableHeaderView.panoramaImagesEmptyLabel.hidden = YES;
     
     [self.tableHeaderView.panoramasCollectionView reloadData];
-
+    
 }
 
 - (void)getPanolsImages{
@@ -221,26 +222,26 @@
             options.wantsIncrementalChangeDetails = YES;
             options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
             options.predicate = [NSPredicate predicateWithFormat:@"mediaType == %d", PHAssetMediaTypeImage];
-           
+            
             fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
             
-                for (PHAsset *asset in fetchResult) {
-                    NSInteger num = asset.mediaSubtypes;
-                    if(num == 1)
-                    {
-                        [self.panolImages addObject:asset];
-                    }
+            for (PHAsset *asset in fetchResult) {
+                NSInteger num = asset.mediaSubtypes;
+                if(num == 1)
+                {
+                    [self.panolImages addObject:asset];
                 }
+            }
             [self.tableView reloadData];
         }
     }];
     
-//    if(self.panolImages.count == 0)
-//    {
-//        self.panolsGalleryEmptyLabel.hidden = NO;
-//    }
-//    else
-//        self.panolsGalleryEmptyLabel.hidden = YES;
+    //    if(self.panolImages.count == 0)
+    //    {
+    //        self.panolsGalleryEmptyLabel.hidden = NO;
+    //    }
+    //    else
+    //        self.panolsGalleryEmptyLabel.hidden = YES;
     
 }
 
@@ -263,7 +264,7 @@
 
 -(void)splitImage
 {
-
+    
     if (self.leftImage)
         self.leftImage = nil;
     
@@ -284,7 +285,7 @@
     CGRect middleImgFrame = CGRectMake(self.width/3, 0, self.width/3, self.height);
     CGRect rightImgFrame = CGRectMake(2*self.width/3, 0, self.width/3, self.height);
     
-
+    
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(self.imagebackgrounView.frame.origin.x, self.imageView.center.y , self.imageView.frame.size.width/3, 200.0)];
     leftButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     [self.imageView addSubview:leftButton];
@@ -299,7 +300,7 @@
     [middleButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [middleButton addTarget:self action:@selector(middleButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-
+    
     UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(2*self.imagebackgrounView.frame.size.width/3, self.imageView.center.y, self.imageView.frame.size.width/3, 200.0)];
     rightButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];;
     [self.imageView addSubview:rightButton];
@@ -330,11 +331,11 @@
 }
 
 - (IBAction)middleButtonTapped:(id)sender {
-     [self shareOnInstagram:self.middleImage];
+    [self shareOnInstagram:self.middleImage];
 }
 
 - (IBAction)rightButtonTapped:(id)sender {
-     [self shareOnInstagram:self.rightImage];
+    [self shareOnInstagram:self.rightImage];
 }
 
 - (void)shareOnInstagram:(UIImage*)image {
@@ -355,38 +356,41 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-        return 1;
-
+    return 1;
+    
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
-        return self.galleryImages.count;
+    
+    return self.galleryImages.count;
     
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-        static NSString *cellIdentifier = @"SRPanormaImageCell";
-        
-        SRPanormaImageCell *cell = (SRPanormaImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-        cell.layer.masksToBounds = YES;
-        cell.layer.cornerRadius = 7.0;
-        
-        cell.layer.shadowOpacity = 1.00f;
-        cell.layer.shadowOffset = CGSizeMake(10,10);
-        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
-        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
-        //cell.layer.shouldRasterize = YES;
-        
-        PHAsset *asset = self.galleryImages[indexPath.row];
-        //PHImageManager *imageManager;
-        CGSize size = CGSizeMake(140.0, 128.0);
-        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
-            cell.imageView.image = result;
-        }];
-        
-        return cell;
+    static NSString *cellIdentifier = @"SRPanormaImageCell";
+    
+    SRPanormaImageCell *cell = (SRPanormaImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius = 7.0;
+    
+    cell.layer.shadowOpacity = 1.00f;
+    cell.layer.shadowOffset = CGSizeMake(10,10);
+    cell.layer.shadowRadius = 20;
+    cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
+    cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+    
+    
+    //cell.layer.shouldRasterize = YES;
+    
+    PHAsset *asset = self.galleryImages[indexPath.row];
+    //PHImageManager *imageManager;
+    CGSize size = CGSizeMake(140.0, 128.0);
+    [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+        cell.imageView.image = result;
+    }];
+    
+    return cell;
     
 }
 
@@ -396,19 +400,19 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-        PHAsset *asset = self.galleryImages[indexPath.row];
-        //PHImageManager *imageManager;
-        //[self phpAssetMetadata:asset];
-        SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[indexPath.row]];
-        [self.navigationController pushViewController:detailsController animated:YES];
-
+    
+    PHAsset *asset = self.galleryImages[indexPath.row];
+    //PHImageManager *imageManager;
+    //[self phpAssetMetadata:asset];
+    SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[indexPath.row]];
+    [self.navigationController pushViewController:detailsController animated:YES];
+    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-        float cellWidth = self.tableHeaderView.panoramasCollectionView.frame.size.width - 90.0;
-        float cellHeight = 128.0f;
-        return CGSizeMake(cellWidth, cellHeight);
+    float cellWidth = self.tableHeaderView.panoramasCollectionView.frame.size.width - 90.0;
+    float cellHeight = 128.0f;
+    return CGSizeMake(cellWidth, cellHeight);
 }
 
 
@@ -473,55 +477,55 @@
     }];
 }
 
-#pragma mark -- 
+#pragma mark --
 
 //
 //-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
+//
 //    if (collectionView == self.panolsCollectionView){
 //        static NSString *cellIdentifier = @"SRPanolsImageCell";
-//        
+//
 //        SRPanolsImageCell *cell = (SRPanolsImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
 //        cell.layer.masksToBounds = YES;
 //        cell.layer.cornerRadius = 5.0;
-//        
+//
 //        cell.layer.shadowOpacity = 1.00f;
 //        cell.layer.shadowOffset = CGSizeZero;
 //        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
 //        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
 //        //cell.layer.shouldRasterize = YES;
-//        
+//
 //        return cell;
 //    }
-//        
-//    
+//
+//
 //    if (collectionView == self.panormasCollectionView){
 //        static NSString *cellIdentifier = @"SRPanormaImageCell";
-//        
+//
 //        SRPanormaImageCell *cell = (SRPanormaImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
 //        cell.layer.masksToBounds = YES;
 //        cell.layer.cornerRadius = 7.0;
-//        
+//
 //        cell.layer.shadowOpacity = 1.00f;
 //        cell.layer.shadowOffset = CGSizeMake(10,10);
 //        cell.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
 //        cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
 //        //cell.layer.shouldRasterize = YES;
-//        
+//
 //        PHAsset *asset = self.galleryImages[indexPath.row];
 //        //PHImageManager *imageManager;
 //        CGSize size = CGSizeMake(140.0, 128.0);
 //        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
 //            cell.imageView.image = result;
 //        }];
-//        
+//
 //        return cell;
 //    }
-//    
+//
 //    //cell.imageView.image = [UIImage imageNamed:@"panormaImage"];
-//    
+//
 //    return [[UICollectionViewCell alloc] init];
-//    
+//
 //}
 //
 //- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -529,27 +533,27 @@
 //        PHAsset *asset = self.galleryImages[indexPath.row];
 //        SRPanoramaImageDetailsViewController *detailsController = [[SRPanoramaImageDetailsViewController alloc] initWithAsset:asset andImage:self.galleryImages[indexPath.row]];
 //        [self.navigationController pushViewController:detailsController animated:YES];
-//        
+//
 //    }
-//    
+//
 //}
 
 
 //- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 //{
 //    UICollectionReusableView *reusableview = nil;
-//    
+//
 //    if (kind == UICollectionElementKindSectionHeader) {
 //        for (int i = 0; i < 10; i++) {
 //        SRPanoramaHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SRPanoramaHeaderView" forIndexPath:indexPath];
-//        
+//
 //        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50.0 + self.panoramaImageWidth + 10.0, 0.0, self.panoramaImageWidth, 128.0)];
 //        [headerView addSubview:imageView];
 //        imageView.image = [UIImage imageNamed:@"panormaImage"];
 //        reusableview = headerView;
 //        }
 //    }
-//    
+//
 //    return reusableview;
 //}
 //
@@ -733,12 +737,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(SRHomeTableCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     // To-DO Remove this shit
-//    if (indexPath.row>0)
-//        cell.panolsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"temp%ld",indexPath.row]];
-//    else
-//        cell.panolsImageView.image = [UIImage imageNamed:@"panormaImage"];
+    //    if (indexPath.row>0)
+    //        cell.panolsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"temp%ld",indexPath.row]];
+    //    else
+    //        cell.panolsImageView.image = [UIImage imageNamed:@"panormaImage"];
     
     PHAsset *asset = self.panolImages[indexPath.row];
     //PHImageManager *imageManager;
@@ -752,16 +756,17 @@
     cell.contentBackgroundView.layer.masksToBounds = YES;
     //cell.contentBackgroundView.layer.cornerRadius = 7.0;
     
-    cell.panolsImageView.layer.cornerRadius = 7.0;
+    cell.panolsImageView.layer.cornerRadius = 5;
     cell.panolsImageView.layer.masksToBounds = YES;
     cell.contentBackgroundView.layer.masksToBounds = YES;
     cell.contentView.layer.masksToBounds = YES;
     cell.layer.masksToBounds = YES;
     
     cell.panolsImageView.layer.shadowOpacity = 1.00f;
-    cell.panolsImageView.layer.shadowOffset = CGSizeMake(1,0);
-    cell.panolsImageView.layer.shadowColor = [UIColor colorWithRed:208./255. green:208./255. blue:210./255. alpha:1.0].CGColor;
-    cell.panolsImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+    cell.panolsImageView.layer.shadowOffset = CGSizeMake(0,0);
+    cell.panolsImageView.layer.shadowRadius = 20;
+    cell.panolsImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.panolsImageView.bounds].CGPath;
+    cell.panolsImageView.layer.shadowColor = [UIColor colorWithRed:0/255. green:0/255. blue:0/255. alpha:0.3].CGColor;
     
 }
 
