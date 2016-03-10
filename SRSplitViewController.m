@@ -51,17 +51,20 @@
 @property (strong, nonatomic) IBOutlet UIView *exportPanel;
 @property (weak, nonatomic) IBOutlet UIButton *clearExportPanel;
 @property (weak, nonatomic) IBOutlet UIView *imagesSavePanel;
+@property (nonatomic, strong) NSString *title;
 
 @end
 
 @implementation SRSplitViewController
 
-- (instancetype)initWithWithData:(SRImageMetadata*)metaData andCGImage:(CGImageRef)cgImage; {
+- (instancetype)initWithWithData:(SRImageMetadata*)metaData andCGImage:(CGImageRef)cgImage andTitle:(NSString*)navTitle{
     self = [super init];
     
     if (self != nil)
     {
         self.image = metaData.image;
+        if(navTitle.length > 0)
+            self.title = navTitle;
     }
     
     return self;
@@ -87,6 +90,8 @@
     
     [self.view bringSubviewToFront:self.tabBarView];
     [self.view bringSubviewToFront:self.navHeader];
+    
+    self.navTitle.text = self.title;
     
 }
 

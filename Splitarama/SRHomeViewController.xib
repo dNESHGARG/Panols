@@ -41,25 +41,19 @@
                 </tableView>
                 <view contentMode="scaleToFill" id="3lG-LD-r8Z">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="loG-0L-5uB">
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" image="navigation-header" id="20d-FN-C12">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" image="navigation-header" id="20d-FN-C12">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                            </subviews>
-                        </stackView>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="navigation-logo" id="q7R-dT-UFP">
                             <rect key="frame" x="142" y="45" width="91" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SVj-al-1Pl">
                             <rect key="frame" x="322" y="34" width="43" height="43"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             <state key="normal" image="navigation-button-add"/>
                             <connections>
                                 <action selector="galleryButtonTapped:" destination="-1" eventType="touchUpInside" id="Ozs-o5-i7Q"/>

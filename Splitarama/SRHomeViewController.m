@@ -257,7 +257,7 @@
     PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:userAlbumsOptions];
     
     [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
-        if([collection.localizedTitle isEqualToString:@"Panols Gallery"])
+        if([collection.localizedTitle isEqualToString:ALBUM_NAME])
         {
             PHFetchResult *fetchResult;
             PHFetchOptions *options = [[PHFetchOptions alloc] init];
@@ -791,9 +791,13 @@
     CGSize size = CGSizeMake(325.0, 101.0);
     [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
         cell.panolsImageView.image = result;
+        
+        if ([asset valueForKey:@"filename"])
+            cell.imageName.text = [asset valueForKey:@"filename"];
+   
     }];
     
-    cell.imageName.text = _fakeNames[indexPath.row%6];
+    //cell.imageName.text = _fakeNames[indexPath.row%6];
     
     cell.contentBackgroundView.layer.masksToBounds = YES;
     //cell.contentBackgroundView.layer.cornerRadius = 7.0;
@@ -810,6 +814,12 @@
     cell.panolsImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.panolsImageView.bounds].CGPath;
     cell.panolsImageView.layer.shadowColor = [UIColor colorWithRed:0/255. green:0/255. blue:0/255. alpha:0.3].CGColor;
     
+}
+
+- (NSString *)getFileName:(UIImageView *)imgView{
+    NSString *imgName = [imgView image].accessibilityIdentifier;
+    NSLog(@"%@",imgName);
+    return imgName;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

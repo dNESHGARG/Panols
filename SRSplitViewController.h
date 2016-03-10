@@ -14,6 +14,6 @@
 
 @interface SRSplitViewController : UIViewController
 
-- (instancetype)initWithWithData:(SRImageMetadata*)metaData andCGImage:(CGImageRef)cgImage;
+- (instancetype)initWithWithData:(SRImageMetadata*)metaData andCGImage:(CGImageRef)cgImage andTitle:(NSString*)navTitle;
 
 @end

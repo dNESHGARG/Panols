@@ -44,9 +44,36 @@
             self.size = [NSString stringWithFormat:@"%.2f MB", (float)imageSize/1024/1024];
         }
         
+        if ([[data objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"])
+        {
+            NSString *dateString = [[data objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            // this is imporant - we set our input date format to match our input string
+            // if format doesn't match you'll get nil from your string, so be careful
+            [dateFormatter setDateFormat:@"MM/dd/YYYY"];
+            NSDate *dateFromString = [[NSDate alloc] init];
+            // voila!
+            //dateString = @"06/10/2013";
+            dateFromString = [dateFormatter dateFromString:dateString];
+            
+           // NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            //[dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            NSString *newDate = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:dateFromString] ];
+//            NSDate *date = [dateFormat dateFromString:dateStr];
+//            //[dateFormatter setDateFormat:@"MMMM dd, YYYY"];
+//            NSString* temp = [dateFormat stringFromDate:date];
+            //NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            //[df setDateFormat:@"yyyy-MM-dd HH:mm:ss a"];
+            //NSDate *myDate = [df dateFromString:dateStr];
+
+            if(dateString.length > 0)
+                self.dateStamp = dateString; //newDate;//[[data objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"] ;
+            
+        }
+        
         if ([[data objectForKey:@"{GPS}"] objectForKey:@"Latitude"] && [[data objectForKey:@"{GPS}"] objectForKey:@"LatitudeRef"] && [[data objectForKey:@"{GPS}"] objectForKey:@"Longitude"] && [[data objectForKey:@"{GPS}"] objectForKey:@"LongitudeRef"])
         {
-            self.dateStamp = [[data objectForKey:@"{TIFF}"] objectForKey:@"DateTime"] ;
             self.latitude = [[data objectForKey:@"{GPS}"] objectForKey:@"Latitude"] ;
             self.latitudeRef = [[data objectForKey:@"{GPS}"] objectForKey:@"LatitudeRef"];
             self.longitude = [[data objectForKey:@"{GPS}"] objectForKey:@"Longitude"];

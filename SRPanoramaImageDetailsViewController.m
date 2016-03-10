@@ -51,8 +51,8 @@
             self.inputCGImage = [image CGImage];
             self.data = UIImagePNGRepresentation(image);
             [self phpAssetMetadata:asset];
-            
-            
+            if([asset valueForKey:@"filename"])
+                self.navTitle.text = [[asset valueForKey:@"filename"] uppercaseString];
         }];
  
     }
@@ -190,7 +190,8 @@
 }
 
 - (IBAction)splitButtonTapped:(id)sender {
-    SRSplitViewController *splitView = [[SRSplitViewController alloc] initWithWithData:self.metaData andCGImage:self.inputCGImage];
+    NSString *title = [NSString stringWithFormat:@"%@", self.navTitle.text];
+    SRSplitViewController *splitView = [[SRSplitViewController alloc] initWithWithData:self.metaData andCGImage:self.inputCGImage andTitle:title];
     [self.navigationController pushViewController:splitView animated:YES];
 }
 
