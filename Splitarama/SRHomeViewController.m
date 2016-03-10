@@ -63,6 +63,7 @@
 @property (assign) BOOL refreshGalleries;
 
 @property (weak, nonatomic) IBOutlet UITableView *panolsGalleryEmptyLabel;
+@property (assign) BOOL galleryPermissions;
 
 @end
 
@@ -89,11 +90,17 @@
     self.navigationController.navigationBar.hidden = true;
     //self.imageView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1.0];
     
+    self.galleryPermissions = NO;
+    [self galleryPermission];
+    
     self.galleryImages = [[NSMutableArray alloc] init];
     self.panolImages = [[NSMutableArray alloc] init];
     
-    [self getGallery];
-    [self getPanolsImages];
+    if(self.galleryPermissions)
+    {
+        [self getGallery];
+        [self getPanolsImages];
+    }
     
     [self.tableView setBackgroundView:nil];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
@@ -142,6 +149,41 @@
     
     if (self.refreshGalleries)
         [self refreshImages];
+}
+
+- (void)galleryPermission {
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    
+    if (status == PHAuthorizationStatusAuthorized) {
+        // Access has been granted.
+        self.galleryPermissions = YES;
+    }
+    
+    else if (status == PHAuthorizationStatusDenied) {
+        // Access has been denied.
+        self.galleryPermissions = NO;
+    }
+    
+    else if (status == PHAuthorizationStatusNotDetermined) {
+        
+        // Access has not been determined.
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            
+            if (status == PHAuthorizationStatusAuthorized) {
+                // Access has been granted.
+                self.galleryPermissions = YES;
+            }
+            
+            else {
+                // Access has been denied.
+                self.galleryPermissions = NO;
+            }
+        }];
+    }
+    
+    else if (status == PHAuthorizationStatusRestricted) {
+        // Restricted access - normally won't happen.
+    }
 }
 
 - (void)refreshImages {

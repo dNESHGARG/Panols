@@ -9,6 +9,8 @@
 #import "SRSplitViewController.h"
 #import "SRImageMetadata.h"
 
+#define ALBUM_NAME @"Panols"
+
 @interface SRSplitViewController ()<UIScrollViewDelegate, UIDocumentInteractionControllerDelegate>
 {
     CGPoint _topScrollContentOffset;
@@ -389,6 +391,11 @@
     self.exportPanel.hidden = YES;
     self.imagesSavePanel.hidden = YES;
     
+    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //Do something else
+        [self findAlbumAssetCollection:ALBUM_NAME];
+    });
+    
     // Save panols Image to Panols Album
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self saveImageToPanolsGallery:images];
@@ -465,12 +472,11 @@
     
     for (UIImage *image in images) {
         __block BOOL retStat = false;
-        NSString *albumName = @"Panols Gallery";
         NSData *newImageSize = UIImageJPEGRepresentation(image, 1);
         UIImage *imageNew = [UIImage imageWithData:newImageSize];
         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
             PHFetchResult *photosAsset;
-            PHAssetCollection *collection = [self findAlbumAssetCollection:albumName];
+            PHAssetCollection *collection = [self findAlbumAssetCollection:ALBUM_NAME];
             PHObjectPlaceholder *placeholder;
             placeholder = [[PHAssetChangeRequest creationRequestForAssetFromImage:imageNew] placeholderForCreatedAsset];
             photosAsset = [PHAsset fetchAssetsInAssetCollection:collection options:nil];
@@ -487,12 +493,30 @@
 }
 
 -(PHAssetCollection*)findAlbumAssetCollection:(NSString*)albumName{
-    PHAssetCollection *collection;
+    //PHAssetCollection *collection;
+    __block PHAssetCollection *collection;
+    __block PHObjectPlaceholder *placeholder;
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
     fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumName];
     collection = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum
                                                           subtype:PHAssetCollectionSubtypeAny
                                                           options:fetchOptions].firstObject;
+    // Create the album
+    if (!collection)
+    {
+        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+            PHAssetCollectionChangeRequest *createAlbum = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:albumName];
+            placeholder = [createAlbum placeholderForCreatedAssetCollection];
+        } completionHandler:^(BOOL success, NSError *error) {
+            if (success)
+            {
+                PHFetchResult *collectionFetchResult = [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[placeholder.localIdentifier]
+                                                                                                            options:nil];
+                collection = collectionFetchResult.firstObject;
+            }
+        }];
+    }
+    
     return collection;
 }
 
@@ -501,7 +525,8 @@
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
         //PHObjectPlaceholder *placeholder;
         //placeholder = [[PHAssetChangeRequest creationRequestForAssetFromImage:image] placeholderForCreatedAsset];
-        PHAssetChangeRequest *changeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        //PHAssetChangeRequest *changeRequest =
+        [PHAssetChangeRequest creationRequestForAssetFromImage:image];
         //[changeRequest addAssets:@[placeholder]];
     } completionHandler:^(BOOL success, NSError *error) {
         if (success){
